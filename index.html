@@ -34,62 +34,43 @@
             font-family: 'Manrope', sans-serif; 
             line-height: 1.6;
             overflow-x: hidden;
-            padding-top: 60px; /* Отступ под фиксированное меню */
+            padding-top: 60px;
         }
 
-        /* 1. Навигация (Шапка) */
+        /* Навигация (Шапка) */
         .navbar {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
+            position: fixed; top: 0; left: 0; width: 100%;
             background: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(5px);
-            z-index: 1000;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            padding: 15px 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            z-index: 1000; display: flex; justify-content: center; gap: 30px;
+            padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
-        .navbar a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 600;
-            font-size: 0.95rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: color 0.3s;
-        }
+        .navbar a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         .navbar a:hover { color: var(--accent); }
 
-        /* 2. Обложка (Hero) */
+        /* Обложка (Обновленный дизайн) */
         .hero {
-            height: calc(100vh - 60px);
-            min-height: 500px;
+            height: calc(100vh - 60px); min-height: 500px;
             background: url('church.jpg') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: var(--text);
+            background-size: cover; display: flex; flex-direction: column;
+            justify-content: flex-end; /* Опустили блок вниз */
+            align-items: center; text-align: center;
             padding: 20px;
+            padding-bottom: 80px; /* Отступ от самого низа */
         }
-
         .hero-text-bg {
-            background: rgba(253, 251, 247, 0.85);
-            padding: 40px 60px;
-            border-radius: 4px;
-            border: 1px solid rgba(196, 164, 90, 0.3);
+            background: rgba(253, 251, 247, 0.95); /* Плотный фон для читаемости */
+            padding: 30px 60px;
+            border-radius: 6px;
+            border-bottom: 4px solid var(--accent); /* Элегантная линия */
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Объемная тень */
             max-width: 90%;
         }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 5px; color: var(--text); }
+        .hero p { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 4rem); font-weight: 400; margin-bottom: 10px; }
-        .hero p { font-size: 1.1rem; letter-spacing: 4px; text-transform: uppercase; color: var(--accent); }
-
-        /* 3. Основные секции */
+        /* Основные секции */
         .section { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        
         .priest-card { display: flex; align-items: center; gap: 40px; background: var(--white); padding: 40px; box-shadow: 0 20px 40px var(--shadow); border-radius: 4px; }
         .priest-photo { width: 250px; height: auto; object-fit: cover; border: 3px solid var(--accent); padding: 8px; flex-shrink: 0; border-radius: 4px; }
         .priest-text h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 15px; font-size: 1.8rem; }
@@ -103,7 +84,7 @@
         /* Расписание */
         .schedule-list { list-style: none; }
         .schedule-list li { padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
-        .schedule-header { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 8px; line-height: 1.4; }
+        .schedule-header { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4; }
         .schedule-details { color: var(--text); padding-left: 12px; border-left: 2px solid #f7f4f0; font-size: 0.95rem; }
         .schedule-phone { margin-top: 20px; padding-top: 15px; border-top: 2px dashed #eee; text-align: center; font-size: 0.9rem; }
 
@@ -126,14 +107,7 @@
         .btn-gold:hover { background-color: #b3934d; }
 
         /* Плавающая кнопка звонка */
-        .mobile-call-btn {
-            position: fixed; bottom: 20px; right: 20px;
-            background-color: var(--accent); color: white;
-            padding: 15px 25px; border-radius: 50px;
-            text-decoration: none; font-weight: bold; font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            display: none; z-index: 1000;
-        }
+        .mobile-call-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; z-index: 1000; }
 
         footer { padding: 40px 20px; text-align: center; font-size: 0.8rem; border-top: 1px solid #eee; background-color: var(--white); }
 
@@ -141,6 +115,7 @@
         @media (max-width: 768px) {
             .navbar { gap: 15px; padding: 15px 10px; font-size: 0.85rem; }
             .hero-text-bg { padding: 25px 20px; }
+            .hero { padding-bottom: 40px; }
             .priest-card { flex-direction: column; text-align: center; padding: 30px 20px; }
             .priest-photo { width: 200px; }
             .priest-text blockquote { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 15px; }
@@ -263,34 +238,78 @@
     </a>
 
     <script>
-        // ЕСЛИ ВЫ ХОТИТЕ БРАТЬ РАСПИСАНИЕ ИЗ GOOGLE ТАБЛИЦ, ВСТАВЬТЕ ССЫЛКУ НА CSV СЮДА:
-        const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pub?output=csv"; 
+        // ВАЖНО: ВСТАВЬТЕ СЮДА ВАШУ ССЫЛКУ НА CSV ИЗ GOOGLE ТАБЛИЦ !!!
+        const googleSheetCsvUrl = "ВСТАВЬТЕ_ССЫЛКУ_НА_CSV_СЮДА"; 
         
         function renderSchedule(services, monthName, phone) {
-            document.getElementById('schedule-title').innerText = 'Расписание: ' + monthName;
+            document.getElementById('schedule-title').innerText = 'Расписание: ' + (monthName || 'На этот месяц');
             const list = document.getElementById('schedule-list');
             list.innerHTML = ''; 
 
             const now = new Date();
-            const currentDay = now.getDate();
-            const currentMonth = now.getMonth();
-            const currentYear = now.getFullYear();
+            now.setHours(0, 0, 0, 0); // Сверяем начиная с сегодняшнего утра
 
-            const monthMap = {'янв':0, 'фев':1, 'мар':2, 'апр':3, 'май':4, 'мая':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11};
-            let schedMonth = currentMonth;
-            for (let key in monthMap) {
-                if (monthName.toLowerCase().includes(key)) { schedMonth = monthMap[key]; break; }
-            }
-            const yearMatch = monthName.match(/\d{4}/);
-            const schedYear = yearMatch ? parseInt(yearMatch[0]) : currentYear;
+            const monthNamesGenitive = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
+            const monthNamesMap = {'янв':0, 'фев':1, 'мар':2, 'апр':3, 'май':4, 'мая':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11};
+            const shortDays = { "понедельник": "пн", "вторник": "вт", "среда": "ср", "четверг": "чт", "пятница": "пт", "суббота": "сб", "воскресенье": "вс", "пн": "пн", "вт": "вт", "ср": "ср", "чт": "чт", "пт": "пт", "сб": "сб", "вс": "вс" };
 
-            const upcomingServices = services.filter(service => {
-                const days = service.date.match(/\d+/g);
-                const eventDay = days ? parseInt(days[days.length - 1]) : 31; 
-                if (schedYear < currentYear) return false;
-                if (schedYear === currentYear && schedMonth < currentMonth) return false;
-                if (schedYear === currentYear && schedMonth === currentMonth && eventDay < currentDay) return false;
-                return true;
+            // Умный парсинг дат
+            const parsedServices = services.map(service => {
+                let dateObj = null;
+                let displayDate = service.date;
+                let rawDate = service.date.trim();
+                let finalTitle = service.title || '';
+
+                // Ищем формат "03.01.2026 суббота."
+                const regexFull = /^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[\s,.]+([а-яА-Яa-zA-Z]+))?/;
+                const matchFull = rawDate.match(regexFull);
+                
+                // Ищем резервный формат "10 мая (Вс)"
+                const regexShort = /^(\d{1,2})\s+([а-яА-Я]+)(?:[\s,.]+\(?([а-яА-Я]+)\)?)?/;
+                const matchShort = rawDate.match(regexShort);
+
+                if (matchFull) {
+                    const d = parseInt(matchFull[1]);
+                    const m = parseInt(matchFull[2]) - 1;
+                    const y = parseInt(matchFull[3]);
+                    dateObj = new Date(y, m, d);
+                    
+                    let dayWord = matchFull[4] ? matchFull[4].toLowerCase() : '';
+                    let shortDow = shortDays[dayWord] || dayWord;
+                    
+                    displayDate = `${d} ${monthNamesGenitive[m]}` + (shortDow ? ` (${shortDow})` : '');
+                    
+                    let leftover = rawDate.substring(matchFull[0].length).replace(/^[\s.]+/, '').trim();
+                    if (leftover) finalTitle = leftover + (finalTitle ? '. ' + finalTitle : '');
+
+                } else if (matchShort) {
+                    const d = parseInt(matchShort[1]);
+                    const mStr = matchShort[2].toLowerCase().substring(0,3);
+                    const m = monthNamesMap[mStr];
+                    if (m !== undefined) {
+                        const yearMatch = monthName ? monthName.match(/\d{4}/) : null;
+                        const y = yearMatch ? parseInt(yearMatch[0]) : now.getFullYear();
+                        dateObj = new Date(y, m, d);
+                        
+                        let dayWord = matchShort[3] ? matchShort[3].toLowerCase() : '';
+                        let shortDow = shortDays[dayWord] || dayWord;
+                        displayDate = `${d} ${monthNamesGenitive[m]}` + (shortDow ? ` (${shortDow})` : '');
+                        
+                        let leftover = rawDate.substring(matchShort[0].length).replace(/^[\s.]+/, '').trim();
+                        if (leftover) finalTitle = leftover + (finalTitle ? '. ' + finalTitle : '');
+                    }
+                }
+
+                finalTitle = finalTitle.replace(/^[\s.]+/, '');
+                return { ...service, dateObj, displayDate, finalTitle };
+            });
+
+            // Жесткий фильтр: удаляем все, где dateObj меньше сегодняшней даты
+            const upcomingServices = parsedServices.filter(service => {
+                if (service.dateObj) {
+                    return service.dateObj >= now;
+                }
+                return true; 
             });
 
             const servicesToShow = upcomingServices.slice(0, 4);
@@ -300,9 +319,17 @@
             } else {
                 servicesToShow.forEach(service => {
                     const li = document.createElement('li');
-                    let eventsHTML = service.events.map(ev => `<strong>${ev.time}</strong> — ${ev.name}`).join('<br><br>');
+                    
+                    // Вот здесь мы используем аккуратный отступ margin-bottom: 8px вместо <br><br>
+                    let eventsHTML = '';
+                    if (service.events && service.events.length > 0) {
+                        eventsHTML = service.events.map(ev => `<div style="margin-bottom: 8px;"><strong>${ev.time}</strong> — ${ev.name}</div>`).join('');
+                    } else {
+                        eventsHTML = `<div style="margin-bottom: 8px;"><strong>${service.time || ''}</strong> ${service.desc ? '— ' + service.desc : ''}</div>`;
+                    }
+
                     li.innerHTML = `
-                        <div class="schedule-header">${service.date}. ${service.title}</div>
+                        <div class="schedule-header">${service.displayDate}${service.finalTitle ? '. ' + service.finalTitle : ''}</div>
                         <div class="schedule-details">${eventsHTML}</div>
                     `;
                     list.appendChild(li);
@@ -310,15 +337,12 @@
             }
         }
 
-        // Логика загрузки (Google Sheets или локальный JSON)
-        if (googleSheetCsvUrl.includes("ВСТАВЬТЕ_ССЫЛКУ")) {
-            // Фолбэк: если ссылка не вставлена, читаем старый добрый JSON
+        if (googleSheetCsvUrl.includes("https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pubhtml")) {
             fetch('./schedule.json')
                 .then(response => response.json())
                 .then(data => renderSchedule(data.services, data.month, data.phone))
                 .catch(error => document.getElementById('schedule-list').innerHTML = '<li>Расписание уточняйте по телефону.</li>');
         } else {
-            // Читаем из Google Таблиц
             Papa.parse(googleSheetCsvUrl, {
                 download: true,
                 header: true,
@@ -329,7 +353,7 @@
                     
                     data.forEach(row => {
                         if(!row['Дата'] || !row['Время']) return;
-                        if(row['Месяц']) currentMonth = row['Месяц']; // Берем месяц из колонки, если есть
+                        if(row['Месяц']) currentMonth = row['Месяц']; 
                         
                         const dateKey = row['Дата'];
                         if(!servicesMap.has(dateKey)) {
