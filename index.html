@@ -48,22 +48,22 @@
         .navbar a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         .navbar a:hover { color: var(--accent); }
 
-        /* Обложка (Обновленный дизайн) */
+        /* Обложка (Обновленный дизайн с названием внизу) */
         .hero {
             height: calc(100vh - 60px); min-height: 500px;
             background: url('church.jpg') no-repeat center center;
             background-size: cover; display: flex; flex-direction: column;
-            justify-content: flex-end; /* Опустили блок вниз */
+            justify-content: flex-end; /* Блок прижат книзу */
             align-items: center; text-align: center;
             padding: 20px;
             padding-bottom: 80px; /* Отступ от самого низа */
         }
         .hero-text-bg {
-            background: rgba(253, 251, 247, 0.95); /* Плотный фон для читаемости */
+            background: rgba(253, 251, 247, 0.95);
             padding: 30px 60px;
             border-radius: 6px;
-            border-bottom: 4px solid var(--accent); /* Элегантная линия */
-            box-shadow: 0 15px 35px rgba(0,0,0,0.15); /* Объемная тень */
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
             max-width: 90%;
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 5px; color: var(--text); }
@@ -99,7 +99,7 @@
 
         /* Галерея */
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
-        .gallery-img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; transition: transform 0.3s; }
+        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; transition: transform 0.3s; }
         .gallery-img:hover { transform: scale(1.02); }
 
         /* Кнопка на карте */
@@ -207,9 +207,9 @@
             <h3>Жизнь прихода</h3>
             <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Радость совместной молитвы и трудов</p>
             <div class="gallery-grid">
-                <img src="https://images.unsplash.com/photo-1601358055038-f5139049a463?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Фото прихода" class="gallery-img">
-                <img src="https://images.unsplash.com/photo-1548625361-ecce11b1bfbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Фото прихода" class="gallery-img">
-                <img src="https://images.unsplash.com/photo-1614713568395-5dd74b0ed6d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Фото прихода" class="gallery-img">
+                <img src="photo1.jpg" alt="Праздник на приходе" class="gallery-img">
+                <img src="photo2.jpg" alt="Прихожане в храме" class="gallery-img">
+                <img src="photo3.jpg" alt="Семья с настоятелем" class="gallery-img">
             </div>
         </div>
     </div>
@@ -238,8 +238,8 @@
     </a>
 
     <script>
-        // ВАЖНО: ВСТАВЬТЕ СЮДА ВАШУ ССЫЛКУ НА CSV ИЗ GOOGLE ТАБЛИЦ !!!
-        const googleSheetCsvUrl = "ВСТАВЬТЕ_ССЫЛКУ_НА_CSV_СЮДА"; 
+        // ИСПРАВЛЕННАЯ ССЫЛКА НА GOOGLE ТАБЛИЦУ (добавлен /pub?output=csv вместо /pubhtml)
+        const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pub?output=csv"; 
         
         function renderSchedule(services, monthName, phone) {
             document.getElementById('schedule-title').innerText = 'Расписание: ' + (monthName || 'На этот месяц');
@@ -247,24 +247,21 @@
             list.innerHTML = ''; 
 
             const now = new Date();
-            now.setHours(0, 0, 0, 0); // Сверяем начиная с сегодняшнего утра
+            now.setHours(0, 0, 0, 0); 
 
             const monthNamesGenitive = ["января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря"];
             const monthNamesMap = {'янв':0, 'фев':1, 'мар':2, 'апр':3, 'май':4, 'мая':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11};
             const shortDays = { "понедельник": "пн", "вторник": "вт", "среда": "ср", "четверг": "чт", "пятница": "пт", "суббота": "сб", "воскресенье": "вс", "пн": "пн", "вт": "вт", "ср": "ср", "чт": "чт", "пт": "пт", "сб": "сб", "вс": "вс" };
 
-            // Умный парсинг дат
             const parsedServices = services.map(service => {
                 let dateObj = null;
                 let displayDate = service.date;
                 let rawDate = service.date.trim();
                 let finalTitle = service.title || '';
 
-                // Ищем формат "03.01.2026 суббота."
                 const regexFull = /^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[\s,.]+([а-яА-Яa-zA-Z]+))?/;
                 const matchFull = rawDate.match(regexFull);
                 
-                // Ищем резервный формат "10 мая (Вс)"
                 const regexShort = /^(\d{1,2})\s+([а-яА-Я]+)(?:[\s,.]+\(?([а-яА-Я]+)\)?)?/;
                 const matchShort = rawDate.match(regexShort);
 
@@ -304,7 +301,6 @@
                 return { ...service, dateObj, displayDate, finalTitle };
             });
 
-            // Жесткий фильтр: удаляем все, где dateObj меньше сегодняшней даты
             const upcomingServices = parsedServices.filter(service => {
                 if (service.dateObj) {
                     return service.dateObj >= now;
@@ -320,7 +316,6 @@
                 servicesToShow.forEach(service => {
                     const li = document.createElement('li');
                     
-                    // Вот здесь мы используем аккуратный отступ margin-bottom: 8px вместо <br><br>
                     let eventsHTML = '';
                     if (service.events && service.events.length > 0) {
                         eventsHTML = service.events.map(ev => `<div style="margin-bottom: 8px;"><strong>${ev.time}</strong> — ${ev.name}</div>`).join('');
@@ -337,7 +332,8 @@
             }
         }
 
-        if (googleSheetCsvUrl.includes("https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pubhtml")) {
+        if (googleSheetCsvUrl.includes("/pubhtml")) {
+            // Запасной план на случай если ссылка снова сломается
             fetch('./schedule.json')
                 .then(response => response.json())
                 .then(data => renderSchedule(data.services, data.month, data.phone))
