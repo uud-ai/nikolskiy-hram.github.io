@@ -4,217 +4,235 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Никольский храм пгт. Усть-Карск</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* Базовые настройки шрифтов и отступов */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            background-color: #FDFDF9; /* Мягкий светлый фон под цвет стен храма */
+        :root {
+            --bg: #FDFBF7;
+            --text: #1A1A1A;
+            --accent: #C4A45A;
+            --white: #ffffff;
+            --shadow: rgba(0,0,0,0.05);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Manrope', sans-serif; 
             line-height: 1.6;
+            overflow-x: hidden;
         }
-        h1, h2, h3 {
-            font-weight: 500;
-            margin-bottom: 15px;
-        }
-        
-        /* Главный экран (Hero) */
-      .hero {
-            position: relative;
-            height: 80vh;
-            min-height: 500px;
-            /* Ссылка на фото храма */
-            background-image: url('https://static.tildacdn.com/tild6462-3461-4661-b236-633933626238/IMG_2451.jpg');
+
+        /* 1. Обложка (Hero) */
+        .hero {
+            height: 100vh;
+            /* ЗДЕСЬ УКАЗАНА ВАША НОВАЯ КАРТИНКА ХРАМА */
+            background: url('church.jpg') no-repeat center center;
             background-size: cover;
-            background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
+            color: var(--text); /* Сделали текст темным для светлого фона */
+            padding: 20px;
+        }
+
+        /* Добавляем светлую подложку под текст на главном экране для читаемости */
+        .hero-text-bg {
+            background: rgba(253, 251, 247, 0.85);
+            padding: 40px 60px;
+            border-radius: 4px;
+            border: 1px solid rgba(196, 164, 90, 0.3);
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 400;
+            margin-bottom: 10px;
+            color: var(--text);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 400;
+            color: var(--accent);
+        }
+
+        /* 2. Блок настоятеля */
+        .section {
+            max-width: 1000px;
+            margin: 100px auto;
             padding: 0 20px;
         }
-        /* Полупрозрачное зеленое затемнение для читаемости текста */
-      .hero::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(30, 60, 40, 0.7); 
-        }
-      .hero-content {
-            position: relative;
-            z-index: 1;
-            color: #fff;
-            max-width: 800px;
-        }
-      .hero h1 {
-            font-size: 3.5rem;
-            color: #E6C875; /* Золотой цвет куполов */
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
-        }
-      .hero p {
-            font-size: 1.4rem;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
-        }
-      .btn-primary {
-            display: inline-block;
-            padding: 15px 35px;
-            background-color: #9B1B30; /* Красный цвет престола */
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
+
+        .priest-card {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            background: var(--white);
+            padding: 40px;
+            box-shadow: 0 20px 40px var(--shadow);
             border-radius: 4px;
-            transition: background 0.3s;
-            font-weight: bold;
-        }
-      .btn-primary:hover {
-            background-color: #7A1526;
         }
 
-        /* Общие контейнеры */
-      .section {
-            padding: 80px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-      .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            color: #2A5A3B; /* Цвет зеленой крыши */
-            margin-bottom: 40px;
+        .priest-photo {
+            width: 300px;
+            height: 400px;
+            object-fit: cover;
+            border: 3px solid var(--accent);
+            padding: 10px;
+            flex-shrink: 0;
+            border-radius: 4px;
         }
 
-        /* Блок О храме */
-      .about-grid {
+        .priest-text h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 2.2rem;
+        }
+
+        .priest-text blockquote {
+            font-style: italic;
+            font-size: 1.1rem;
+            border-left: 3px solid var(--accent);
+            padding-left: 20px;
+        }
+
+        /* 3. Календарь и Расписание */
+        .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: center;
-        }
-      .about-img img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 60px;
         }
 
-        /* Таблица расписания */
-      .bg-gray {
-            background-color: #EFEFEF;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            background: #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        th, td {
-            padding: 20px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        th {
-            background-color: #2A5A3B; /* Зеленый */
-            color: #E6C875; /* Золотой */
-            font-size: 1.1rem;
-        }
-        
-        /* Блок для формы записок */
-      .widget-container {
-            margin-top: 40px;
-            background: #fff;
+        .card {
+            background: var(--white);
             padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            text-align: center;
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-radius: 4px;
         }
 
-        /* Подвал */
+        .card h3 {
+            font-family: 'Playfair Display', serif;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+
+        /* Стили для нового расписания */
+        .schedule-list {
+            list-style: none;
+        }
+        .schedule-list li {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 0.95rem;
+        }
+        .schedule-list li:last-child {
+            border-bottom: none;
+        }
+        .schedule-date {
+            color: var(--accent);
+            font-weight: 600;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+        .schedule-phone {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 2px dashed #eee;
+            text-align: center;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Футер */
         footer {
-            background-color: #1A1A1A;
-            color: #ddd;
-            padding: 50px 20px;
+            padding: 60px 20px;
             text-align: center;
-        }
-        footer h3 {
-            color: #E6C875;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            opacity: 0.8;
+            background-color: var(--white);
         }
 
-        /* Адаптация под телефоны */
-        @media (max-width: 768px) {
-          .about-grid { grid-template-columns: 1fr; }
-          .hero h1 { font-size: 2.2rem; }
-            th, td { padding: 12px; font-size: 0.95rem; }
+        /* Адаптивность */
+        @media (max-width: 900px) {
+            .priest-card { flex-direction: column; text-align: center; }
+            .grid { grid-template-columns: 1fr; }
+            .priest-photo { width: 100%; height: auto; max-width: 350px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="hero">
-        <div class="hero-content">
+    <section class="hero">
+        <div class="hero-text-bg">
             <h1>Никольский храм</h1>
-            <p>пгт. Усть-Карск<br>Открыты для вас, для совместной молитвы и утешения</p>
-            <a href="#schedule" class="btn-primary">Расписание богослужений</a>
-        </div>
-    </header>
-
-    <section class="section">
-        <div class="about-grid">
-            <div>
-                <h2 style="color: #2A5A3B; font-size: 2rem;">Добро пожаловать</h2>
-                <p>Рады приветствовать вас на сайте нашего прихода! Наш храм — это место, где каждый может найти духовную поддержку, ответы на важные вопросы и радость совместной молитвы.</p>
-                <p>Независимо от того, делаете ли вы первые шаги к Богу или уже давно в Церкви, двери Никольского храма всегда открыты для вас. Приходите разделить с нами радость Божественной Литургии.</p>
-            </div>
-            <div class="about-img">
-                <img src="https://via.placeholder.com/600x800/2A5A3B/E6C875?text=Фото+Батюшки" alt="Настоятель храма за богослужением">
-            </div>
+            <p>пгт. Усть-Карск</p>
         </div>
     </section>
 
-    <section id="schedule" class="bg-gray">
-        <div class="section">
-            <h2 class="section-title">Расписание богослужений</h2>
-            <p style="text-align: center; max-width: 600px; margin: 0 auto 30px;">Богослужения совершаются в выходные и праздничные дни. Исповедь проводится за полчаса до начала Литургии.</p>
-            <table>
-                <tr>
-                    <th>День недели</th>
-                    <th>Время</th>
-                    <th>Богослужение</th>
-                </tr>
-                <tr>
-                    <td>Суббота</td>
-                    <td>16:00</td>
-                    <td>Всенощное бдение, Исповедь</td>
-                </tr>
-                <tr>
-                    <td>Воскресенье</td>
-                    <td>09:00</td>
-                    <td>Божественная Литургия</td>
-                </tr>
-            </table>
+    <div class="section">
+        <div class="priest-card">
+            <img src="priest.jpg" alt="Настоятель" class="priest-photo">
+            <div class="priest-text">
+                <h2>Слово настоятеля</h2>
+                <blockquote>
+                    «Приветствую вас в нашей цифровой часовне. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине».
+                </blockquote>
+            </div>
         </div>
-    </section>
+    </div>
 
-    <section class="section">
-        <h2 class="section-title">Подать записку онлайн</h2>
-        <p style="text-align: center; max-width: 600px; margin: 0 auto;">Здесь вы можете подать имена о здравии и о упокоении. Ваше пожертвование пойдет на уставную деятельность и благоукрашение храма.</p>
-        
-        <div class="widget-container">
-            <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
-              Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
+    <div class="section" style="margin-top: 0;">
+        <div class="grid">
+            <div class="card">
+                <h3>Церковный календарь</h3>
+                <script src="https://www.pravmir.ru/pravoslavnyj-kalendar/widget-app"></script>
             </div>
-            <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
+            
+            <div class="card">
+                <h3>Расписание на Апрель 2026</h3>
+                <ul class="schedule-list">
+                    <li><span class="schedule-date">04 апреля (Сб)</span>11:00 — Лазарева суббота. Таинство Крещения.</li>
+                    <li><span class="schedule-date">05 апреля (Вс)</span>10:00 — Вербное воскресенье. Божественная литургия. Исповедь. Причастие. Освящение вербы.<br>11:00 — Беседа для готовящихся креститься.</li>
+                    <li><span class="schedule-date">07 апреля (Вт)</span>10:00 — Благовещение Пресвятой Богородицы. Божественная литургия.</li>
+                    <li><span class="schedule-date">11 апреля (Сб)</span>11:00 — Великая суббота. Таинство Крещения.<br><strong>23:30 — ПАСХА.</strong> Крестный ход. Божественная литургия. Освящение куличей.</li>
+                    <li><span class="schedule-date">18-19 апреля (Сб-Вс)</span>Сб 11:00 — Таинство Крещения.<br>Вс 10:00 — Неделя 2-я по Пасхе. Божественная литургия.<br>Вс 11:00 — Беседа.</li>
+                    <li><span class="schedule-date">21 апреля (Вт)</span>10:00 — РАДОНИЦА. Поминовение усопших. Заупокойное богослужение.</li>
+                    <li><span class="schedule-date">25-26 апреля (Сб-Вс)</span>Сб 11:00 — Таинство Крещения.<br>Вс 10:00 — Свв. Жен-мироносиц. Божественная литургия.<br>Вс 11:00 — Беседа.</li>
+                </ul>
+                <div class="schedule-phone">
+                    Дополнительная информация по телефону:<br>
+                    <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-size: 1.1rem;">+7 (924) 458-88-78</a> (отец Николай)
+                </div>
             </div>
-    </section>
+            
+            <div class="card" style="grid-column: 1 / -1; background-color: #F7F4F0;">
+                <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
+                <p style="text-align: center; margin-bottom: 30px;">Здесь вы можете подать записки о здравии и об упокоении.</p>
+                
+                <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
+                    Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
+                </div>
+                <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
+                </div>
+        </div>
+    </div>
 
     <footer>
-        <h3>Никольский храм пгт. Усть-Карск</h3>
-        <p><strong>Адрес:</strong> 673562, Забайкальский край, Сретенский район, пгт. Усть-Карск, ул. Партизанская, 1</p>
-        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">Будем рады видеть вас на совместной молитве!</p>
+        <p>673562, Забайкальский край, Сретенский район, пгт. Усть-Карск, ул. Партизанская, 1</p>
+        <p style="margin-top: 10px;">© 2026 Никольский храм. Все права защищены.</p>
     </footer>
 
 </body>
