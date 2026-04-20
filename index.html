@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Никольский храм пгт. Усть-Карск</title>
+    <style>
+        /* Базовые настройки шрифтов и отступов */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            background-color: #FDFDF9; /* Мягкий светлый фон под цвет стен храма */
+            line-height: 1.6;
+        }
+        h1, h2, h3 {
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+        
+        /* Главный экран (Hero) */
+       .hero {
+            position: relative;
+            height: 80vh;
+            min-height: 500px;
+            /* Ссылка на ваше фото храма уже интегрирована */
+            background-image: url('https://static.tildacdn.com/tild6462-3461-4661-b236-633933626238/IMG_2451.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+        }
+        /* Полупрозрачное зеленое затемнение для читаемости текста */
+       .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(30, 60, 40, 0.7); 
+        }
+       .hero-content {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            max-width: 800px;
+        }
+       .hero h1 {
+            font-size: 3.5rem;
+            color: #E6C875; /* Золотой цвет куполов */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+        }
+       .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+        }
+       .btn-primary {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: #9B1B30; /* Красный цвет престола */
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 4px;
+            transition: background 0.3s;
+            font-weight: bold;
+        }
+       .btn-primary:hover {
+            background-color: #7A1526;
+        }
+
+        /* Общие контейнеры */
+       .section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+       .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2A5A3B; /* Цвет зеленой крыши */
+            margin-bottom: 40px;
+        }
+
+        /* Блок О храме */
+       .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+       .about-img img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Таблица расписания */
+       .bg-gray {
+            background-color: #EFEFEF;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        th {
+            background-color: #2A5A3B; /* Зеленый */
+            color: #E6C875; /* Золотой */
+            font-size: 1.1rem;
+        }
+        
+        /* Блок для формы записок */
+       .widget-container {
+            margin-top: 40px;
+            background: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+
+        /* Подвал */
+        footer {
+            background-color: #1A1A1A;
+            color: #ddd;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        footer h3 {
+            color: #E6C875;
+        }
+
+        /* Адаптация под телефоны */
+        @media (max-width: 768px) {
+           .about-grid { grid-template-columns: 1fr; }
+           .hero h1 { font-size: 2.2rem; }
+            th, td { padding: 12px; font-size: 0.95rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Никольский храм</h1>
+            <p>пгт. Усть-Карск<br>Открыты для вас, для совместной молитвы и утешения</p>
+            <a href="#schedule" class="btn-primary">Расписание богослужений</a>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="about-grid">
+            <div>
+                <h2 style="color: #2A5A3B; font-size: 2rem;">Добро пожаловать</h2>
+                <p>Рады приветствовать вас на сайте нашего прихода! Наш храм — это место, где каждый может найти духовную поддержку, ответы на важные вопросы и радость совместной молитвы.</p>
+                <p>Независимо от того, делаете ли вы первые шаги к Богу или уже давно в Церкви, двери Никольского храма всегда открыты для вас. Приходите разделить с нами радость Божественной Литургии.</p>
+            </div>
+            <div class="about-img">
+                <img src="https://via.placeholder.com/600x800/2A5A3B/E6C875?text=Фото+Батюшки" alt="Настоятель храма за богослужением">
+            </div>
+        </div>
+    </section>
+
+    <section id="schedule" class="bg-gray">
+        <div class="section">
+            <h2 class="section-title">Расписание богослужений</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 30px;">Богослужения совершаются в выходные и праздничные дни. Исповедь проводится за полчаса до начала Литургии.</p>
+            <table>
+                <tr>
+                    <th>День недели</th>
+                    <th>Время</th>
+                    <th>Богослужение</th>
+                </tr>
+                <tr>
+                    <td>Суббота</td>
+                    <td>16:00</td>
+                    <td>Всенощное бдение, Исповедь</td>
+                </tr>
+                <tr>
+                    <td>Воскресенье</td>
+                    <td>09:00</td>
+                    <td>Божественная Литургия</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-title">Подать записку онлайн</h2>
+        <p style="text-align: center; max-width: 600px; margin: 0 auto;">Здесь вы можете подать имена о здравии и о упокоении. Ваше пожертвование пойдет на уставную деятельность и благоукрашение храма.</p>
+        
+        <div class="widget-container">
+            <p style="color: #888;"><em>Место для кода виджета записок</em></p>
+        </div>
+    </section>
+
+    <footer>
+        <h3>Никольский храм пгт. Усть-Карск</h3>
+        <p><strong>Адрес:</strong> 673562, Забайкальский край, Сретенский район, пгт. Усть-Карск, ул. Партизанская, 1</p>
+        <p style="margin-top: 20px; font-size: 0.9em; opacity: 0.7;">Будем рады видеть вас на совместной молитве!</p>
+    </footer>
+
+</body>
+</html>
