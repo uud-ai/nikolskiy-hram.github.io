@@ -24,7 +24,7 @@
             overflow-x: hidden;
         }
 
-        /* 1. Обложка (Hero) с исправлением для мобильных */
+        /* 1. Обложка (Hero) */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -147,6 +147,20 @@
             font-size: 0.9rem;
         }
 
+        /* Раскрывающиеся списки (Таинства) */
+        .faq-item { border-bottom: 1px solid #eee; padding: 12px 0; text-align: left; }
+        .faq-item details { cursor: pointer; }
+        .faq-item summary {
+            font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600;
+            color: var(--text); list-style: none; display: flex; justify-content: space-between;
+            align-items: center; outline: none;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+        .faq-item details[open] summary::after { content: '−'; }
+        .faq-content { padding-top: 15px; font-size: 0.95rem; color: #444; line-height: 1.6; }
+        .faq-content strong { color: var(--text); }
+
         footer {
             padding: 40px 20px;
             text-align: center;
@@ -158,7 +172,7 @@
         /* Адаптация для мобильных устройств */
         @media (max-width: 768px) {
             .hero {
-                height: 80vh; /* Уменьшаем высоту на мобильных, чтобы храм был виднее */
+                height: 80vh; 
                 min-height: 500px;
             }
             .hero-text-bg {
@@ -199,7 +213,7 @@
             <div class="priest-text">
                 <h2>Слово настоятеля</h2>
                 <blockquote id="priest-quote">
-                    «Приветствую вас на нашем приходском сайте. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
+                    «Приветствую вас в нашей цифровой часовне.»
                 </blockquote>
             </div>
         </div>
@@ -231,12 +245,56 @@
         </div>
     </div>
 
+    <div class="section" style="margin-top: 0;">
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h3>Таинства Церкви</h3>
+            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 20px; color: #555;">Нажмите на заголовок, чтобы узнать подробности</p>
+            
+            <div class="faq-item">
+                <details>
+                    <summary>Таинство Крещения</summary>
+                    <div class="faq-content">
+                        <p><strong>Что это:</strong> Духовное рождение человека, очищение от грехов и вступление в Церковь.</p><br>
+                        <p><strong>Подготовка:</strong> Крестным родителям и взрослым крещаемым необходимо пройти огласительную беседу со священником. Восприемники (крестные) должны быть православными христианами.</p><br>
+                        <p><strong>Что взять с собой:</strong> Нательный крестик на тесемочке (если куплен не в храме — предупредить для освящения), крестильную рубашку, чистое светлое полотенце, свидетельство о рождении.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary>Исповедь и Причастие</summary>
+                    <div class="faq-content">
+                        <p><strong>Что это:</strong> Исповедь — очищение души через покаяние. Причастие — соединение с Богом через принятие Святых Христовых Таин.</p><br>
+                        <p><strong>Подготовка:</strong> Говение (пост) от 1 до 3 дней, чтение покаянного канона и Правила ко Святому Причащению. Накануне необходимо быть на вечернем богослужении. С полуночи перед Причастием ничего не едят и не пьют.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="faq-item">
+                <details>
+                    <summary>Таинство Венчания</summary>
+                    <div class="faq-content">
+                        <p><strong>Что это:</strong> Благословение супружеского союза во образ союза Христа и Его Церкви.</p><br>
+                        <p><strong>Подготовка:</strong> Супругам желательно накануне исповедаться и причаститься. Брак должен быть официально зарегистрирован в ЗАГСе. Венчание не совершается во время постов и накануне постных дней.</p><br>
+                        <p><strong>Что взять с собой:</strong> Венчальные кольца, венчальные иконы (Спасителя и Богородицы), белое полотенце (рушник) под ноги, венчальные свечи.</p>
+                    </div>
+                </details>
+            </div>
+            
+            <div class="schedule-phone" style="border-top: none; padding-top: 20px;">
+                Для консультации и записи на Таинства звоните:<br>
+                <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; font-weight: bold;">+7 (924) 458-88-78</a> (отец Николай)
+            </div>
+        </div>
+    </div>
+
     <footer>
         <p>673562, Забайкальский край, Сретенский р-н, пгт. Усть-Карск, ул. Партизанская, 1</p>
-        <p style="margin-top: 10px;">© 2026 Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
+        <p style="margin-top: 10px;">© 2026 Никольский храм. Усть-Карск</p>
     </footer>
 
-<script>
+    <script>
         fetch('./schedule.json')
             .then(response => response.json())
             .then(data => {
@@ -245,13 +303,11 @@
                 const list = document.getElementById('schedule-list');
                 list.innerHTML = ''; 
                 
-                // --- УМНАЯ ФИЛЬТРАЦИЯ ДАТ ---
                 const now = new Date();
                 const currentDay = now.getDate();
                 const currentMonth = now.getMonth();
                 const currentYear = now.getFullYear();
                 
-                // Распознаем месяц из текста (например, "Апрель 2026")
                 const monthMap = {'янв':0, 'фев':1, 'мар':2, 'апр':3, 'май':4, 'мая':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11};
                 let schedMonth = currentMonth;
                 for (let key in monthMap) {
@@ -260,25 +316,19 @@
                 const yearMatch = data.month.match(/\d{4}/);
                 const schedYear = yearMatch ? parseInt(yearMatch[0]) : currentYear;
 
-                // 1. Оставляем только те службы, которые еще не прошли
                 const upcomingServices = data.services.filter(service => {
-                    // Ищем числа в дате (берем последнее число, чтобы многодневные праздники типа "11-12" не пропадали раньше времени)
                     const days = service.date.match(/\d+/g);
                     const eventDay = days ? parseInt(days[days.length - 1]) : 31; 
                     
                     if (schedYear < currentYear) return false;
                     if (schedYear === currentYear && schedMonth < currentMonth) return false;
-                    // Скрываем, если день уже прошел
                     if (schedYear === currentYear && schedMonth === currentMonth && eventDay < currentDay) return false;
                     
                     return true;
                 });
 
-                // 2. Берем только первые 4 из оставшихся будущих служб
                 const servicesToShow = upcomingServices.slice(0, 4);
-                // -----------------------------
 
-                // Отрисовка на сайте
                 if (servicesToShow.length === 0) {
                     list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
                 } else {
