@@ -3,31 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Никольский храм пгт. Усть-Карск</title>
-    
+    <title>РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє</title>
+    <meta name="description" content="РџСЂР°РІРѕСЃР»Р°РІРЅС‹Р№ РїСЂРёС…РѕРґ С…СЂР°РјР° СЃРІСЏС‚РёС‚РµР»СЏ РќРёРєРѕР»Р°СЏ Р§СѓРґРѕС‚РІРѕСЂС†Р° РІ РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє. Р Р°СЃРїРёСЃР°РЅРёРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёР№, РёРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚Р°РёРЅСЃС‚РІР°С…, РїРѕРґР°С‡Р° Р·Р°РїРёСЃРѕРє РѕРЅР»Р°Р№РЅ.">
+    <meta name="keywords" content="С…СЂР°Рј РЈСЃС‚СЊ-РљР°СЂСЃРє, С†РµСЂРєРѕРІСЊ РЈСЃС‚СЊ-РљР°СЂСЃРє, РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј, РїСЂР°РІРѕСЃР»Р°РІРЅС‹Р№ РїСЂРёС…РѕРґ, РЎСЂРµС‚РµРЅСЃРєРёР№ СЂР°Р№РѕРЅ, Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРёР№ РєСЂР°Р№">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph РґР»СЏ РєСЂР°СЃРёРІРѕРіРѕ РїСЂРµРІСЊСЋ РІ РјРµСЃСЃРµРЅРґР¶РµСЂР°С… -->
+    <meta property="og:title" content="РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє">
+    <meta property="og:description" content="РџСЂР°РІРѕСЃР»Р°РІРЅС‹Р№ РїСЂРёС…РѕРґ С…СЂР°РјР° СЃРІСЏС‚РёС‚РµР»СЏ РќРёРєРѕР»Р°СЏ Р§СѓРґРѕС‚РІРѕСЂС†Р°. Р Р°СЃРїРёСЃР°РЅРёРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёР№, С‚Р°РёРЅСЃС‚РІР°, Р·Р°РїРёСЃРєРё РѕРЅР»Р°Р№РЅ.">
+    <meta property="og:image" content="https://nikolskiyhram.site/church.jpg">
+    <meta property="og:url" content="https://nikolskiyhram.site/">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+
     <link rel="icon" href="favicon.png" type="image/png">
-    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --bg: #FDFBF7;
             --text: #1A1A1A;
             --accent: #C4A45A;
+            --accent-light: rgba(196,164,90,0.15);
             --white: #ffffff;
-            --shadow: rgba(0,0,0,0.05);
+            --shadow: rgba(0,0,0,0.06);
+            --muted: #666;
+            --nav-h: 64px;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { 
-            background-color: var(--bg); 
-            color: var(--text); 
-            font-family: 'Manrope', sans-serif; 
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* Обложка */
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РќРђР’РР“РђР¦РРЇ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            height: var(--nav-h);
+            background: rgba(253,251,247,0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(196,164,90,0.2);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            color: var(--text);
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--accent); }
+
+        .nav-call {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: white !important;
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem !important;
+            font-weight: 600 !important;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-call:hover { opacity: 0.88; transform: translateY(-1px); color: white !important; }
+
+        /* Р‘СѓСЂРіРµСЂ-РєРЅРѕРїРєР° РґР»СЏ РјРѕР±РёР»СЊРЅС‹С… */
+        .burger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 4px;
+            background: none;
+            border: none;
+        }
+        .burger span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: var(--nav-h);
+            left: 0; right: 0;
+            background: var(--bg);
+            border-bottom: 1px solid rgba(196,164,90,0.2);
+            padding: 20px 30px;
+            z-index: 99;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mobile-menu.open { display: flex; }
+
+        .mobile-menu a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1rem;
+            font-weight: 600;
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .mobile-call-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 14px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            margin-top: 8px;
+        }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ HERO в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -40,14 +173,30 @@
             text-align: center;
             color: var(--text);
             padding: 20px;
+            position: relative;
+        }
+
+        /* РўС‘РјРЅС‹Р№ РѕРІРµСЂР»РµР№ РїРѕРІРµСЂС… С„РѕС‚Рѕ РґР»СЏ С‡РёС‚Р°РµРјРѕСЃС‚Рё */
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.25);
         }
 
         .hero-text-bg {
-            background: rgba(253, 251, 247, 0.85);
+            position: relative;
+            background: rgba(253,251,247,0.88);
             padding: 40px 60px;
             border-radius: 4px;
-            border: 1px solid rgba(196, 164, 90, 0.3);
+            border: 1px solid rgba(196,164,90,0.35);
             max-width: 90%;
+            animation: fadeUp 0.9s ease both;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
         }
 
         .hero h1 {
@@ -65,37 +214,101 @@
             color: var(--accent);
         }
 
-        /* Блок настоятеля */
-        .section {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            color: white;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            animation: bounce 2s infinite;
+            cursor: pointer;
         }
 
+        .hero-scroll svg { opacity: 0.8; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50%       { transform: translateX(-50%) translateY(6px); }
+        }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РћР‘Р©РР• РЎР•РљР¦РР в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        .section {
+            max-width: 1000px;
+            margin: 70px auto;
+            padding: 0 20px;
+            scroll-margin-top: calc(var(--nav-h) + 10px);
+        }
+
+        .section-label {
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РљРђР РўРћР§РљРђ РќРђРЎРўРћРЇРўР•Р›РЇ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
         .priest-card {
             display: flex;
             align-items: center;
             gap: 40px;
             background: var(--white);
             padding: 40px;
-            box-shadow: 0 20px 40px var(--shadow);
-            border-radius: 4px;
+            box-shadow: 0 20px 50px var(--shadow);
+            border-radius: 8px;
+        }
+
+        .priest-photo-wrap {
+            flex-shrink: 0;
+            position: relative;
         }
 
         .priest-photo {
-            width: 250px;
-            height: auto;
+            width: 220px;
+            height: 280px;
             object-fit: cover;
             border: 3px solid var(--accent);
-            padding: 8px;
-            flex-shrink: 0;
+            padding: 6px;
             border-radius: 4px;
+            display: block;
+        }
+
+        .priest-name-badge {
+            position: absolute;
+            bottom: -1px;
+            left: 6px; right: 6px;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            padding: 8px 6px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            border-radius: 0 0 2px 2px;
         }
 
         .priest-text h2 {
             font-family: 'Playfair Display', serif;
             color: var(--accent);
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             font-size: 1.8rem;
         }
 
@@ -104,19 +317,21 @@
             font-size: 1.1rem;
             border-left: 3px solid var(--accent);
             padding-left: 20px;
+            line-height: 1.7;
+            color: #333;
         }
 
-        /* Сетка контента */
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РЎР•РўРљРђ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .card {
             background: var(--white);
-            padding: 30px;
+            padding: 32px;
             border-top: 4px solid var(--accent);
             box-shadow: 0 10px 30px var(--shadow);
             border-radius: 4px;
@@ -129,12 +344,9 @@
             font-size: 1.6rem;
         }
 
-        /* Расписание */
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ Р РђРЎРџРРЎРђРќРР• в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
         .schedule-list { list-style: none; }
-        .schedule-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
+        .schedule-list li { padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
         .schedule-header {
             color: var(--accent);
             font-weight: 600;
@@ -156,207 +368,560 @@
             font-size: 0.9rem;
         }
 
-        /* Раскрывающиеся списки (Таинства) */
-        .faq-item { border-bottom: 1px solid #eee; padding: 12px 0; text-align: left; }
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РўРђРРќРЎРўР’Рђ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        .faq-item { border-bottom: 1px solid #eee; padding: 12px 0; }
         .faq-item details { cursor: pointer; }
         .faq-item summary {
-            font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600;
-            color: var(--text); list-style: none; display: flex; justify-content: space-between;
-            align-items: center; outline: none;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text);
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+            transition: color 0.2s;
         }
+        .faq-item summary:hover { color: var(--accent); }
         .faq-item summary::-webkit-details-marker { display: none; }
         .faq-item summary::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
-        .faq-item details[open] summary::after { content: '−'; }
-        .faq-content { padding-top: 15px; font-size: 0.95rem; color: #444; line-height: 1.6; }
+        .faq-item details[open] summary::after { content: 'в€’'; }
+        .faq-content { padding-top: 15px; font-size: 0.95rem; color: #444; line-height: 1.7; }
         .faq-content strong { color: var(--text); }
 
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РџР›РђР’РђР®Р©РђРЇ РљРќРћРџРљРђ Р—Р’РћРќРљРђ (РјРѕР±РёР»СЊ) в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        .float-call {
+            display: none;
+            position: fixed;
+            bottom: 24px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 6px 24px rgba(196,164,90,0.5);
+            z-index: 200;
+            text-decoration: none;
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 6px 24px rgba(196,164,90,0.5); }
+            50%       { box-shadow: 0 6px 32px rgba(196,164,90,0.8); }
+        }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РљРђР РўРђ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        .map-section {
+            max-width: 1000px;
+            margin: 70px auto;
+            padding: 0 20px;
+            scroll-margin-top: calc(var(--nav-h) + 10px);
+        }
+
+        .map-wrap {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px var(--shadow);
+            border: 1px solid rgba(196,164,90,0.2);
+        }
+
+        .map-wrap iframe {
+            display: block;
+            width: 100%;
+            height: 380px;
+            border: 0;
+        }
+
+        .map-info {
+            background: var(--white);
+            padding: 24px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .map-address {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .map-address svg { flex-shrink: 0; margin-top: 3px; }
+
+        .map-address-text strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .map-address-text span { font-size: 0.9rem; color: var(--muted); }
+
+        .map-route-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: opacity 0.2s, transform 0.15s;
+            white-space: nowrap;
+        }
+
+        .map-route-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ Р“РђР›Р•Р Р•РЇ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .gallery-item {
+            aspect-ratio: 4/3;
+            background: #e8e4dc;
+            border-radius: 4px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-item:hover img { transform: scale(1.05); }
+
+        /* РџР»РµР№СЃС…РѕР»РґРµСЂ РіР°Р»РµСЂРµРё (РїРѕРєР° РЅРµС‚ С„РѕС‚Рѕ) */
+        .gallery-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #aaa;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .gallery-note {
+            text-align: center;
+            margin-top: 16px;
+            font-size: 0.85rem;
+            color: var(--muted);
+        }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РљРћРќРўРђРљРўР« в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
+        .contacts-card {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 20px 50px var(--shadow);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 16px;
+            font-weight: 400;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        .contact-item a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .call-big {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--accent);
+            color: white;
+            padding: 18px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 1.25rem;
+            font-weight: 700;
+            transition: opacity 0.2s, transform 0.15s;
+            white-space: nowrap;
+        }
+
+        .call-big:hover { opacity: 0.88; transform: translateY(-2px); }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ FOOTER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
         footer {
             padding: 40px 20px;
             text-align: center;
             font-size: 0.8rem;
             border-top: 1px solid #eee;
             background-color: var(--white);
+            color: var(--muted);
+            line-height: 1.7;
         }
 
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РђР”РђРџРўРР’РќРћРЎРўР¬ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ */
         @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-call  { display: none; }
+            .burger    { display: flex; }
+            .float-call { display: flex; }
+
             .hero { height: 80vh; min-height: 500px; }
             .hero-text-bg { padding: 25px 20px; }
-            .priest-card { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .priest-photo { width: 200px; }
-            .priest-text blockquote { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 15px; }
+
+            .priest-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+
+            .priest-photo { width: 100%; height: 260px; }
+            .priest-photo-wrap { width: 100%; }
+            .priest-name-badge { position: static; border-radius: 0 0 4px 4px; }
+
+            .priest-text blockquote {
+                border-left: none;
+                border-top: 2px solid var(--accent);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+
             .grid { grid-template-columns: 1fr; }
+
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+
+            .map-info { flex-direction: column; align-items: flex-start; }
+
+            .contacts-card { flex-direction: column; align-items: flex-start; }
+            .call-big { width: 100%; justify-content: center; }
+
+            nav { padding: 0 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РќРђР’РР“РђР¦РРЇ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <nav>
+        <a href="#top" class="nav-logo">РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј</a>
+
+        <ul class="nav-links">
+            <li><a href="#schedule">Р Р°СЃРїРёСЃР°РЅРёРµ</a></li>
+            <li><a href="#sacraments">РўР°РёРЅСЃС‚РІР°</a></li>
+            <li><a href="#notes">Р—Р°РїРёСЃРєРё</a></li>
+            <li><a href="#gallery">Р“Р°Р»РµСЂРµСЏ</a></li>
+            <li><a href="#contacts">РљРѕРЅС‚Р°РєС‚С‹</a></li>
+        </ul>
+
+        <a href="tel:+79244588878" class="nav-call">
+            <svg width="14" height="14" fill="white" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            РџРѕР·РІРѕРЅРёС‚СЊ
+        </a>
+
+        <button class="burger" onclick="toggleMenu()" aria-label="РњРµРЅСЋ">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- РњРѕР±РёР»СЊРЅРѕРµ РјРµРЅСЋ -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#schedule" onclick="closeMenu()">Р Р°СЃРїРёСЃР°РЅРёРµ</a>
+        <a href="#sacraments" onclick="closeMenu()">РўР°РёРЅСЃС‚РІР°</a>
+        <a href="#notes" onclick="closeMenu()">Р—Р°РїРёСЃРєРё</a>
+        <a href="#gallery" onclick="closeMenu()">Р“Р°Р»РµСЂРµСЏ</a>
+        <a href="#contacts" onclick="closeMenu()">РљРѕРЅС‚Р°РєС‚С‹</a>
+        <a href="tel:+79244588878" class="mobile-call-btn">
+            <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+            +7 (924) 458-88-78
+        </a>
+    </div>
+
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ HERO в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <section class="hero" id="top">
         <div class="hero-text-bg">
-            <h1>Никольский храм</h1>
-            <p>пгт. Усть-Карск</p>
+            <h1>РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј</h1>
+            <p>РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє</p>
+        </div>
+        <div class="hero-scroll" onclick="document.getElementById('priest').scrollIntoView({behavior:'smooth'})">
+            <svg width="20" height="20" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
         </div>
     </section>
 
-    <div class="section">
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РќРђРЎРўРћРЇРўР•Р›Р¬ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="section" id="priest">
         <div class="priest-card">
-            <img src="priest.jpg" alt="Настоятель" class="priest-photo">
+            <div class="priest-photo-wrap">
+                <img src="priest.jpg" alt="РќР°СЃС‚РѕСЏС‚РµР»СЊ вЂ” РёРµСЂРµР№ РќРёРєРѕР»Р°Р№" class="priest-photo">
+                <div class="priest-name-badge">РРµСЂРµР№ РќРёРєРѕР»Р°Р№ вЂ” РЅР°СЃС‚РѕСЏС‚РµР»СЊ</div>
+            </div>
             <div class="priest-text">
-                <h2>Слово настоятеля</h2>
+                <h2>РЎР»РѕРІРѕ РЅР°СЃС‚РѕСЏС‚РµР»СЏ</h2>
                 <blockquote id="priest-quote">
-                    «Приветствую вас на нашем приходском сайте. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
+                    В«РџСЂРёРІРµС‚СЃС‚РІСѓСЋ РІР°СЃ РЅР° РЅР°С€РµРј РїСЂРёС…РѕРґСЃРєРѕРј СЃР°Р№С‚Рµ. РџСѓСЃС‚СЊ СЌС‚РѕС‚ РјР°Р»С‹Р№ РѕСЃС‚СЂРѕРІРѕРє РІРµСЂС‹ РІ СЃРµС‚Рё РёРЅС‚РµСЂРЅРµС‚ РїРѕРјРѕР¶РµС‚ РІР°Рј РЅР°Р№С‚Рё РїСѓС‚СЊ Рє РјРѕР»РёС‚РІРµ Рё С‚РёС€РёРЅРµВ»
                 </blockquote>
             </div>
         </div>
     </div>
 
-    <div class="section">
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ Р РђРЎРџРРЎРђРќРР• + РљРђР›Р•РќР”РђР Р¬ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="section" id="schedule">
+        <p class="section-label">Р‘РѕРіРѕСЃР»СѓР¶РµРЅРёСЏ</p>
+        <h2 class="section-title">Р¦РµСЂРєРѕРІРЅС‹Р№ РєР°Р»РµРЅРґР°СЂСЊ Рё СЂР°СЃРїРёСЃР°РЅРёРµ</h2>
         <div class="grid">
             <div class="card">
-                <h3>Церковный календарь</h3>
+                <h3>Р¦РµСЂРєРѕРІРЅС‹Р№ РєР°Р»РµРЅРґР°СЂСЊ</h3>
                 <script src="https://www.pravmir.ru/pravoslavnyj-kalendar/widget-app"></script>
             </div>
-            
+
             <div class="card">
-                <h3 id="schedule-title">Расписание</h3>
+                <h3 id="schedule-title">Р Р°СЃРїРёСЃР°РЅРёРµ</h3>
                 <ul id="schedule-list" class="schedule-list">
-                    <li>Загрузка расписания...</li>
+                    <li>Р—Р°РіСЂСѓР·РєР° СЂР°СЃРїРёСЃР°РЅРёСЏвЂ¦</li>
                 </ul>
-                <div id="schedule-footer" class="schedule-phone">
-                </div>
+                <div id="schedule-footer" class="schedule-phone"></div>
             </div>
         </div>
     </div>
 
-    <div class="section" style="margin-top: 0;">
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РўРђРРќРЎРўР’Рђ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="section" id="sacraments" style="margin-top: 0;">
+        <p class="section-label">Р¦РµСЂРєРѕРІРЅС‹Рµ С‚Р°РёРЅСЃС‚РІР°</p>
+        <h2 class="section-title">РўР°РёРЅСЃС‚РІР° Р¦РµСЂРєРІРё</h2>
         <div class="card" style="max-width: 800px; margin: 0 auto;">
-            <h3>Таинства Церкви</h3>
-            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 20px; color: #555;">Нажмите на заголовок, чтобы узнать подробности</p>
-            
+            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 20px; color: #555;">РќР°Р¶РјРёС‚Рµ РЅР° Р·Р°РіРѕР»РѕРІРѕРє, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё</p>
+
             <div class="faq-item">
                 <details>
-                    <summary>Таинство Крещения</summary>
+                    <summary>РўР°РёРЅСЃС‚РІРѕ РљСЂРµС‰РµРЅРёСЏ</summary>
                     <div class="faq-content">
-                        <p><strong>Что это:</strong> Духовное рождение человека, очищение от грехов и вступление в Церковь.</p><br>
-                        <p><strong>Подготовка:</strong> Крестным родителям и взрослым крещаемым необходимо пройти огласительную беседу со священником. Восприемники (крестные) должны быть православными христианами.</p><br>
-                        <p><strong>Что взять с собой:</strong> Нательный крестик на тесемочке, крестильную рубашку, чистое светлое полотенце, свидетельство о рождении.</p>
+                        <p><strong>Р§С‚Рѕ СЌС‚Рѕ:</strong> Р”СѓС…РѕРІРЅРѕРµ СЂРѕР¶РґРµРЅРёРµ С‡РµР»РѕРІРµРєР°, РѕС‡РёС‰РµРЅРёРµ РѕС‚ РіСЂРµС…РѕРІ Рё РІСЃС‚СѓРїР»РµРЅРёРµ РІ Р¦РµСЂРєРѕРІСЊ.</p><br>
+                        <p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> РљСЂРµСЃС‚РЅС‹Рј СЂРѕРґРёС‚РµР»СЏРј Рё РІР·СЂРѕСЃР»С‹Рј РєСЂРµС‰Р°РµРјС‹Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРѕР№С‚Рё РѕРіР»Р°СЃРёС‚РµР»СЊРЅСѓСЋ Р±РµСЃРµРґСѓ СЃРѕ СЃРІСЏС‰РµРЅРЅРёРєРѕРј. Р’РѕСЃРїСЂРёРµРјРЅРёРєРё (РєСЂРµСЃС‚РЅС‹Рµ) РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РїСЂР°РІРѕСЃР»Р°РІРЅС‹РјРё С…СЂРёСЃС‚РёР°РЅР°РјРё.</p><br>
+                        <p><strong>Р§С‚Рѕ РІР·СЏС‚СЊ СЃ СЃРѕР±РѕР№:</strong> РќР°С‚РµР»СЊРЅС‹Р№ РєСЂРµСЃС‚РёРє РЅР° С‚РµСЃРµРјРѕС‡РєРµ (РµСЃР»Рё РєСѓРїР»РµРЅ РЅРµ РІ С…СЂР°РјРµ вЂ” РїСЂРµРґСѓРїСЂРµРґРёС‚СЊ РґР»СЏ РѕСЃРІСЏС‰РµРЅРёСЏ), РєСЂРµСЃС‚РёР»СЊРЅСѓСЋ СЂСѓР±Р°С€РєСѓ, С‡РёСЃС‚РѕРµ СЃРІРµС‚Р»РѕРµ РїРѕР»РѕС‚РµРЅС†Рµ, СЃРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ Рѕ СЂРѕР¶РґРµРЅРёРё.</p>
                     </div>
                 </details>
             </div>
 
             <div class="faq-item">
                 <details>
-                    <summary>Исповедь и Причастие</summary>
+                    <summary>РСЃРїРѕРІРµРґСЊ Рё РџСЂРёС‡Р°СЃС‚РёРµ</summary>
                     <div class="faq-content">
-                        <p><strong>Что это:</strong> Исповедь — очищение души через покаяние. Причастие — соединение с Богом через принятие Святых Христовых Таин.</p><br>
-                        <p><strong>Подготовка:</strong> Говение (пост) от 1 до 3 дней, чтение покаянного канона и Правила ко Святому Причащению. Накануне необходимо быть на вечернем богослужении. С полуночи перед Причастием ничего не едят и не пьют.</p>
+                        <p><strong>Р§С‚Рѕ СЌС‚Рѕ:</strong> РСЃРїРѕРІРµРґСЊ вЂ” РѕС‡РёС‰РµРЅРёРµ РґСѓС€Рё С‡РµСЂРµР· РїРѕРєР°СЏРЅРёРµ. РџСЂРёС‡Р°СЃС‚РёРµ вЂ” СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘РѕРіРѕРј С‡РµСЂРµР· РїСЂРёРЅСЏС‚РёРµ РЎРІСЏС‚С‹С… РҐСЂРёСЃС‚РѕРІС‹С… РўР°РёРЅ.</p><br>
+                        <p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> Р“РѕРІРµРЅРёРµ (РїРѕСЃС‚) РѕС‚ 1 РґРѕ 3 РґРЅРµР№, С‡С‚РµРЅРёРµ РїРѕРєР°СЏРЅРЅРѕРіРѕ РєР°РЅРѕРЅР° Рё РџСЂР°РІРёР»Р° РєРѕ РЎРІСЏС‚РѕРјСѓ РџСЂРёС‡Р°С‰РµРЅРёСЋ. РќР°РєР°РЅСѓРЅРµ РЅРµРѕР±С…РѕРґРёРјРѕ Р±С‹С‚СЊ РЅР° РІРµС‡РµСЂРЅРµРј Р±РѕРіРѕСЃР»СѓР¶РµРЅРёРё. РЎ РїРѕР»СѓРЅРѕС‡Рё РїРµСЂРµРґ РџСЂРёС‡Р°СЃС‚РёРµРј РЅРёС‡РµРіРѕ РЅРµ РµРґСЏС‚ Рё РЅРµ РїСЊСЋС‚.</p>
                     </div>
                 </details>
             </div>
 
             <div class="faq-item">
                 <details>
-                    <summary>Таинство Венчания</summary>
+                    <summary>РўР°РёРЅСЃС‚РІРѕ Р’РµРЅС‡Р°РЅРёСЏ</summary>
                     <div class="faq-content">
-                        <p><strong>Что это:</strong> Благословение супружеского союза во образ союза Христа и Его Церкви.</p><br>
-                        <p><strong>Подготовка:</strong> Супругам желательно накануне исповедаться и причаститься. Брак должен быть официально зарегистрирован в ЗАГСе. Венчание не совершается во время постов и накануне постных дней.</p><br>
-                        <p><strong>Что взять с собой:</strong> Венчальные кольца, венчальные иконы (Спасителя и Богородицы), белое полотенце (рушник) под ноги, венчальные свечи.</p>
+                        <p><strong>Р§С‚Рѕ СЌС‚Рѕ:</strong> Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ СЃСѓРїСЂСѓР¶РµСЃРєРѕРіРѕ СЃРѕСЋР·Р° РІРѕ РѕР±СЂР°Р· СЃРѕСЋР·Р° РҐСЂРёСЃС‚Р° Рё Р•РіРѕ Р¦РµСЂРєРІРё.</p><br>
+                        <p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> РЎСѓРїСЂСѓРіР°Рј Р¶РµР»Р°С‚РµР»СЊРЅРѕ РЅР°РєР°РЅСѓРЅРµ РёСЃРїРѕРІРµРґР°С‚СЊСЃСЏ Рё РїСЂРёС‡Р°СЃС‚РёС‚СЊСЃСЏ. Р‘СЂР°Рє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС„РёС†РёР°Р»СЊРЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ Р—РђР“РЎРµ. Р’РµРЅС‡Р°РЅРёРµ РЅРµ СЃРѕРІРµСЂС€Р°РµС‚СЃСЏ РІРѕ РІСЂРµРјСЏ РїРѕСЃС‚РѕРІ Рё РЅР°РєР°РЅСѓРЅРµ РїРѕСЃС‚РЅС‹С… РґРЅРµР№.</p><br>
+                        <p><strong>Р§С‚Рѕ РІР·СЏС‚СЊ СЃ СЃРѕР±РѕР№:</strong> Р’РµРЅС‡Р°Р»СЊРЅС‹Рµ РєРѕР»СЊС†Р°, РІРµРЅС‡Р°Р»СЊРЅС‹Рµ РёРєРѕРЅС‹ (РЎРїР°СЃРёС‚РµР»СЏ Рё Р‘РѕРіРѕСЂРѕРґРёС†С‹), Р±РµР»РѕРµ РїРѕР»РѕС‚РµРЅС†Рµ (СЂСѓС€РЅРёРє) РїРѕРґ РЅРѕРіРё, РІРµРЅС‡Р°Р»СЊРЅС‹Рµ СЃРІРµС‡Рё.</p>
                     </div>
                 </details>
             </div>
-            
-            <div class="schedule-phone" style="border-top: none; padding-top: 20px;">
-                Для консультации и записи на Таинства звоните:<br>
-                <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-size: 1.1rem; font-weight: bold;">+7 (924) 458-88-78</a> (отец Николай)
+
+            <div class="schedule-phone" style="border-top: 1px solid #eee; padding-top: 20px; margin-top: 10px;">
+                Р”Р»СЏ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёРё Рё Р·Р°РїРёСЃРё РЅР° РўР°РёРЅСЃС‚РІР° Р·РІРѕРЅРёС‚Рµ:<br>
+                <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-size: 1.15rem; font-weight: bold; display:inline-block; margin-top:6px;">+7 (924) 458-88-78</a>
+                <span style="color: var(--muted); font-size:0.9rem;"> (РѕС‚РµС† РќРёРєРѕР»Р°Р№)</span>
             </div>
         </div>
     </div>
 
-    <div class="section" style="margin-bottom: 60px;">
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ Р—РђРџРРЎРљР в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="section" id="notes" style="margin-bottom: 0;">
+        <p class="section-label">РњРѕР»РёС‚РІРµРЅРЅР°СЏ РїРѕРјРѕС‰СЊ</p>
+        <h2 class="section-title">РџРѕРґР°С‡Р° Р·Р°РїРёСЃРѕРє</h2>
         <div class="card" style="max-width: 800px; margin: 0 auto; background-color: #F7F4F0;">
-            <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
-            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Здесь вы можете подать записки о здравии и об упокоении.</p>
+            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ РїРѕРґР°С‚СЊ Р·Р°РїРёСЃРєРё Рѕ Р·РґСЂР°РІРёРё Рё РѕР± СѓРїРѕРєРѕРµРЅРёРё.</p>
             <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
-                Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
+                Р’РёРґР¶РµС‚ РїРѕРґР°С‡Рё Р·Р°РїРёСЃРѕРє РІ С…СЂР°Рј <a href="https://vonmi.org/">Vonmi.org</a>
             </div>
             <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
         </div>
     </div>
 
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ Р“РђР›Р•Р Р•РЇ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="section" id="gallery">
+        <p class="section-label">Р–РёР·РЅСЊ РїСЂРёС…РѕРґР°</p>
+        <h2 class="section-title">Р“Р°Р»РµСЂРµСЏ</h2>
+
+        <div class="gallery-grid">
+            <!-- Р—Р°РјРµРЅРёС‚Рµ src РЅР° СЂРµР°Р»СЊРЅС‹Рµ С„РѕС‚РѕРіСЂР°С„РёРё -->
+            <div class="gallery-item">
+                <img src="photo1.jpg" alt="Р‘РѕРіРѕСЃР»СѓР¶РµРЅРёРµ" onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>Р”РѕР±Р°РІСЊС‚Рµ С„РѕС‚Рѕ</span></div>'">
+            </div>
+            <div class="gallery-item">
+                <img src="photo2.jpg" alt="РҐСЂР°Рј" onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>Р”РѕР±Р°РІСЊС‚Рµ С„РѕС‚Рѕ</span></div>'">
+            </div>
+            <div class="gallery-item">
+                <img src="photo3.jpg" alt="РџСЂР°Р·РґРЅРёРє" onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>Р”РѕР±Р°РІСЊС‚Рµ С„РѕС‚Рѕ</span></div>'">
+            </div>
+            <div class="gallery-item">
+                <img src="photo4.jpg" alt="РРєРѕРЅРѕСЃС‚Р°СЃ" onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>Р”РѕР±Р°РІСЊС‚Рµ С„РѕС‚Рѕ</span></div>'">
+            </div>
+            <div class="gallery-item">
+                <img src="photo5.jpg" alt="РљСЂРµСЃС‚РЅС‹Р№ С…РѕРґ" onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>Р”РѕР±Р°РІСЊС‚Рµ С„РѕС‚Рѕ</span></div>'">
+            </div>
+            <div class="gallery-item">
+                <img src="photo6.jpg" alt="РџСЂРёС…РѕРґ" onerror="this.parentNode.innerHTML='<div class=\'gallery-placeholder\'><svg width=\'32\' height=\'32\' fill=\'none\' stroke=\'#ccc\' stroke-width=\'1.5\' viewBox=\'0 0 24 24\'><rect x=\'3\' y=\'3\' width=\'18\' height=\'18\' rx=\'2\'/><circle cx=\'8.5\' cy=\'8.5\' r=\'1.5\'/><path d=\'M21 15l-5-5L5 21\'/></svg><span>Р”РѕР±Р°РІСЊС‚Рµ С„РѕС‚Рѕ</span></div>'">
+            </div>
+        </div>
+        <p class="gallery-note">Р§С‚РѕР±С‹ РґРѕР±Р°РІРёС‚СЊ С„РѕС‚РѕРіСЂР°С„РёРё вЂ” Р·Р°РіСЂСѓР·РёС‚Рµ С„Р°Р№Р»С‹ <code>photo1.jpg</code> вЂ¦ <code>photo6.jpg</code> РІ СЂРµРїРѕР·РёС‚РѕСЂРёР№ GitHub</p>
+    </div>
+
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РљРђР РўРђ в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="map-section" id="map">
+        <p class="section-label">РљР°Рє РЅР°СЃ РЅР°Р№С‚Рё</p>
+        <h2 class="section-title" style="font-family:'Playfair Display',serif; font-size:clamp(1.6rem,4vw,2.4rem); text-align:center; margin-bottom:24px; font-weight:400;">РђРґСЂРµСЃ Рё РјР°СЂС€СЂСѓС‚</h2>
+        <div class="map-wrap">
+            <!-- РЇРЅРґРµРєСЃ.РљР°СЂС‚Р° СЃ РѕС‚РјРµС‚РєРѕР№ С…СЂР°РјР° -->
+            <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=119.061700%2C52.987800&z=15&pt=119.061700,52.987800,pm2rdm~119.061700,52.987800&text=%D0%BF%D0%B3%D1%82.%20%D0%A3%D1%81%D1%82%D1%8C-%D0%9A%D0%B0%D1%80%D1%81%D0%BA%2C%20%D1%83%D0%BB.%20%D0%9F%D0%B0%D1%80%D1%82%D0%B8%D0%B7%D0%B0%D0%BD%D1%81%D0%BA%D0%B0%D1%8F%2C%201"
+                allowfullscreen
+                loading="lazy"
+                title="РљР°СЂС‚Р° вЂ” РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј">
+            </iframe>
+            <div class="map-info">
+                <div class="map-address">
+                    <svg width="22" height="22" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24">
+                        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                        <circle cx="12" cy="9" r="2.5"/>
+                    </svg>
+                    <div class="map-address-text">
+                        <strong>РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј</strong>
+                        <span>673562, Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРёР№ РєСЂР°Р№, РЎСЂРµС‚РµРЅСЃРєРёР№ СЂ-РЅ,<br>РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє, СѓР». РџР°СЂС‚РёР·Р°РЅСЃРєР°СЏ, 1</span>
+                    </div>
+                </div>
+                <a href="https://yandex.ru/maps/?rtext=~52.9878,119.0617&rtt=auto" target="_blank" rel="noopener" class="map-route-btn">
+                    <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                    РџРѕСЃС‚СЂРѕРёС‚СЊ РјР°СЂС€СЂСѓС‚
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РљРћРќРўРђРљРўР« в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
+    <div class="section" id="contacts">
+        <p class="section-label">РЎРІСЏР·СЊ СЃ РїСЂРёС…РѕРґРѕРј</p>
+        <h2 class="section-title">РљРѕРЅС‚Р°РєС‚С‹</h2>
+        <div class="contacts-card">
+            <div class="contact-info">
+                <h3>Р—РІРѕРЅРёС‚Рµ РЅР°Рј</h3>
+                <div class="contact-item">
+                    <svg width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                    <span>РќР°СЃС‚РѕСЏС‚РµР»СЊ: <a href="tel:+79244588878">+7 (924) 458-88-78</a> (РѕС‚РµС† РќРёРєРѕР»Р°Р№)</span>
+                </div>
+                <div class="contact-item">
+                    <svg width="18" height="18" fill="none" stroke="var(--accent)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+                    <span>РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє, СѓР». РџР°СЂС‚РёР·Р°РЅСЃРєР°СЏ, 1</span>
+                </div>
+            </div>
+            <a href="tel:+79244588878" class="call-big">
+                <svg width="22" height="22" fill="white" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                +7 (924) 458-88-78
+            </a>
+        </div>
+    </div>
+
+    <!-- РџР»Р°РІР°СЋС‰Р°СЏ РєРЅРѕРїРєР° Р·РІРѕРЅРєР° РЅР° РјРѕР±РёР»СЊРЅС‹С… -->
+    <a href="tel:+79244588878" class="float-call" aria-label="РџРѕР·РІРѕРЅРёС‚СЊ">
+        <svg width="26" height="26" fill="white" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+    </a>
+
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ FOOTER в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
     <footer>
-        <p>673562, Забайкальский край, Сретенский р-н, пгт. Усть-Карск, ул. Партизанская, 1</p>
-        <p style="margin-top: 10px;">© 2026 Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
+        <p>673562, Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРёР№ РєСЂР°Р№, РЎСЂРµС‚РµРЅСЃРєРёР№ СЂ-РЅ, РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє, СѓР». РџР°СЂС‚РёР·Р°РЅСЃРєР°СЏ, 1</p>
+        <p style="margin-top: 8px;">В© 2026 РњРµСЃС‚РЅР°СЏ СЂРµР»РёРіРёРѕР·РЅР°СЏ РѕСЂРіР°РЅРёР·Р°С†РёСЏ РїСЂР°РІРѕСЃР»Р°РІРЅС‹Р№ РїСЂРёС…РѕРґ С…СЂР°РјР° СЃРІСЏС‚РёС‚РµР»СЏ РќРёРєРѕР»Р°СЏ Р§СѓРґРѕС‚РІРѕСЂС†Р° РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє<br>
+        РЎСЂРµС‚РµРЅСЃРєРѕРіРѕ СЂР°Р№РѕРЅР° Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРѕРіРѕ РєСЂР°СЏ РќРµСЂС‡РёРЅСЃРєРѕР№ РµРїР°СЂС…РёРё Р СѓСЃСЃРєРѕР№ РџСЂР°РІРѕСЃР»Р°РІРЅРѕР№ Р¦РµСЂРєРІРё (РњРѕСЃРєРѕРІСЃРєРёР№ РџР°С‚СЂРёР°СЂС…Р°С‚)</p>
     </footer>
 
+    <!-- в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ РЎРљР РРџРўР« в”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђв”Ђ -->
     <script>
+        // РњРѕР±РёР»СЊРЅРѕРµ РјРµРЅСЋ
+        function toggleMenu() {
+            document.getElementById('mobileMenu').classList.toggle('open');
+        }
+        function closeMenu() {
+            document.getElementById('mobileMenu').classList.remove('open');
+        }
+
+        // Р—Р°РіСЂСѓР·РєР° СЂР°СЃРїРёСЃР°РЅРёСЏ
         fetch('./schedule.json')
-            .then(response => response.json())
+            .then(r => r.json())
             .then(data => {
-                document.getElementById('schedule-title').innerText = 'Расписание на ' + data.month;
-                
+                document.getElementById('schedule-title').innerText = 'Р Р°СЃРїРёСЃР°РЅРёРµ РЅР° ' + data.month;
                 const list = document.getElementById('schedule-list');
-                list.innerHTML = ''; 
-                
+                list.innerHTML = '';
                 const now = new Date();
-                const currentDay = now.getDate();
-                const currentMonth = now.getMonth();
-                const currentYear = now.getFullYear();
-                
-                const monthMap = {'янв':0, 'фев':1, 'мар':2, 'апр':3, 'май':4, 'мая':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11};
-                let schedMonth = currentMonth;
-                for (let key in monthMap) {
-                    if (data.month.toLowerCase().includes(key)) { schedMonth = monthMap[key]; break; }
-                }
-                const yearMatch = data.month.match(/\d{4}/);
-                const schedYear = yearMatch ? parseInt(yearMatch[0]) : currentYear;
-
-                const upcomingServices = data.services.filter(service => {
-                    const days = service.date.match(/\d+/g);
-                    const eventDay = days ? parseInt(days[days.length - 1]) : 31; 
-                    
-                    if (schedYear < currentYear) return false;
-                    if (schedYear === currentYear && schedMonth < currentMonth) return false;
-                    if (schedYear === currentYear && schedMonth === currentMonth && eventDay < currentDay) return false;
-                    
+                const cur = now.getDate(), curM = now.getMonth(), curY = now.getFullYear();
+                const mm = {СЏРЅРІ:0,С„РµРІ:1,РјР°СЂ:2,Р°РїСЂ:3,РјР°Р№:4,РјР°СЏ:4,РёСЋРЅ:5,РёСЋР»:6,Р°РІРі:7,СЃРµРЅ:8,РѕРєС‚:9,РЅРѕСЏ:10,РґРµРє:11};
+                let sM = curM;
+                for (let k in mm) { if (data.month.toLowerCase().includes(k)) { sM = mm[k]; break; } }
+                const yM = data.month.match(/\d{4}/);
+                const sY = yM ? parseInt(yM[0]) : curY;
+                const upcoming = data.services.filter(s => {
+                    const d = s.date.match(/\d+/g);
+                    const eD = d ? parseInt(d[d.length-1]) : 31;
+                    if (sY < curY) return false;
+                    if (sY === curY && sM < curM) return false;
+                    if (sY === curY && sM === curM && eD < cur) return false;
                     return true;
-                });
-
-                const servicesToShow = upcomingServices.slice(0, 4);
-
-                if (servicesToShow.length === 0) {
-                    list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
+                }).slice(0, 4);
+                if (!upcoming.length) {
+                    list.innerHTML = '<li style="text-align:center;padding:15px 0">Р‘Р»РёР¶Р°Р№С€РёРµ СЃР»СѓР¶Р±С‹ СѓС‚РѕС‡РЅСЏСЋС‚СЃСЏ.</li>';
                 } else {
-                    servicesToShow.forEach(service => {
+                    upcoming.forEach(s => {
                         const li = document.createElement('li');
-                        
-                        let eventsHTML = '';
-                        if(service.events && service.events.length > 0) {
-                            eventsHTML = service.events.map(ev => `<strong>${ev.time}</strong> — ${ev.name}`).join('<br><br>');
-                        } else {
-                            eventsHTML = `<strong>${service.time}</strong> — ${service.desc || ''}`;
-                        }
-
-                        li.innerHTML = `
-                            <div class="schedule-header">
-                                ${service.date}. ${service.title}
-                            </div>
-                            <div class="schedule-details">
-                                ${eventsHTML}
-                            </div>
-                        `;
+                        const ev = s.events?.length
+                            ? s.events.map(e => `<strong>${e.time}</strong> вЂ” ${e.name}`).join('<br><br>')
+                            : `<strong>${s.time}</strong> вЂ” ${s.desc||''}`;
+                        li.innerHTML = `<div class="schedule-header">${s.date}. ${s.title}</div><div class="schedule-details">${ev}</div>`;
                         list.appendChild(li);
                     });
                 }
-                
-                document.getElementById('schedule-footer').innerHTML = `
-                    Справки по телефону:<br>
-                    <a href="tel:${data.phone.replace(/[^0-9+]/g, '')}" style="color: var(--accent); text-decoration: none; font-weight: bold;">
-                        ${data.phone}
-                    </a>
-                `;
+                document.getElementById('schedule-footer').innerHTML =
+                    `РЎРїСЂР°РІРєРё РїРѕ С‚РµР»РµС„РѕРЅСѓ:<br><a href="tel:${data.phone.replace(/[^0-9+]/g,'')}" style="color:var(--accent);text-decoration:none;font-weight:bold;">${data.phone}</a>`;
             })
-            .catch(error => {
-                console.error('Ошибка загрузки расписания:', error);
-                document.getElementById('schedule-list').innerHTML = '<li>Расписание временно недоступно. Уточняйте по телефону.</li>';
+            .catch(() => {
+                document.getElementById('schedule-list').innerHTML = '<li>Р Р°СЃРїРёСЃР°РЅРёРµ РІСЂРµРјРµРЅРЅРѕ РЅРµРґРѕСЃС‚СѓРїРЅРѕ. РЈС‚РѕС‡РЅСЏР№С‚Рµ РїРѕ С‚РµР»РµС„РѕРЅСѓ.</li>';
             });
     </script>
 </body>
