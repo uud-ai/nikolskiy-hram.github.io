@@ -20,11 +20,11 @@
         }
         
         /* Главный экран (Hero) */
-       .hero {
+      .hero {
             position: relative;
             height: 80vh;
             min-height: 500px;
-            /* Ссылка на ваше фото храма уже интегрирована */
+            /* Ссылка на фото храма */
             background-image: url('https://static.tildacdn.com/tild6462-3461-4661-b236-633933626238/IMG_2451.jpg');
             background-size: cover;
             background-position: center;
@@ -36,30 +36,30 @@
             padding: 0 20px;
         }
         /* Полупрозрачное зеленое затемнение для читаемости текста */
-       .hero::before {
+      .hero::before {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(30, 60, 40, 0.7); 
         }
-       .hero-content {
+      .hero-content {
             position: relative;
             z-index: 1;
             color: #fff;
             max-width: 800px;
         }
-       .hero h1 {
+      .hero h1 {
             font-size: 3.5rem;
             color: #E6C875; /* Золотой цвет куполов */
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
         }
-       .hero p {
+      .hero p {
             font-size: 1.4rem;
             margin-bottom: 30px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
         }
-       .btn-primary {
+      .btn-primary {
             display: inline-block;
             padding: 15px 35px;
             background-color: #9B1B30; /* Красный цвет престола */
@@ -70,17 +70,17 @@
             transition: background 0.3s;
             font-weight: bold;
         }
-       .btn-primary:hover {
+      .btn-primary:hover {
             background-color: #7A1526;
         }
 
         /* Общие контейнеры */
-       .section {
+      .section {
             padding: 80px 20px;
             max-width: 1000px;
             margin: 0 auto;
         }
-       .section-title {
+      .section-title {
             text-align: center;
             font-size: 2.5rem;
             color: #2A5A3B; /* Цвет зеленой крыши */
@@ -88,20 +88,20 @@
         }
 
         /* Блок О храме */
-       .about-grid {
+      .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
             align-items: center;
         }
-       .about-img img {
+      .about-img img {
             width: 100%;
             border-radius: 8px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
         /* Таблица расписания */
-       .bg-gray {
+      .bg-gray {
             background-color: #EFEFEF;
         }
         table {
@@ -124,7 +124,7 @@
         }
         
         /* Блок для формы записок */
-       .widget-container {
+      .widget-container {
             margin-top: 40px;
             background: #fff;
             padding: 40px;
@@ -146,8 +146,8 @@
 
         /* Адаптация под телефоны */
         @media (max-width: 768px) {
-           .about-grid { grid-template-columns: 1fr; }
-           .hero h1 { font-size: 2.2rem; }
+          .about-grid { grid-template-columns: 1fr; }
+          .hero h1 { font-size: 2.2rem; }
             th, td { padding: 12px; font-size: 0.95rem; }
         }
     </style>
@@ -204,8 +204,11 @@
         <p style="text-align: center; max-width: 600px; margin: 0 auto;">Здесь вы можете подать имена о здравии и о упокоении. Ваше пожертвование пойдет на уставную деятельность и благоукрашение храма.</p>
         
         <div class="widget-container">
-            <p style="color: #888;"><em>Место для кода виджета записок</em></p>
-        </div>
+            <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
+              Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
+            </div>
+            <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
+            </div>
     </section>
 
     <footer>
