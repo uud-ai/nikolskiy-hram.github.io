@@ -236,24 +236,62 @@
         <p style="margin-top: 10px;">© 2026 Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
     </footer>
 
-    <script>
+<script>
         fetch('./schedule.json')
             .then(response => response.json())
             .then(data => {
                 document.getElementById('schedule-title').innerText = 'Расписание на ' + data.month;
                 
                 const list = document.getElementById('schedule-list');
-                list.innerHTML = ''; // Очищаем текст "Загрузка расписания..."
+                list.innerHTML = ''; 
                 
-                data.services.forEach(service => {
-                    const li = document.createElement('li');
-                    li.innerHTML = `
-                        <span class="schedule-date">${service.date}</span>
-                        <strong>${service.time}</strong> — ${service.title}.<br>
-                        <small>${service.desc}</small>
-                    `;
-                    list.appendChild(li);
+                // --- УМНАЯ ФИЛЬТРАЦИЯ ДАТ ---
+                const now = new Date();
+                const currentDay = now.getDate();
+                const currentMonth = now.getMonth();
+                const currentYear = now.getFullYear();
+                
+                // Распознаем месяц из текста (например, "Апрель 2026")
+                const monthMap = {'янв':0, 'фев':1, 'мар':2, 'апр':3, 'май':4, 'мая':4, 'июн':5, 'июл':6, 'авг':7, 'сен':8, 'окт':9, 'ноя':10, 'дек':11};
+                let schedMonth = currentMonth;
+                for (let key in monthMap) {
+                    if (data.month.toLowerCase().includes(key)) { schedMonth = monthMap[key]; break; }
+                }
+                const yearMatch = data.month.match(/\d{4}/);
+                const schedYear = yearMatch ? parseInt(yearMatch[0]) : currentYear;
+
+                // 1. Оставляем только те службы, которые еще не прошли
+                const upcomingServices = data.services.filter(service => {
+                    // Ищем числа в дате (берем последнее число, чтобы многодневные праздники типа "11-12" не пропадали раньше времени)
+                    const days = service.date.match(/\d+/g);
+                    const eventDay = days ? parseInt(days[days.length - 1]) : 31; 
+                    
+                    if (schedYear < currentYear) return false;
+                    if (schedYear === currentYear && schedMonth < currentMonth) return false;
+                    // Скрываем, если день уже прошел
+                    if (schedYear === currentYear && schedMonth === currentMonth && eventDay < currentDay) return false;
+                    
+                    return true;
                 });
+
+                // 2. Берем только первые 4 из оставшихся будущих служб
+                const servicesToShow = upcomingServices.slice(0, 4);
+                // -----------------------------
+
+                // Отрисовка на сайте
+                if (servicesToShow.length === 0) {
+                    list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
+                } else {
+                    servicesToShow.forEach(service => {
+                        const li = document.createElement('li');
+                        li.innerHTML = `
+                            <span class="schedule-date">${service.date}</span>
+                            <strong>${service.time}</strong> — ${service.title}.<br>
+                            <small>${service.desc}</small>
+                        `;
+                        list.appendChild(li);
+                    });
+                }
                 
                 document.getElementById('schedule-footer').innerHTML = `
                     Справки по телефону:<br>
