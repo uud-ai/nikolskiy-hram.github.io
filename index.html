@@ -199,7 +199,7 @@
             <div class="priest-text">
                 <h2>Слово настоятеля</h2>
                 <blockquote id="priest-quote">
-                    «Приветствую вас в нашей цифровой часовне. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
+                    «Приветствую вас на нашем приходском сайте. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
                 </blockquote>
             </div>
         </div>
@@ -213,17 +213,11 @@
             </div>
             
             <div class="card">
-                <h3>Расписание на Апрель 2026</h3>
-                <ul class="schedule-list">
-                    <li><span class="schedule-date">04 апреля (Сб)</span>11:00 — Лазарева суббота. Таинство Крещения.</li>
-                    <li><span class="schedule-date">05 апреля (Вс)</span>10:00 — Вербное воскресенье. Божественная литургия. Освящение вербы.</li>
-                    <li><span class="schedule-date">07 апреля (Вт)</span>10:00 — Благовещение Пресвятой Богородицы. Литургия.</li>
-                    <li><span class="schedule-date">11 апреля (Сб)</span>11:00 — Великая суббота.<br><strong>23:30 — ПАСХА.</strong> Крестный ход и Литургия.</li>
-                    <li><span class="schedule-date">21 апреля (Вт)</span>10:00 — РАДОНИЦА. Поминовение усопших.</li>
+                <h3 id="schedule-title">Расписание</h3>
+                <ul id="schedule-list" class="schedule-list">
+                    <li>Загрузка расписания...</li>
                 </ul>
-                <div class="schedule-phone">
-                    Справки по телефону:<br>
-                    <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-weight: bold;">+7 (924) 458-88-78</a>
+                <div id="schedule-footer" class="schedule-phone">
                 </div>
             </div>
             
@@ -242,5 +236,36 @@
         <p style="margin-top: 10px;">© 2026 Никольский храм. Усть-Карск</p>
     </footer>
 
+    <script>
+        fetch('./schedule.json')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('schedule-title').innerText = 'Расписание на ' + data.month;
+                
+                const list = document.getElementById('schedule-list');
+                list.innerHTML = ''; // Очищаем текст "Загрузка расписания..."
+                
+                data.services.forEach(service => {
+                    const li = document.createElement('li');
+                    li.innerHTML = `
+                        <span class="schedule-date">${service.date}</span>
+                        <strong>${service.time}</strong> — ${service.title}.<br>
+                        <small>${service.desc}</small>
+                    `;
+                    list.appendChild(li);
+                });
+                
+                document.getElementById('schedule-footer').innerHTML = `
+                    Справки по телефону:<br>
+                    <a href="tel:${data.phone.replace(/[^0-9+]/g, '')}" style="color: var(--accent); text-decoration: none; font-weight: bold;">
+                        ${data.phone}
+                    </a>
+                `;
+            })
+            .catch(error => {
+                console.error('Ошибка загрузки расписания:', error);
+                document.getElementById('schedule-list').innerHTML = '<li>Расписание временно недоступно. Уточняйте по телефону.</li>';
+            });
+    </script>
 </body>
 </html>
