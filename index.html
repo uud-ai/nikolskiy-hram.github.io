@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Никольский храм пгт. Усть-Карск</title>
+    
+    <link rel="icon" href="favicon.png" type="image/png">
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
@@ -24,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* 1. Обложка (Hero) */
+        /* Обложка */
         .hero {
             height: 100vh;
             min-height: 600px;
@@ -62,7 +65,7 @@
             color: var(--accent);
         }
 
-        /* 2. Блок настоятеля */
+        /* Блок настоятеля */
         .section {
             max-width: 1000px;
             margin: 60px auto;
@@ -103,7 +106,7 @@
             padding-left: 20px;
         }
 
-        /* 3. Сетка контента */
+        /* Сетка контента */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -126,19 +129,25 @@
             font-size: 1.6rem;
         }
 
+        /* Расписание */
         .schedule-list { list-style: none; }
         .schedule-list li {
-            padding: 12px 0;
+            padding: 15px 0;
             border-bottom: 1px solid #f0f0f0;
-            font-size: 0.9rem;
         }
-        .schedule-date {
+        .schedule-header {
             color: var(--accent);
             font-weight: 600;
-            display: block;
-            margin-bottom: 3px;
+            font-size: 1.05rem;
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
-
+        .schedule-details {
+            color: var(--text);
+            padding-left: 12px;
+            border-left: 2px solid #f7f4f0;
+            font-size: 0.95rem;
+        }
         .schedule-phone {
             margin-top: 20px;
             padding-top: 15px;
@@ -169,32 +178,13 @@
             background-color: var(--white);
         }
 
-        /* Адаптация для мобильных устройств */
         @media (max-width: 768px) {
-            .hero {
-                height: 80vh; 
-                min-height: 500px;
-            }
-            .hero-text-bg {
-                padding: 25px 20px;
-            }
-            .priest-card {
-                flex-direction: column;
-                text-align: center;
-                padding: 30px 20px;
-            }
-            .priest-photo {
-                width: 200px;
-            }
-            .priest-text blockquote {
-                border-left: none;
-                border-top: 2px solid var(--accent);
-                padding-left: 0;
-                padding-top: 15px;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
+            .hero { height: 80vh; min-height: 500px; }
+            .hero-text-bg { padding: 25px 20px; }
+            .priest-card { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .priest-photo { width: 200px; }
+            .priest-text blockquote { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 15px; }
+            .grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -213,7 +203,7 @@
             <div class="priest-text">
                 <h2>Слово настоятеля</h2>
                 <blockquote id="priest-quote">
-                    «Приветствую вас на нашем приходском сайте. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
+                    «Приветствую вас в нашей цифровой часовне.»
                 </blockquote>
             </div>
         </div>
@@ -234,14 +224,6 @@
                 <div id="schedule-footer" class="schedule-phone">
                 </div>
             </div>
-            
-            <div class="card" style="grid-column: 1 / -1; background-color: #F7F4F0;">
-                <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
-                <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
-                    Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
-                </div>
-                <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
-            </div>
         </div>
     </div>
 
@@ -256,7 +238,7 @@
                     <div class="faq-content">
                         <p><strong>Что это:</strong> Духовное рождение человека, очищение от грехов и вступление в Церковь.</p><br>
                         <p><strong>Подготовка:</strong> Крестным родителям и взрослым крещаемым необходимо пройти огласительную беседу со священником. Восприемники (крестные) должны быть православными христианами.</p><br>
-                        <p><strong>Что взять с собой:</strong> Нательный крестик на тесемочке (если куплен не в храме — предупредить для освящения), крестильную рубашку, чистое светлое полотенце, свидетельство о рождении.</p>
+                        <p><strong>Что взять с собой:</strong> Нательный крестик на тесемочке, крестильную рубашку, чистое светлое полотенце, свидетельство о рождении.</p>
                     </div>
                 </details>
             </div>
@@ -289,9 +271,20 @@
         </div>
     </div>
 
+    <div class="section" style="margin-bottom: 60px;">
+        <div class="card" style="max-width: 800px; margin: 0 auto; background-color: #F7F4F0;">
+            <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
+            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Здесь вы можете подать записки о здравии и об упокоении.</p>
+            <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
+                Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
+            </div>
+            <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
+        </div>
+    </div>
+
     <footer>
         <p>673562, Забайкальский край, Сретенский р-н, пгт. Усть-Карск, ул. Партизанская, 1</p>
-        <p style="margin-top: 10px;">© 2026 Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
+        <p style="margin-top: 10px;">© 2026 Никольский храм. Усть-Карск</p>
     </footer>
 
     <script>
@@ -334,10 +327,21 @@
                 } else {
                     servicesToShow.forEach(service => {
                         const li = document.createElement('li');
+                        
+                        let eventsHTML = '';
+                        if(service.events && service.events.length > 0) {
+                            eventsHTML = service.events.map(ev => `<strong>${ev.time}</strong> — ${ev.name}`).join('<br><br>');
+                        } else {
+                            eventsHTML = `<strong>${service.time}</strong> — ${service.desc || ''}`;
+                        }
+
                         li.innerHTML = `
-                            <span class="schedule-date">${service.date}</span>
-                            <strong>${service.time}</strong> — ${service.title}.<br>
-                            <small>${service.desc}</small>
+                            <div class="schedule-header">
+                                ${service.date}. ${service.title}
+                            </div>
+                            <div class="schedule-details">
+                                ${eventsHTML}
+                            </div>
                         `;
                         list.appendChild(li);
                     });
