@@ -24,10 +24,10 @@
             overflow-x: hidden;
         }
 
-        /* 1. Обложка (Hero) */
+        /* 1. Обложка (Hero) с исправлением для мобильных */
         .hero {
             height: 100vh;
-            /* ЗДЕСЬ УКАЗАНА ВАША НОВАЯ КАРТИНКА ХРАМА */
+            min-height: 600px;
             background: url('church.jpg') no-repeat center center;
             background-size: cover;
             display: flex;
@@ -35,28 +35,27 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            color: var(--text); /* Сделали текст темным для светлого фона */
+            color: var(--text);
             padding: 20px;
         }
 
-        /* Добавляем светлую подложку под текст на главном экране для читаемости */
         .hero-text-bg {
             background: rgba(253, 251, 247, 0.85);
             padding: 40px 60px;
             border-radius: 4px;
             border: 1px solid rgba(196, 164, 90, 0.3);
+            max-width: 90%;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-size: clamp(2rem, 6vw, 4rem);
             font-weight: 400;
             margin-bottom: 10px;
-            color: var(--text);
         }
 
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             font-weight: 400;
@@ -66,14 +65,14 @@
         /* 2. Блок настоятеля */
         .section {
             max-width: 1000px;
-            margin: 100px auto;
+            margin: 60px auto;
             padding: 0 20px;
         }
 
         .priest-card {
             display: flex;
             align-items: center;
-            gap: 60px;
+            gap: 40px;
             background: var(--white);
             padding: 40px;
             box-shadow: 0 20px 40px var(--shadow);
@@ -81,11 +80,11 @@
         }
 
         .priest-photo {
-            width: 300px;
-            height: 400px;
+            width: 250px;
+            height: auto;
             object-fit: cover;
             border: 3px solid var(--accent);
-            padding: 10px;
+            padding: 8px;
             flex-shrink: 0;
             border-radius: 4px;
         }
@@ -93,8 +92,8 @@
         .priest-text h2 {
             font-family: 'Playfair Display', serif;
             color: var(--accent);
-            margin-bottom: 20px;
-            font-size: 2.2rem;
+            margin-bottom: 15px;
+            font-size: 1.8rem;
         }
 
         .priest-text blockquote {
@@ -104,17 +103,17 @@
             padding-left: 20px;
         }
 
-        /* 3. Календарь и Расписание */
+        /* 3. Сетка контента */
         .grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
         .card {
             background: var(--white);
-            padding: 40px;
+            padding: 30px;
             border-top: 4px solid var(--accent);
             box-shadow: 0 10px 30px var(--shadow);
             border-radius: 4px;
@@ -123,53 +122,65 @@
         .card h3 {
             font-family: 'Playfair Display', serif;
             text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-size: 1.6rem;
         }
 
-        /* Стили для нового расписания */
-        .schedule-list {
-            list-style: none;
-        }
+        .schedule-list { list-style: none; }
         .schedule-list li {
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid #f0f0f0;
-            font-size: 0.95rem;
-        }
-        .schedule-list li:last-child {
-            border-bottom: none;
+            font-size: 0.9rem;
         }
         .schedule-date {
             color: var(--accent);
             font-weight: 600;
             display: block;
-            margin-bottom: 5px;
-            font-size: 1rem;
-        }
-        .schedule-phone {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 2px dashed #eee;
-            text-align: center;
-            font-weight: 600;
-            color: var(--text);
+            margin-bottom: 3px;
         }
 
-        /* Футер */
-        footer {
-            padding: 60px 20px;
+        .schedule-phone {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 2px dashed #eee;
             text-align: center;
             font-size: 0.9rem;
+        }
+
+        footer {
+            padding: 40px 20px;
+            text-align: center;
+            font-size: 0.8rem;
             border-top: 1px solid #eee;
-            opacity: 0.8;
             background-color: var(--white);
         }
 
-        /* Адаптивность */
-        @media (max-width: 900px) {
-            .priest-card { flex-direction: column; text-align: center; }
-            .grid { grid-template-columns: 1fr; }
-            .priest-photo { width: 100%; height: auto; max-width: 350px; }
+        /* Адаптация для мобильных устройств */
+        @media (max-width: 768px) {
+            .hero {
+                height: 80vh; /* Уменьшаем высоту на мобильных, чтобы храм был виднее */
+                min-height: 500px;
+            }
+            .hero-text-bg {
+                padding: 25px 20px;
+            }
+            .priest-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .priest-photo {
+                width: 200px;
+            }
+            .priest-text blockquote {
+                border-left: none;
+                border-top: 2px solid var(--accent);
+                padding-left: 0;
+                padding-top: 15px;
+            }
+            .grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -187,14 +198,14 @@
             <img src="priest.jpg" alt="Настоятель" class="priest-photo">
             <div class="priest-text">
                 <h2>Слово настоятеля</h2>
-                <blockquote>
-                    «Приветствую вас в нашей цифровой часовне. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине».
+                <blockquote id="priest-quote">
+                    «Приветствую вас в нашей цифровой часовне. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
                 </blockquote>
             </div>
         </div>
     </div>
 
-    <div class="section" style="margin-top: 0;">
+    <div class="section">
         <div class="grid">
             <div class="card">
                 <h3>Церковный календарь</h3>
@@ -205,34 +216,30 @@
                 <h3>Расписание на Апрель 2026</h3>
                 <ul class="schedule-list">
                     <li><span class="schedule-date">04 апреля (Сб)</span>11:00 — Лазарева суббота. Таинство Крещения.</li>
-                    <li><span class="schedule-date">05 апреля (Вс)</span>10:00 — Вербное воскресенье. Божественная литургия. Исповедь. Причастие. Освящение вербы.<br>11:00 — Беседа для готовящихся креститься.</li>
-                    <li><span class="schedule-date">07 апреля (Вт)</span>10:00 — Благовещение Пресвятой Богородицы. Божественная литургия.</li>
-                    <li><span class="schedule-date">11 апреля (Сб)</span>11:00 — Великая суббота. Таинство Крещения.<br><strong>23:30 — ПАСХА.</strong> Крестный ход. Божественная литургия. Освящение куличей.</li>
-                    <li><span class="schedule-date">18-19 апреля (Сб-Вс)</span>Сб 11:00 — Таинство Крещения.<br>Вс 10:00 — Неделя 2-я по Пасхе. Божественная литургия.<br>Вс 11:00 — Беседа.</li>
-                    <li><span class="schedule-date">21 апреля (Вт)</span>10:00 — РАДОНИЦА. Поминовение усопших. Заупокойное богослужение.</li>
-                    <li><span class="schedule-date">25-26 апреля (Сб-Вс)</span>Сб 11:00 — Таинство Крещения.<br>Вс 10:00 — Свв. Жен-мироносиц. Божественная литургия.<br>Вс 11:00 — Беседа.</li>
+                    <li><span class="schedule-date">05 апреля (Вс)</span>10:00 — Вербное воскресенье. Божественная литургия. Освящение вербы.</li>
+                    <li><span class="schedule-date">07 апреля (Вт)</span>10:00 — Благовещение Пресвятой Богородицы. Литургия.</li>
+                    <li><span class="schedule-date">11 апреля (Сб)</span>11:00 — Великая суббота.<br><strong>23:30 — ПАСХА.</strong> Крестный ход и Литургия.</li>
+                    <li><span class="schedule-date">21 апреля (Вт)</span>10:00 — РАДОНИЦА. Поминовение усопших.</li>
                 </ul>
                 <div class="schedule-phone">
-                    Дополнительная информация по телефону:<br>
-                    <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-size: 1.1rem;">+7 (924) 458-88-78</a> (отец Николай)
+                    Справки по телефону:<br>
+                    <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-weight: bold;">+7 (924) 458-88-78</a>
                 </div>
             </div>
             
             <div class="card" style="grid-column: 1 / -1; background-color: #F7F4F0;">
                 <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
-                <p style="text-align: center; margin-bottom: 30px;">Здесь вы можете подать записки о здравии и об упокоении.</p>
-                
                 <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
                     Виджет подачи записок в храм <a href="https://vonmi.org/">Vonmi.org</a>
                 </div>
                 <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
-                </div>
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>673562, Забайкальский край, Сретенский район, пгт. Усть-Карск, ул. Партизанская, 1</p>
-        <p style="margin-top: 10px;">© 2026 Никольский храм. Все права защищены.</p>
+        <p>673562, Забайкальский край, Сретенский р-н, пгт. Усть-Карск, ул. Партизанская, 1</p>
+        <p style="margin-top: 10px;">© 2026 Никольский храм. Усть-Карск</p>
     </footer>
 
 </body>
