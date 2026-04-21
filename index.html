@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <!-- ИСПРАВЛЕНО: Добавлен BOM и явное указание кодировки -->
     <meta charset="UTF-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,15 +11,13 @@
     
     <meta property="og:title" content="Никольский храм пгт. Усть-Карск">
     <meta property="og:description" content="Расписание богослужений, таинства и подача записок онлайн.">
-    <meta property="og:image" content="https://nikolskiyhram.site/church-illustration.jpg">
-    <meta property="og:url" content="https://nikolskiyhram.site/">
+    <meta property="og:image" content="church.jpg">
     <meta property="og:type" content="website">
 
     <link rel="icon" href="favicon.png" type="image/png">
     
-    <!-- ИСПРАВЛЕНО: Добавлена charset параметр для Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet" charset="UTF-8">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" charset="UTF-8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
     <style>
         :root {
@@ -31,375 +28,104 @@
             --shadow: rgba(0,0,0,0.05);
         }
 
-        * { 
-            box-sizing: border-box; 
-            margin: 0; 
-            padding: 0; 
-            scroll-behavior: smooth; 
-        }
-        
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
         body { 
             background-color: var(--bg); 
             color: var(--text); 
-            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Manrope', sans-serif; 
             line-height: 1.6;
             overflow-x: hidden;
             padding-top: 60px;
-            /* ИСПРАВЛЕНО: Добавлена поддержка различных кодировок */
-            font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         /* Навигация (Шапка) */
         .navbar {
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%;
+            position: fixed; top: 0; left: 0; width: 100%;
             background: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(5px);
-            z-index: 1000; 
-            display: flex; 
-            justify-content: center; 
-            gap: 30px;
-            padding: 15px 20px; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
-            /* ИСПРАВЛЕНО: Добавлена поддержка RTL и улучшенная кодировка */
-            direction: ltr;
-            unicode-bidi: embed;
+            z-index: 1000; display: flex; justify-content: center; gap: 30px;
+            padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
         }
-        
-        .navbar a { 
-            text-decoration: none; 
-            color: var(--text); 
-            font-weight: 600; 
-            font-size: 0.95rem; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            transition: color 0.3s;
-            /* ИСПРАВЛЕНО: Улучшенная поддержка кириллицы */
-            font-variant: normal;
-            word-break: keep-all;
-            hyphens: none;
-        }
-        
-        .navbar a:hover { 
-            color: var(--accent); 
-        }
+        .navbar a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .navbar a:hover { color: var(--accent); }
 
-        /* Hero секция с иллюстрацией */
+        /* Обложка */
         .hero {
-            background-color: #F5F0E8;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px 20px;
-            height: auto;
-            min-height: auto;
+            height: calc(100vh - 60px); min-height: 500px;
+            background: url('church.jpg') no-repeat center center;
+            background-size: cover; display: flex; flex-direction: column;
+            justify-content: flex-end; 
+            align-items: center; text-align: center;
+            padding: 20px;
+            padding-bottom: 80px; 
         }
-        
-        .hero-illustration {
-            max-width: 900px;
-            width: 100%;
-            height: auto;
-            display: block;
+        .hero-text-bg {
+            background: rgba(253, 251, 247, 0.95);
+            padding: 30px 60px;
+            border-radius: 6px;
+            border-bottom: 4px solid var(--accent);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            max-width: 90%;
         }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 5px; color: var(--text); }
+        .hero p { font-size: 1rem; letter-spacing: 5px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
 
         /* Основные секции */
-        .section { 
-            max-width: 1000px; 
-            margin: 60px auto; 
-            padding: 0 20px; 
-        }
-        
-        .priest-card { 
-            display: flex; 
-            align-items: center; 
-            gap: 40px; 
-            background: var(--white); 
-            padding: 40px; 
-            box-shadow: 0 20px 40px var(--shadow); 
-            border-radius: 4px; 
-        }
-        
-        .priest-photo { 
-            width: 250px; 
-            height: auto; 
-            object-fit: cover; 
-            border: 3px solid var(--accent); 
-            padding: 8px; 
-            flex-shrink: 0; 
-            border-radius: 4px; 
-        }
-        
-        .priest-text h2 { 
-            font-family: 'Playfair Display', serif; 
-            color: var(--accent); 
-            margin-bottom: 15px; 
-            font-size: 1.8rem; 
-        }
-        
-        .priest-text blockquote { 
-            font-style: italic; 
-            font-size: 1.1rem; 
-            border-left: 3px solid var(--accent); 
-            padding-left: 20px; 
-        }
-        
-        .priest-name { 
-            margin-top: 20px; 
-            font-weight: 600; 
-            font-size: 0.95rem; 
-            color: #555; 
-            display: block; 
-        }
+        .section { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
+        .priest-card { display: flex; align-items: center; gap: 40px; background: var(--white); padding: 40px; box-shadow: 0 20px 40px var(--shadow); border-radius: 4px; }
+        .priest-photo { width: 250px; height: auto; object-fit: cover; border: 3px solid var(--accent); padding: 8px; flex-shrink: 0; border-radius: 4px; }
+        .priest-text h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 15px; font-size: 1.8rem; }
+        .priest-text blockquote { font-style: italic; font-size: 1.1rem; border-left: 3px solid var(--accent); padding-left: 20px; }
+        .priest-name { margin-top: 20px; font-weight: 600; font-size: 0.95rem; color: #555; display: block; }
 
-        .grid { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 30px; 
-            margin-bottom: 40px; 
-        }
-        
-        .card { 
-            background: var(--white); 
-            padding: 30px; 
-            border-top: 4px solid var(--accent); 
-            box-shadow: 0 10px 30px var(--shadow); 
-            border-radius: 4px; 
-        }
-        
-        .card h3 { 
-            font-family: 'Playfair Display', serif; 
-            text-align: center; 
-            margin-bottom: 25px; 
-            font-size: 1.6rem; 
-        }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+        .card { background: var(--white); padding: 30px; border-top: 4px solid var(--accent); box-shadow: 0 10px 30px var(--shadow); border-radius: 4px; }
+        .card h3 { font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 25px; font-size: 1.6rem; }
 
         /* Расписание */
-        .schedule-list { 
-            list-style: none; 
-        }
-        
-        .schedule-list li { 
-            padding: 15px 0; 
-            border-bottom: 1px solid #f0f0f0; 
-        }
-        
-        .schedule-header { 
-            color: var(--accent); 
-            font-weight: 600; 
-            font-size: 1.05rem; 
-            margin-bottom: 10px; 
-            line-height: 1.4; 
-        }
-        
-        .schedule-details { 
-            color: var(--text); 
-            padding-left: 12px; 
-            border-left: 2px solid #f7f4f0; 
-            font-size: 0.95rem; 
-        }
-        
-        .schedule-phone { 
-            margin-top: 20px; 
-            padding-top: 15px; 
-            border-top: 2px dashed #eee; 
-            text-align: center; 
-            font-size: 0.9rem; 
-        }
+        .schedule-list { list-style: none; }
+        .schedule-list li { padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
+        .schedule-header { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4; }
+        .schedule-details { color: var(--text); padding-left: 12px; border-left: 2px solid #f7f4f0; font-size: 0.95rem; }
+        .schedule-phone { margin-top: 20px; padding-top: 15px; border-top: 2px dashed #eee; text-align: center; font-size: 0.9rem; }
 
         /* Таинства */
-        .faq-item { 
-            border-bottom: 1px solid #eee; 
-            padding: 12px 0; 
-            text-align: left; 
-        }
-        
-        .faq-item details { 
-            cursor: pointer; 
-        }
-        
-        .faq-item summary { 
-            font-family: 'Playfair Display', serif; 
-            font-size: 1.2rem; 
-            font-weight: 600; 
-            color: var(--text); 
-            list-style: none; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            outline: none; 
-        }
-        
-        .faq-item summary::-webkit-details-marker { 
-            display: none; 
-        }
-        
-        .faq-item summary::after { 
-            content: '+'; 
-            color: var(--accent); 
-            font-size: 1.5rem; 
-            font-weight: 400; 
-        }
-        
-        .faq-item details[open] summary::after { 
-            content: '−'; 
-        }
-        
-        .faq-content { 
-            padding-top: 15px; 
-            font-size: 0.95rem; 
-            color: #444; 
-            line-height: 1.6; 
-        }
+        .faq-item { border-bottom: 1px solid #eee; padding: 12px 0; text-align: left; }
+        .faq-item details { cursor: pointer; }
+        .faq-item summary { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--text); list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
+        .faq-item details[open] summary::after { content: '−'; }
+        .faq-content { padding-top: 15px; font-size: 0.95rem; color: #444; line-height: 1.6; }
 
-        /* Галерея */
-        .gallery-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 15px; 
-        }
-        
-        .gallery-img { 
-            width: 100%; 
-            height: 250px; 
-            object-fit: cover; 
-            border-radius: 4px; 
-            transition: transform 0.3s; 
-        }
-        
-        .gallery-img:hover { 
-            transform: scale(1.02); 
-        }
+        /* Галерея (Сетка на 3 колонки для 6 фото) */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
+        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; transition: transform 0.3s; }
+        .gallery-img:hover { transform: scale(1.02); }
 
         /* Кнопка на карте */
-        .btn-gold { 
-            display: inline-block; 
-            padding: 15px 30px; 
-            background-color: var(--accent); 
-            color: white; 
-            text-decoration: none; 
-            font-weight: bold; 
-            border-radius: 4px; 
-            transition: 0.3s; 
-            text-align: center; 
-            margin-top: 20px; 
-            width: 100%; 
-        }
-        
-        .btn-gold:hover { 
-            background-color: #b3934d; 
-        }
+        .btn-gold { display: inline-block; padding: 15px 30px; background-color: var(--accent); color: white; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; text-align: center; margin-top: 20px; width: 100%; }
+        .btn-gold:hover { background-color: #b3934d; }
 
         /* Плавающая кнопка звонка */
-        .mobile-call-btn { 
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            background-color: var(--accent); 
-            color: white; 
-            padding: 15px 25px; 
-            border-radius: 50px; 
-            text-decoration: none; 
-            font-weight: bold; 
-            font-size: 1rem; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
-            display: none; 
-            z-index: 1000; 
-        }
+        .mobile-call-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; z-index: 1000; }
 
-        footer { 
-            padding: 40px 20px; 
-            text-align: center; 
-            font-size: 0.8rem; 
-            border-top: 1px solid #eee; 
-            background-color: var(--white); 
-        }
+        footer { padding: 40px 20px; text-align: center; font-size: 0.8rem; border-top: 1px solid #eee; background-color: var(--white); }
 
         /* Мобильная адаптация */
         @media (max-width: 768px) {
-            .navbar { 
-                justify-content: flex-start; 
-                overflow-x: auto; 
-                gap: 20px; 
-                padding: 12px 16px; 
-                scrollbar-width: none; 
-            }
-            
-            .navbar::-webkit-scrollbar { 
-                display: none; 
-            }
-            
-            .navbar a { 
-                white-space: nowrap; 
-                font-size: 0.85rem; 
-            }
-            
-            .hero { 
-                padding: 30px 15px 15px; 
-            }
-            
-            .priest-card { 
-                flex-direction: column; 
-                text-align: center; 
-                padding: 30px 20px; 
-            }
-            
-            .priest-photo { 
-                width: 200px; 
-            }
-            
-            .priest-text blockquote { 
-                border-left: none; 
-                border-top: 2px solid var(--accent); 
-                padding-left: 0; 
-                padding-top: 15px; 
-            }
-            
-            .grid { 
-                grid-template-columns: 1fr; 
-            }
-            
-            .mobile-call-btn { 
-                display: flex; 
-                align-items: center; 
-                gap: 8px; 
-            }
-            
-            .gallery-grid { 
-                grid-template-columns: 1fr 1fr; 
-            }
+            .navbar { gap: 15px; padding: 15px 10px; font-size: 0.85rem; }
+            .hero-text-bg { padding: 25px 20px; }
+            .hero { padding-bottom: 40px; }
+            .priest-card { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .priest-photo { width: 200px; }
+            .priest-text blockquote { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 15px; }
+            .grid { grid-template-columns: 1fr; }
+            .mobile-call-btn { display: flex; align-items: center; gap: 8px; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; } /* На мобильных 2 колонки для фото */
         }
-        
         @media (max-width: 480px) {
-            .gallery-grid { 
-                grid-template-columns: 1fr; 
-            }
-        }
-
-        /* ДОБАВЛЕНО: Исправления для кодировки и совместимости */
-        .loading-state {
-            color: #666;
-            font-style: italic;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        /* Улучшенная поддержка кириллицы */
-        h1, h2, h3, h4, h5, h6 {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-            hyphens: auto;
-        }
-
-        /* Поддержка различных браузеров для кириллицы */
-        @supports (font-variant-ligatures: common-ligatures) {
-            body {
-                font-variant-ligatures: common-ligatures;
-            }
+            .gallery-grid { grid-template-columns: 1fr; } /* На узких экранах 1 колонка */
         }
     </style>
 </head>
@@ -409,151 +135,99 @@
         <a href="#schedule">Расписание</a>
         <a href="#sacraments">Таинства</a>
         <a href="#notes">Записки</a>
-        <a href="#gallery">Фото</a>
         <a href="#contacts">Контакты</a>
     </nav>
 
-    <!-- Иллюстрация храма -->
     <section class="hero">
-        <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;">
-            Никольский храм пгт. Усть-Карск
-        </h1>
-        <img src="church-illustration.jpg" alt="Храм Николая Чудотворца в Усть-Карске" class="hero-illustration">
+        <div class="hero-text-bg">
+            <h1>Никольский храм</h1>
+            <p>пгт. Усть-Карск</p>
+        </div>
     </section>
 
-    <!-- Настоятель -->
     <div class="section">
         <div class="priest-card">
-            <img src="priest.jpg" alt="Настоятель храма" class="priest-photo">
+            <img src="priest.jpg" alt="Настоятель" class="priest-photo">
             <div class="priest-text">
                 <h2>Слово настоятеля</h2>
-                <blockquote>
+                <blockquote id="priest-quote">
                     «Приветствую вас на нашем приходском сайте. Пусть этот малый островок веры в сети интернет поможет вам найти путь к молитве и тишине»
                 </blockquote>
-                <span class="priest-name">протоиерей Николай Андрющенко</span>
+                <span class="priest-name">— Настоятель храма: иерей Николай</span>
             </div>
         </div>
     </div>
 
-    <!-- Расписание и Церковный календарь -->
-    <div class="section">
+    <div class="section" id="schedule">
         <div class="grid">
-            <div class="card" id="schedule">
-                <h3 id="schedule-title">Расписание</h3>
-                <ul class="schedule-list" id="schedule-list">
-                    <li class="loading-state">Загрузка расписания...</li>
-                </ul>
-                <div class="schedule-phone">
-                    Справки по телефону:<br>
-                    <a href="tel:+79244588878" style="color: var(--accent); font-weight: bold; text-decoration: none;">
-                        +7 (924) 458-88-78
-                    </a> (отец Николай)
-                </div>
-            </div>
             <div class="card">
                 <h3>Церковный календарь</h3>
-                <iframe 
-                    src="https://www.pravmir.ru/widget/calendar/" 
-                    width="100%" 
-                    height="300" 
-                    frameborder="0" 
-                    style="border: none;">
-                </iframe>
+                <script src="https://www.pravmir.ru/pravoslavnyj-kalendar/widget-app"></script>
             </div>
-        </div>
-    </div>
-
-    <!-- Таинства -->
-    <div class="section">
-        <div class="card" id="sacraments">
-            <h3>Таинства Церкви</h3>
-            <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 0.9rem;">
-                Нажмите на заголовок, чтобы узнать подробности
-            </p>
-
-            <div class="faq-item">
-                <details>
-                    <summary>Таинство Крещения</summary>
-                    <div class="faq-content">
-                        <p><strong>Что это:</strong> Духовное рождение человека, очищение от грехов и вступление в Церковь.</p>
-                        <br>
-                        <p><strong>Подготовка:</strong> Крестным родителям и взрослым крещаемым необходимо пройти огласительную беседу со священником. Восприемники (крестные) должны быть православными христианами.</p>
-                        <br>
-                        <p><strong>Что взять с собой:</strong> Нательный крестик на тесемочке, крестильную рубашку, чистое светлое полотенце, свидетельство о рождении.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div class="faq-item">
-                <details>
-                    <summary>Исповедь и Причастие</summary>
-                    <div class="faq-content">
-                        <p><strong>Что это:</strong> Исповедь — очищение души через покаяние. Причастие — соединение с Богом через принятие Святых Христовых Таин.</p>
-                        <br>
-                        <p><strong>Подготовка:</strong> Говение (пост) от 1 до 3 дней, чтение покаянного канона и Правила ко Святому Причащению. Накануне необходимо быть на вечернем богослужении. С полуночи перед Причастием ничего не едят и не пьют.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div class="faq-item">
-                <details>
-                    <summary>Таинство Венчания</summary>
-                    <div class="faq-content">
-                        <p><strong>Что это:</strong> Благословение супружеского союза во образ союза Христа и Его Церкви.</p>
-                        <br>
-                        <p><strong>Подготовка:</strong> Супругам желательно накануне исповедаться и причаститься. Брак должен быть официально зарегистрирован в ЗАГСе. Венчание не совершается во время постов и накануне постных дней.</p>
-                        <br>
-                        <p><strong>Что взять с собой:</strong> Венчальные кольца, венчальные иконы (Спасителя и Богородицы), белое полотенце (рушник) под ноги, венчальные свечи.</p>
-                    </div>
-                </details>
-            </div>
-
-            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
-                Для консультации и записи на Таинства звоните:<br>
-                <a href="tel:+79244588878" style="color: var(--accent); font-weight: bold; text-decoration: none; font-size: 1.1rem;">
-                    +7 (924) 458-88-78
-                </a> (отец Николай)
-            </div>
-        </div>
-    </div>
-
-    <!-- Записки -->
-    <div class="section">
-        <div class="card" id="notes">
-            <h3>Молитвенная помощь</h3>
-            <p style="text-align: center; margin-bottom: 20px; color: #666;">
-                Здесь вы можете подать записки о здравии и об упокоении.
-            </p>
             
-            <div id="VonmiWidget" data-church-id="6775c3f78a84c1ddbfce13fc" style="width: 100%; height: auto; margin: 20px 0;"></div>
-            
-            <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #999;">
-                Виджет подачи записок в храм 
-                <a href="https://vonmi.org/" target="_blank" style="color: var(--accent); text-decoration: none;">Vonmi.org</a>
-            </p>
-        </div>
-    </div>
-
-    <!-- Фото галерея -->
-    <div class="section">
-        <div class="card" id="gallery">
-            <h3>Фото</h3>
-            <div class="gallery-grid">
-                <img src="gallery1.jpg" alt="Внутреннее убранство храма" class="gallery-img">
-                <img src="gallery2.jpg" alt="Богослужение" class="gallery-img">
-                <img src="gallery3.jpg" alt="Крестный ход" class="gallery-img">
-                <img src="gallery4.jpg" alt="Праздничная служба" class="gallery-img">
-            </div>
-        </div>
-    </div>
-
-    <!-- Контакты -->
-    <div class="section">
-        <div class="grid" id="contacts">
             <div class="card">
-                <h3>Контакты</h3>
-                <p style="margin-bottom: 15px;"><strong>Адрес:</strong><br>673562, Забайкальский край, Сретенский р-н, пгт. Усть-Карск, ул. Партизанская, 1</p>
-                <p style="margin-bottom: 15px;"><strong>Настоятель:</strong><br>протоиерей Николай Андрющенко</p>
+                <h3 id="schedule-title">Ближайшие богослужения</h3>
+                <ul id="schedule-list" class="schedule-list">
+                    <li>Загрузка расписания...</li>
+                </ul>
+                <div id="schedule-footer" class="schedule-phone"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="sacraments" style="margin-top: 0;">
+        <div class="card" style="max-width: 800px; margin: 0 auto;">
+            <h3>Таинства Церкви</h3>
+            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 20px; color: #555;">Нажмите на заголовок, чтобы узнать подробности</p>
+            
+            <div class="faq-item">
+                <details><summary>Таинство Крещения</summary><div class="faq-content"><p><strong>Подготовка:</strong> Огласительная беседа со священником. Восприемники (крестные) должны быть православными христианами.</p><br><p><strong>Что взять:</strong> Крестик, крестильную рубашку, полотенце, свидетельство о рождении.</p></div></details>
+            </div>
+            <div class="faq-item">
+                <details><summary>Исповедь и Причастие</summary><div class="faq-content"><p><strong>Подготовка:</strong> Говение (пост) от 1 до 3 дней, чтение Правила ко Святому Причащению. С полуночи перед Причастием ничего не едят и не пьют.</p></div></details>
+            </div>
+            <div class="faq-item">
+                <details><summary>Таинство Венчания</summary><div class="faq-content"><p><strong>Подготовка:</strong> Брак должен быть зарегистрирован в ЗАГСе. Накануне исповедаться и причаститься.</p><br><p><strong>Что взять:</strong> Венчальные кольца, иконы, рушник, свечи.</p></div></details>
+            </div>
+            
+            <div class="schedule-phone" style="border-top: none; padding-top: 20px;">
+                Для записи звоните: <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-weight: bold;">+7 (924) 458-88-78</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="notes" style="margin-bottom: 60px;">
+        <div class="card" style="max-width: 800px; margin: 0 auto; background-color: #F7F4F0;">
+            <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
+            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Здесь вы можете подать записки о здравии и об упокоении.</p>
+            <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
+                Виджет подачи записок <a href="https://vonmi.org/">Vonmi.org</a>
+            </div>
+            <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
+        </div>
+    </div>
+
+    <div class="section" id="gallery" style="margin-bottom: 60px;">
+        <div class="card">
+            <h3>Жизнь прихода</h3>
+            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Радость совместной молитвы и трудов</p>
+            <div class="gallery-grid">
+                <img src="photo1.jpg" alt="Жизнь прихода" class="gallery-img">
+                <img src="photo2.jpg" alt="Жизнь прихода" class="gallery-img">
+                <img src="photo3.jpg" alt="Жизнь прихода" class="gallery-img">
+                <img src="photo4.jpg" alt="Жизнь прихода" class="gallery-img">
+                <img src="photo5.jpg" alt="Жизнь прихода" class="gallery-img">
+                <img src="photo6.jpg" alt="Жизнь прихода" class="gallery-img">
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="contacts" style="margin-bottom: 60px;">
+        <div class="grid">
+            <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
+                <h3 style="text-align: left;">Как нас найти</h3>
+                <p style="margin-bottom: 15px;"><strong>Адрес:</strong><br>673562, Забайкальский край, Сретенский район, пгт. Усть-Карск, ул. Партизанская, 1</p>
+                <p style="margin-bottom: 15px;"><strong>Настоятель:</strong><br>иерей Николай</p>
                 <p style="margin-bottom: 15px;"><strong>Телефон:</strong><br><a href="tel:+79244588878" style="color: var(--accent); font-weight: bold; text-decoration: none;">+7 (924) 458-88-78</a></p>
                 <p style="margin-bottom: 15px;"><strong>E-mail:</strong><br><a href="mailto:otdel-cerkov@mail.ru" style="color: var(--accent); font-weight: bold; text-decoration: none;">otdel-cerkov@mail.ru</a></p>
                 <a href="https://yandex.ru/maps/?text=Забайкальский+край,+Сретенский+район,+пгт.+Усть-Карск,+ул.+Партизанская,+1" target="_blank" class="btn-gold">Проложить маршрут в Яндексе</a>
@@ -569,27 +243,17 @@
     </footer>
 
     <a href="tel:+79244588878" class="mobile-call-btn">
-        &#9742; Позвонить
+        📞 Позвонить
     </a>
 
-    <!-- Vonmi виджет -->
-    <script async src="https://cdn.vonmi.org/widget/vonmi-x.js" charset="UTF-8"></script>
-
     <script>
-        // ИСПРАВЛЕНО: Добавлена обработка ошибок и улучшенная кодировка
         const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pub?output=csv"; 
         
         function renderSchedule(services, phone) {
-            const titleElement = document.getElementById('schedule-title');
-            const listElement = document.getElementById('schedule-list');
-            
-            if (!titleElement || !listElement) {
-                console.error('Элементы расписания не найдены');
-                return;
-            }
-            
-            titleElement.textContent = 'Ближайшие богослужения';
-            listElement.innerHTML = ''; 
+            // Теперь заголовок фиксированный и независит от месяцев в таблице
+            document.getElementById('schedule-title').innerText = 'Ближайшие богослужения';
+            const list = document.getElementById('schedule-list');
+            list.innerHTML = ''; 
 
             const now = new Date();
             now.setHours(0, 0, 0, 0); 
@@ -600,8 +264,8 @@
 
             const parsedServices = services.map(service => {
                 let dateObj = null;
-                let displayDate = service.date || '';
-                let rawDate = (service.date || '').trim();
+                let displayDate = service.date;
+                let rawDate = service.date.trim();
                 let finalTitle = service.title || '';
 
                 const regexFull = /^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[\s,.]+([а-яА-Яa-zA-Z]+))?/;
@@ -631,8 +295,6 @@
                     if (m !== undefined) {
                         const y = now.getFullYear();
                         dateObj = new Date(y, m, d);
-                        // Если дата в прошлом — берём следующий год
-                        if (dateObj < now) dateObj.setFullYear(dateObj.getFullYear() + 1);
                         
                         let dayWord = matchShort[3] ? matchShort[3].toLowerCase() : '';
                         let shortDow = shortDays[dayWord] || dayWord;
@@ -657,92 +319,50 @@
             const servicesToShow = upcomingServices.slice(0, 4);
 
             if (servicesToShow.length === 0) {
-                listElement.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
+                list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
             } else {
                 servicesToShow.forEach(service => {
                     const li = document.createElement('li');
                     
                     let eventsHTML = '';
                     if (service.events && service.events.length > 0) {
-                        eventsHTML = service.events.map(ev => 
-                            `<div style="margin-bottom: 8px;"><strong>${ev.time || ''}</strong>${ev.time ? ' — ' : ''}${ev.name || ''}</div>`
-                        ).join('');
+                        eventsHTML = service.events.map(ev => `<div style="margin-bottom: 8px;"><strong>${ev.time}</strong> — ${ev.name}</div>`).join('');
                     } else {
-                        eventsHTML = `<div style="margin-bottom: 8px;"><strong>${service.time || ''}</strong>${service.time && service.desc ? ' — ' : ''}${service.desc || ''}</div>`;
+                        eventsHTML = `<div style="margin-bottom: 8px;"><strong>${service.time || ''}</strong> ${service.desc ? '— ' + service.desc : ''}</div>`;
                     }
 
                     li.innerHTML = `
                         <div class="schedule-header">${service.displayDate}${service.finalTitle ? '. ' + service.finalTitle : ''}</div>
                         <div class="schedule-details">${eventsHTML}</div>
                     `;
-                    listElement.appendChild(li);
+                    list.appendChild(li);
                 });
             }
         }
 
-        // ИСПРАВЛЕНО: Улучшенная обработка CSV с поддержкой кодировки
-        if (typeof Papa !== 'undefined') {
-            Papa.parse(googleSheetCsvUrl, {
-                download: true,
-                header: true,
-                encoding: 'UTF-8', // Явно указываем кодировку
-                complete: function(results) {
-                    try {
-                        const data = results.data;
-                        const servicesMap = new Map();
-                        
-                        data.forEach(row => {
-                            if(!row['Дата'] || !row['Время']) return;
-                            
-                            const dateKey = row['Дата'];
-                            if(!servicesMap.has(dateKey)) {
-                                servicesMap.set(dateKey, { 
-                                    date: dateKey, 
-                                    title: row['Праздник'] || "", 
-                                    events: [] 
-                                });
-                            }
-                            servicesMap.get(dateKey).events.push({ 
-                                time: row['Время'], 
-                                name: row['Служба'] 
-                            });
-                        });
-                        
-                        const servicesArray = Array.from(servicesMap.values());
-                        renderSchedule(servicesArray, "+7 (924) 458-88-78");
-                    } catch (error) {
-                        console.error('Ошибка обработки данных расписания:', error);
-                        const listElement = document.getElementById('schedule-list');
-                        if (listElement) {
-                            listElement.innerHTML = '<li class="loading-state">Ошибка загрузки расписания. Информацию уточняйте по телефону.</li>';
-                        }
+        Papa.parse(googleSheetCsvUrl, {
+            download: true,
+            header: true,
+            complete: function(results) {
+                const data = results.data;
+                const servicesMap = new Map();
+                
+                data.forEach(row => {
+                    if(!row['Дата'] || !row['Время']) return;
+                    
+                    const dateKey = row['Дата'];
+                    if(!servicesMap.has(dateKey)) {
+                        servicesMap.set(dateKey, { date: dateKey, title: row['Праздник'] || "", events: [] });
                     }
-                },
-                error: function(err) {
-                    console.error('Ошибка загрузки CSV:', err);
-                    const listElement = document.getElementById('schedule-list');
-                    if (listElement) {
-                        listElement.innerHTML = '<li class="loading-state">Расписание уточняйте по телефону +7 (924) 458-88-78</li>';
-                    }
-                }
-            });
-        } else {
-            console.error('Библиотека PapaParse не загружена');
-            const listElement = document.getElementById('schedule-list');
-            if (listElement) {
-                listElement.innerHTML = '<li class="loading-state">Расписание уточняйте по телефону +7 (924) 458-88-78</li>';
-            }
-        }
-
-        // Дополнительная проверка загрузки
-        window.addEventListener('load', function() {
-            const listElement = document.getElementById('schedule-list');
-            if (listElement && listElement.querySelector('.loading-state')) {
-                setTimeout(function() {
-                    if (listElement.querySelector('.loading-state')) {
-                        listElement.innerHTML = '<li style="text-align: center; padding: 15px 0; color: #666;">Расписание уточняйте по телефону +7 (924) 458-88-78</li>';
-                    }
-                }, 5000);
+                    servicesMap.get(dateKey).events.push({ time: row['Время'], name: row['Служба'] });
+                });
+                
+                const servicesArray = Array.from(servicesMap.values());
+                renderSchedule(servicesArray, "+7 (924) 458-88-78");
+            },
+            error: function(err) {
+                console.error(err);
+                document.getElementById('schedule-list').innerHTML = '<li>Расписание уточняйте по телефону.</li>';
             }
         });
     </script>
