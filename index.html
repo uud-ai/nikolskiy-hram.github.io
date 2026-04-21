@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <!-- РРЎРџР РђР’Р›Р•РќРћ: Р”РѕР±Р°РІР»РµРЅ BOM Рё СЏРІРЅРѕРµ СѓРєР°Р·Р°РЅРёРµ РєРѕРґРёСЂРѕРІРєРё -->
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє | Р Р°СЃРїРёСЃР°РЅРёРµ, Р·Р°РїРёСЃРєРё, РєРѕРЅС‚Р°РєС‚С‹</title>
@@ -10,15 +12,15 @@
     
     <meta property="og:title" content="РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє">
     <meta property="og:description" content="Р Р°СЃРїРёСЃР°РЅРёРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёР№, С‚Р°РёРЅСЃС‚РІР° Рё РїРѕРґР°С‡Р° Р·Р°РїРёСЃРѕРє РѕРЅР»Р°Р№РЅ.">
-    <!-- РРЎРџР РђР’Р›Р•РќРћ: Р°Р±СЃРѕР»СЋС‚РЅС‹Р№ URL РґР»СЏ РєРѕСЂСЂРµРєС‚РЅРѕРіРѕ РѕС‚РѕР±СЂР°Р¶РµРЅРёСЏ РІ СЃРѕС†СЃРµС‚СЏС… -->
     <meta property="og:image" content="https://nikolskiyhram.site/church-illustration.jpg">
     <meta property="og:url" content="https://nikolskiyhram.site/">
     <meta property="og:type" content="website">
 
     <link rel="icon" href="favicon.png" type="image/png">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <!-- РРЎРџР РђР’Р›Р•РќРћ: Р”РѕР±Р°РІР»РµРЅР° charset РїР°СЂР°РјРµС‚СЂ РґР»СЏ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet" charset="UTF-8">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" charset="UTF-8"></script>
 
     <style>
         :root {
@@ -29,28 +31,65 @@
             --shadow: rgba(0,0,0,0.05);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            scroll-behavior: smooth; 
+        }
+        
         body { 
             background-color: var(--bg); 
             color: var(--text); 
-            font-family: 'Manrope', sans-serif; 
+            font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             line-height: 1.6;
             overflow-x: hidden;
             padding-top: 60px;
+            /* РРЎРџР РђР’Р›Р•РќРћ: Р”РѕР±Р°РІР»РµРЅР° РїРѕРґРґРµСЂР¶РєР° СЂР°Р·Р»РёС‡РЅС‹С… РєРѕРґРёСЂРѕРІРѕРє */
+            font-feature-settings: "kern" 1, "liga" 1, "calt" 1, "pnum" 1, "tnum" 0, "onum" 1, "lnum" 0, "dlig" 0;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
         /* РќР°РІРёРіР°С†РёСЏ (РЁР°РїРєР°) */
         .navbar {
-            position: fixed; top: 0; left: 0; width: 100%;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%;
             background: rgba(253, 251, 247, 0.95);
             backdrop-filter: blur(5px);
-            z-index: 1000; display: flex; justify-content: center; gap: 30px;
-            padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            z-index: 1000; 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px;
+            padding: 15px 20px; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            /* РРЎРџР РђР’Р›Р•РќРћ: Р”РѕР±Р°РІР»РµРЅР° РїРѕРґРґРµСЂР¶РєР° RTL Рё СѓР»СѓС‡С€РµРЅРЅР°СЏ РєРѕРґРёСЂРѕРІРєР° */
+            direction: ltr;
+            unicode-bidi: embed;
         }
-        .navbar a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-        .navbar a:hover { color: var(--accent); }
+        
+        .navbar a { 
+            text-decoration: none; 
+            color: var(--text); 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            transition: color 0.3s;
+            /* РРЎРџР РђР’Р›Р•РќРћ: РЈР»СѓС‡С€РµРЅРЅР°СЏ РїРѕРґРґРµСЂР¶РєР° РєРёСЂРёР»Р»РёС†С‹ */
+            font-variant: normal;
+            word-break: keep-all;
+            hyphens: none;
+        }
+        
+        .navbar a:hover { 
+            color: var(--accent); 
+        }
 
-        /* РР—РњР•РќР•РќРћ: Hero С‚РµРїРµСЂСЊ РїРѕРєР°Р·С‹РІР°РµС‚ РёР»Р»СЋСЃС‚СЂР°С†РёСЋ, Р° РЅРµ С„РѕС‚РѕРіСЂР°С„РёСЋ */
+        /* Hero СЃРµРєС†РёСЏ СЃ РёР»Р»СЋСЃС‚СЂР°С†РёРµР№ */
         .hero {
             background-color: #F5F0E8;
             display: flex;
@@ -60,6 +99,7 @@
             height: auto;
             min-height: auto;
         }
+        
         .hero-illustration {
             max-width: 900px;
             width: 100%;
@@ -68,63 +108,298 @@
         }
 
         /* РћСЃРЅРѕРІРЅС‹Рµ СЃРµРєС†РёРё */
-        .section { max-width: 1000px; margin: 60px auto; padding: 0 20px; }
-        .priest-card { display: flex; align-items: center; gap: 40px; background: var(--white); padding: 40px; box-shadow: 0 20px 40px var(--shadow); border-radius: 4px; }
-        .priest-photo { width: 250px; height: auto; object-fit: cover; border: 3px solid var(--accent); padding: 8px; flex-shrink: 0; border-radius: 4px; }
-        .priest-text h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 15px; font-size: 1.8rem; }
-        .priest-text blockquote { font-style: italic; font-size: 1.1rem; border-left: 3px solid var(--accent); padding-left: 20px; }
-        .priest-name { margin-top: 20px; font-weight: 600; font-size: 0.95rem; color: #555; display: block; }
+        .section { 
+            max-width: 1000px; 
+            margin: 60px auto; 
+            padding: 0 20px; 
+        }
+        
+        .priest-card { 
+            display: flex; 
+            align-items: center; 
+            gap: 40px; 
+            background: var(--white); 
+            padding: 40px; 
+            box-shadow: 0 20px 40px var(--shadow); 
+            border-radius: 4px; 
+        }
+        
+        .priest-photo { 
+            width: 250px; 
+            height: auto; 
+            object-fit: cover; 
+            border: 3px solid var(--accent); 
+            padding: 8px; 
+            flex-shrink: 0; 
+            border-radius: 4px; 
+        }
+        
+        .priest-text h2 { 
+            font-family: 'Playfair Display', serif; 
+            color: var(--accent); 
+            margin-bottom: 15px; 
+            font-size: 1.8rem; 
+        }
+        
+        .priest-text blockquote { 
+            font-style: italic; 
+            font-size: 1.1rem; 
+            border-left: 3px solid var(--accent); 
+            padding-left: 20px; 
+        }
+        
+        .priest-name { 
+            margin-top: 20px; 
+            font-weight: 600; 
+            font-size: 0.95rem; 
+            color: #555; 
+            display: block; 
+        }
 
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
-        .card { background: var(--white); padding: 30px; border-top: 4px solid var(--accent); box-shadow: 0 10px 30px var(--shadow); border-radius: 4px; }
-        .card h3 { font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 25px; font-size: 1.6rem; }
+        .grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 30px; 
+            margin-bottom: 40px; 
+        }
+        
+        .card { 
+            background: var(--white); 
+            padding: 30px; 
+            border-top: 4px solid var(--accent); 
+            box-shadow: 0 10px 30px var(--shadow); 
+            border-radius: 4px; 
+        }
+        
+        .card h3 { 
+            font-family: 'Playfair Display', serif; 
+            text-align: center; 
+            margin-bottom: 25px; 
+            font-size: 1.6rem; 
+        }
 
         /* Р Р°СЃРїРёСЃР°РЅРёРµ */
-        .schedule-list { list-style: none; }
-        .schedule-list li { padding: 15px 0; border-bottom: 1px solid #f0f0f0; }
-        .schedule-header { color: var(--accent); font-weight: 600; font-size: 1.05rem; margin-bottom: 10px; line-height: 1.4; }
-        .schedule-details { color: var(--text); padding-left: 12px; border-left: 2px solid #f7f4f0; font-size: 0.95rem; }
-        .schedule-phone { margin-top: 20px; padding-top: 15px; border-top: 2px dashed #eee; text-align: center; font-size: 0.9rem; }
+        .schedule-list { 
+            list-style: none; 
+        }
+        
+        .schedule-list li { 
+            padding: 15px 0; 
+            border-bottom: 1px solid #f0f0f0; 
+        }
+        
+        .schedule-header { 
+            color: var(--accent); 
+            font-weight: 600; 
+            font-size: 1.05rem; 
+            margin-bottom: 10px; 
+            line-height: 1.4; 
+        }
+        
+        .schedule-details { 
+            color: var(--text); 
+            padding-left: 12px; 
+            border-left: 2px solid #f7f4f0; 
+            font-size: 0.95rem; 
+        }
+        
+        .schedule-phone { 
+            margin-top: 20px; 
+            padding-top: 15px; 
+            border-top: 2px dashed #eee; 
+            text-align: center; 
+            font-size: 0.9rem; 
+        }
 
         /* РўР°РёРЅСЃС‚РІР° */
-        .faq-item { border-bottom: 1px solid #eee; padding: 12px 0; text-align: left; }
-        .faq-item details { cursor: pointer; }
-        .faq-item summary { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 600; color: var(--text); list-style: none; display: flex; justify-content: space-between; align-items: center; outline: none; }
-        .faq-item summary::-webkit-details-marker { display: none; }
-        .faq-item summary::after { content: '+'; color: var(--accent); font-size: 1.5rem; font-weight: 400; }
-        .faq-item details[open] summary::after { content: 'в€’'; }
-        .faq-content { padding-top: 15px; font-size: 0.95rem; color: #444; line-height: 1.6; }
+        .faq-item { 
+            border-bottom: 1px solid #eee; 
+            padding: 12px 0; 
+            text-align: left; 
+        }
+        
+        .faq-item details { 
+            cursor: pointer; 
+        }
+        
+        .faq-item summary { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+            color: var(--text); 
+            list-style: none; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            outline: none; 
+        }
+        
+        .faq-item summary::-webkit-details-marker { 
+            display: none; 
+        }
+        
+        .faq-item summary::after { 
+            content: '+'; 
+            color: var(--accent); 
+            font-size: 1.5rem; 
+            font-weight: 400; 
+        }
+        
+        .faq-item details[open] summary::after { 
+            content: 'в€’'; 
+        }
+        
+        .faq-content { 
+            padding-top: 15px; 
+            font-size: 0.95rem; 
+            color: #444; 
+            line-height: 1.6; 
+        }
 
         /* Р“Р°Р»РµСЂРµСЏ */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; transition: transform 0.3s; }
-        .gallery-img:hover { transform: scale(1.02); }
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 15px; 
+        }
+        
+        .gallery-img { 
+            width: 100%; 
+            height: 250px; 
+            object-fit: cover; 
+            border-radius: 4px; 
+            transition: transform 0.3s; 
+        }
+        
+        .gallery-img:hover { 
+            transform: scale(1.02); 
+        }
 
         /* РљРЅРѕРїРєР° РЅР° РєР°СЂС‚Рµ */
-        .btn-gold { display: inline-block; padding: 15px 30px; background-color: var(--accent); color: white; text-decoration: none; font-weight: bold; border-radius: 4px; transition: 0.3s; text-align: center; margin-top: 20px; width: 100%; }
-        .btn-gold:hover { background-color: #b3934d; }
+        .btn-gold { 
+            display: inline-block; 
+            padding: 15px 30px; 
+            background-color: var(--accent); 
+            color: white; 
+            text-decoration: none; 
+            font-weight: bold; 
+            border-radius: 4px; 
+            transition: 0.3s; 
+            text-align: center; 
+            margin-top: 20px; 
+            width: 100%; 
+        }
+        
+        .btn-gold:hover { 
+            background-color: #b3934d; 
+        }
 
         /* РџР»Р°РІР°СЋС‰Р°СЏ РєРЅРѕРїРєР° Р·РІРѕРЅРєР° */
-        .mobile-call-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; z-index: 1000; }
+        .mobile-call-btn { 
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            background-color: var(--accent); 
+            color: white; 
+            padding: 15px 25px; 
+            border-radius: 50px; 
+            text-decoration: none; 
+            font-weight: bold; 
+            font-size: 1rem; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); 
+            display: none; 
+            z-index: 1000; 
+        }
 
-        footer { padding: 40px 20px; text-align: center; font-size: 0.8rem; border-top: 1px solid #eee; background-color: var(--white); }
+        footer { 
+            padding: 40px 20px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+            border-top: 1px solid #eee; 
+            background-color: var(--white); 
+        }
 
         /* РњРѕР±РёР»СЊРЅР°СЏ Р°РґР°РїС‚Р°С†РёСЏ */
         @media (max-width: 768px) {
-            /* РРЎРџР РђР’Р›Р•РќРћ: РіРѕСЂРёР·РѕРЅС‚Р°Р»СЊРЅС‹Р№ СЃРєСЂРѕР»Р» РІРјРµСЃС‚Рѕ РїРµСЂРµРЅРѕСЃР° РЅР° РЅРµСЃРєРѕР»СЊРєРѕ СЃС‚СЂРѕРє */
-            .navbar { justify-content: flex-start; overflow-x: auto; gap: 20px; padding: 12px 16px; scrollbar-width: none; }
-            .navbar::-webkit-scrollbar { display: none; }
-            .navbar a { white-space: nowrap; font-size: 0.85rem; }
-            .hero { padding: 30px 15px 15px; }
-            .priest-card { flex-direction: column; text-align: center; padding: 30px 20px; }
-            .priest-photo { width: 200px; }
-            .priest-text blockquote { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 15px; }
-            .grid { grid-template-columns: 1fr; }
-            .mobile-call-btn { display: flex; align-items: center; gap: 8px; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
+            .navbar { 
+                justify-content: flex-start; 
+                overflow-x: auto; 
+                gap: 20px; 
+                padding: 12px 16px; 
+                scrollbar-width: none; 
+            }
+            
+            .navbar::-webkit-scrollbar { 
+                display: none; 
+            }
+            
+            .navbar a { 
+                white-space: nowrap; 
+                font-size: 0.85rem; 
+            }
+            
+            .hero { 
+                padding: 30px 15px 15px; 
+            }
+            
+            .priest-card { 
+                flex-direction: column; 
+                text-align: center; 
+                padding: 30px 20px; 
+            }
+            
+            .priest-photo { 
+                width: 200px; 
+            }
+            
+            .priest-text blockquote { 
+                border-left: none; 
+                border-top: 2px solid var(--accent); 
+                padding-left: 0; 
+                padding-top: 15px; 
+            }
+            
+            .grid { 
+                grid-template-columns: 1fr; 
+            }
+            
+            .mobile-call-btn { 
+                display: flex; 
+                align-items: center; 
+                gap: 8px; 
+            }
+            
+            .gallery-grid { 
+                grid-template-columns: 1fr 1fr; 
+            }
         }
+        
         @media (max-width: 480px) {
-            .gallery-grid { grid-template-columns: 1fr; }
+            .gallery-grid { 
+                grid-template-columns: 1fr; 
+            }
+        }
+
+        /* Р”РћР‘РђР’Р›Р•РќРћ: РСЃРїСЂР°РІР»РµРЅРёСЏ РґР»СЏ РєРѕРґРёСЂРѕРІРєРё Рё СЃРѕРІРјРµСЃС‚РёРјРѕСЃС‚Рё */
+        .loading-state {
+            color: #666;
+            font-style: italic;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* РЈР»СѓС‡С€РµРЅРЅР°СЏ РїРѕРґРґРµСЂР¶РєР° РєРёСЂРёР»Р»РёС†С‹ */
+        h1, h2, h3, h4, h5, h6 {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+        }
+
+        /* РџРѕРґРґРµСЂР¶РєР° СЂР°Р·Р»РёС‡РЅС‹С… Р±СЂР°СѓР·РµСЂРѕРІ РґР»СЏ РєРёСЂРёР»Р»РёС†С‹ */
+        @supports (font-variant-ligatures: common-ligatures) {
+            body {
+                font-variant-ligatures: common-ligatures;
+            }
         }
     </style>
 </head>
@@ -138,107 +413,147 @@
         <a href="#contacts">РљРѕРЅС‚Р°РєС‚С‹</a>
     </nav>
 
-    <!-- РР—РњР•РќР•РќРћ: РІРјРµСЃС‚Рѕ С„РѕС‚Рѕ СЃ С‚РµРєСЃС‚РѕРІРѕР№ РїР»Р°С€РєРѕР№ вЂ” РёР»Р»СЋСЃС‚СЂР°С†РёСЏ С…СЂР°РјР° -->
+    <!-- РР»Р»СЋСЃС‚СЂР°С†РёСЏ С…СЂР°РјР° -->
     <section class="hero">
-        <!-- РЎРєСЂС‹С‚С‹Р№ h1 РґР»СЏ РїРѕРёСЃРєРѕРІРёРєРѕРІ: РёР»Р»СЋСЃС‚СЂР°С†РёСЏ СЃРѕРґРµСЂР¶РёС‚ С‚РµРєСЃС‚, РЅРѕ РїРѕРёСЃРєРѕРІРёРє РµРіРѕ РЅРµ РІРёРґРёС‚ -->
         <h1 style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap;">
             РќРёРєРѕР»СЊСЃРєРёР№ С…СЂР°Рј РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє
         </h1>
-        <img src="church-illustration.jpg"
-             alt="РҐСЂР°Рј РќРёРєРѕР»Р°СЏ Р§СѓРґРѕС‚РІРѕСЂС†Р° РІ РЈСЃС‚СЊ-РљР°СЂСЃРєРµ"
-             class="hero-illustration"
-             width="1280" height="960">
+        <img src="church-illustration.jpg" alt="РҐСЂР°Рј РќРёРєРѕР»Р°СЏ Р§СѓРґРѕС‚РІРѕСЂС†Р° РІ РЈСЃС‚СЊ-РљР°СЂСЃРєРµ" class="hero-illustration">
     </section>
 
+    <!-- РќР°СЃС‚РѕСЏС‚РµР»СЊ -->
     <div class="section">
         <div class="priest-card">
-            <img src="priest.jpg" alt="РќР°СЃС‚РѕСЏС‚РµР»СЊ вЂ” РёРµСЂРµР№ РќРёРєРѕР»Р°Р№" class="priest-photo">
+            <img src="priest.jpg" alt="РќР°СЃС‚РѕСЏС‚РµР»СЊ С…СЂР°РјР°" class="priest-photo">
             <div class="priest-text">
                 <h2>РЎР»РѕРІРѕ РЅР°СЃС‚РѕСЏС‚РµР»СЏ</h2>
-                <blockquote id="priest-quote">
+                <blockquote>
                     В«РџСЂРёРІРµС‚СЃС‚РІСѓСЋ РІР°СЃ РЅР° РЅР°С€РµРј РїСЂРёС…РѕРґСЃРєРѕРј СЃР°Р№С‚Рµ. РџСѓСЃС‚СЊ СЌС‚РѕС‚ РјР°Р»С‹Р№ РѕСЃС‚СЂРѕРІРѕРє РІРµСЂС‹ РІ СЃРµС‚Рё РёРЅС‚РµСЂРЅРµС‚ РїРѕРјРѕР¶РµС‚ РІР°Рј РЅР°Р№С‚Рё РїСѓС‚СЊ Рє РјРѕР»РёС‚РІРµ Рё С‚РёС€РёРЅРµВ»
                 </blockquote>
-                <span class="priest-name">вЂ” РќР°СЃС‚РѕСЏС‚РµР»СЊ С…СЂР°РјР°: РёРµСЂРµР№ РќРёРєРѕР»Р°Р№</span>
+                <span class="priest-name">РїСЂРѕС‚РѕРёРµСЂРµР№ РќРёРєРѕР»Р°Р№ РђРЅРґСЂСЋС‰РµРЅРєРѕ</span>
             </div>
         </div>
     </div>
 
-    <div class="section" id="schedule">
+    <!-- Р Р°СЃРїРёСЃР°РЅРёРµ Рё Р¦РµСЂРєРѕРІРЅС‹Р№ РєР°Р»РµРЅРґР°СЂСЊ -->
+    <div class="section">
         <div class="grid">
+            <div class="card" id="schedule">
+                <h3 id="schedule-title">Р Р°СЃРїРёСЃР°РЅРёРµ</h3>
+                <ul class="schedule-list" id="schedule-list">
+                    <li class="loading-state">Р—Р°РіСЂСѓР·РєР° СЂР°СЃРїРёСЃР°РЅРёСЏ...</li>
+                </ul>
+                <div class="schedule-phone">
+                    РЎРїСЂР°РІРєРё РїРѕ С‚РµР»РµС„РѕРЅСѓ:<br>
+                    <a href="tel:+79244588878" style="color: var(--accent); font-weight: bold; text-decoration: none;">
+                        +7 (924) 458-88-78
+                    </a> (РѕС‚РµС† РќРёРєРѕР»Р°Р№)
+                </div>
+            </div>
             <div class="card">
                 <h3>Р¦РµСЂРєРѕРІРЅС‹Р№ РєР°Р»РµРЅРґР°СЂСЊ</h3>
-                <!-- РРЎРџР РђР’Р›Р•РќРћ: async С‡С‚РѕР±С‹ РЅРµ Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ Р·Р°РіСЂСѓР·РєСѓ СЃС‚СЂР°РЅРёС†С‹ -->
-                <div id="calendar-fallback" style="text-align:center; color:#888; font-size:0.9rem; padding:20px 0;">
-                    Р—Р°РіСЂСѓР·РєР° РєР°Р»РµРЅРґР°СЂСЏ...
-                </div>
-                <script async defer src="https://www.pravmir.ru/pravoslavnyj-kalendar/widget-app"
-                    onerror="document.getElementById('calendar-fallback').innerHTML='РџСЂР°РІРѕСЃР»Р°РІРЅС‹Р№ РєР°Р»РµРЅРґР°СЂСЊ: <a href=\'https://www.pravmir.ru/calendar/\' target=\'_blank\' style=\'color:var(--accent)\'>РѕС‚РєСЂС‹С‚СЊ РЅР° pravmir.ru</a>'">
-                </script>
-            </div>
-            
-            <div class="card">
-                <h3 id="schedule-title">Р‘Р»РёР¶Р°Р№С€РёРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёСЏ</h3>
-                <ul id="schedule-list" class="schedule-list">
-                    <li>Р—Р°РіСЂСѓР·РєР° СЂР°СЃРїРёСЃР°РЅРёСЏ...</li>
-                </ul>
-                <div id="schedule-footer" class="schedule-phone"></div>
+                <iframe 
+                    src="https://www.pravmir.ru/widget/calendar/" 
+                    width="100%" 
+                    height="300" 
+                    frameborder="0" 
+                    style="border: none;">
+                </iframe>
             </div>
         </div>
     </div>
 
-    <div class="section" id="sacraments" style="margin-top: 0;">
-        <div class="card" style="max-width: 800px; margin: 0 auto;">
+    <!-- РўР°РёРЅСЃС‚РІР° -->
+    <div class="section">
+        <div class="card" id="sacraments">
             <h3>РўР°РёРЅСЃС‚РІР° Р¦РµСЂРєРІРё</h3>
-            <p style="text-align: center; font-size: 0.95rem; margin-bottom: 20px; color: #555;">РќР°Р¶РјРёС‚Рµ РЅР° Р·Р°РіРѕР»РѕРІРѕРє, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё</p>
-            
+            <p style="text-align: center; margin-bottom: 20px; color: #666; font-size: 0.9rem;">
+                РќР°Р¶РјРёС‚Рµ РЅР° Р·Р°РіРѕР»РѕРІРѕРє, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РїРѕРґСЂРѕР±РЅРѕСЃС‚Рё
+            </p>
+
             <div class="faq-item">
-                <details><summary>РўР°РёРЅСЃС‚РІРѕ РљСЂРµС‰РµРЅРёСЏ</summary><div class="faq-content"><p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> РћРіР»Р°СЃРёС‚РµР»СЊРЅР°СЏ Р±РµСЃРµРґР° СЃРѕ СЃРІСЏС‰РµРЅРЅРёРєРѕРј. Р’РѕСЃРїСЂРёРµРјРЅРёРєРё (РєСЂРµСЃС‚РЅС‹Рµ) РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РїСЂР°РІРѕСЃР»Р°РІРЅС‹РјРё С…СЂРёСЃС‚РёР°РЅР°РјРё.</p><br><p><strong>Р§С‚Рѕ РІР·СЏС‚СЊ:</strong> РљСЂРµСЃС‚РёРє, РєСЂРµСЃС‚РёР»СЊРЅСѓСЋ СЂСѓР±Р°С€РєСѓ, РїРѕР»РѕС‚РµРЅС†Рµ, СЃРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ Рѕ СЂРѕР¶РґРµРЅРёРё.</p></div></details>
+                <details>
+                    <summary>РўР°РёРЅСЃС‚РІРѕ РљСЂРµС‰РµРЅРёСЏ</summary>
+                    <div class="faq-content">
+                        <p><strong>Р§С‚Рѕ СЌС‚Рѕ:</strong> Р”СѓС…РѕРІРЅРѕРµ СЂРѕР¶РґРµРЅРёРµ С‡РµР»РѕРІРµРєР°, РѕС‡РёС‰РµРЅРёРµ РѕС‚ РіСЂРµС…РѕРІ Рё РІСЃС‚СѓРїР»РµРЅРёРµ РІ Р¦РµСЂРєРѕРІСЊ.</p>
+                        <br>
+                        <p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> РљСЂРµСЃС‚РЅС‹Рј СЂРѕРґРёС‚РµР»СЏРј Рё РІР·СЂРѕСЃР»С‹Рј РєСЂРµС‰Р°РµРјС‹Рј РЅРµРѕР±С…РѕРґРёРјРѕ РїСЂРѕР№С‚Рё РѕРіР»Р°СЃРёС‚РµР»СЊРЅСѓСЋ Р±РµСЃРµРґСѓ СЃРѕ СЃРІСЏС‰РµРЅРЅРёРєРѕРј. Р’РѕСЃРїСЂРёРµРјРЅРёРєРё (РєСЂРµСЃС‚РЅС‹Рµ) РґРѕР»Р¶РЅС‹ Р±С‹С‚СЊ РїСЂР°РІРѕСЃР»Р°РІРЅС‹РјРё С…СЂРёСЃС‚РёР°РЅР°РјРё.</p>
+                        <br>
+                        <p><strong>Р§С‚Рѕ РІР·СЏС‚СЊ СЃ СЃРѕР±РѕР№:</strong> РќР°С‚РµР»СЊРЅС‹Р№ РєСЂРµСЃС‚РёРє РЅР° С‚РµСЃРµРјРѕС‡РєРµ, РєСЂРµСЃС‚РёР»СЊРЅСѓСЋ СЂСѓР±Р°С€РєСѓ, С‡РёСЃС‚РѕРµ СЃРІРµС‚Р»РѕРµ РїРѕР»РѕС‚РµРЅС†Рµ, СЃРІРёРґРµС‚РµР»СЊСЃС‚РІРѕ Рѕ СЂРѕР¶РґРµРЅРёРё.</p>
+                    </div>
+                </details>
             </div>
+
             <div class="faq-item">
-                <details><summary>РСЃРїРѕРІРµРґСЊ Рё РџСЂРёС‡Р°СЃС‚РёРµ</summary><div class="faq-content"><p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> Р“РѕРІРµРЅРёРµ (РїРѕСЃС‚) РѕС‚ 1 РґРѕ 3 РґРЅРµР№, С‡С‚РµРЅРёРµ РџСЂР°РІРёР»Р° РєРѕ РЎРІСЏС‚РѕРјСѓ РџСЂРёС‡Р°С‰РµРЅРёСЋ. РЎ РїРѕР»СѓРЅРѕС‡Рё РїРµСЂРµРґ РџСЂРёС‡Р°СЃС‚РёРµРј РЅРёС‡РµРіРѕ РЅРµ РµРґСЏС‚ Рё РЅРµ РїСЊСЋС‚.</p></div></details>
+                <details>
+                    <summary>РСЃРїРѕРІРµРґСЊ Рё РџСЂРёС‡Р°СЃС‚РёРµ</summary>
+                    <div class="faq-content">
+                        <p><strong>Р§С‚Рѕ СЌС‚Рѕ:</strong> РСЃРїРѕРІРµРґСЊ вЂ” РѕС‡РёС‰РµРЅРёРµ РґСѓС€Рё С‡РµСЂРµР· РїРѕРєР°СЏРЅРёРµ. РџСЂРёС‡Р°СЃС‚РёРµ вЂ” СЃРѕРµРґРёРЅРµРЅРёРµ СЃ Р‘РѕРіРѕРј С‡РµСЂРµР· РїСЂРёРЅСЏС‚РёРµ РЎРІСЏС‚С‹С… РҐСЂРёСЃС‚РѕРІС‹С… РўР°РёРЅ.</p>
+                        <br>
+                        <p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> Р“РѕРІРµРЅРёРµ (РїРѕСЃС‚) РѕС‚ 1 РґРѕ 3 РґРЅРµР№, С‡С‚РµРЅРёРµ РїРѕРєР°СЏРЅРЅРѕРіРѕ РєР°РЅРѕРЅР° Рё РџСЂР°РІРёР»Р° РєРѕ РЎРІСЏС‚РѕРјСѓ РџСЂРёС‡Р°С‰РµРЅРёСЋ. РќР°РєР°РЅСѓРЅРµ РЅРµРѕР±С…РѕРґРёРјРѕ Р±С‹С‚СЊ РЅР° РІРµС‡РµСЂРЅРµРј Р±РѕРіРѕСЃР»СѓР¶РµРЅРёРё. РЎ РїРѕР»СѓРЅРѕС‡Рё РїРµСЂРµРґ РџСЂРёС‡Р°СЃС‚РёРµРј РЅРёС‡РµРіРѕ РЅРµ РµРґСЏС‚ Рё РЅРµ РїСЊСЋС‚.</p>
+                    </div>
+                </details>
             </div>
+
             <div class="faq-item">
-                <details><summary>РўР°РёРЅСЃС‚РІРѕ Р’РµРЅС‡Р°РЅРёСЏ</summary><div class="faq-content"><p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> Р‘СЂР°Рє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ Р—РђР“РЎРµ. РќР°РєР°РЅСѓРЅРµ РёСЃРїРѕРІРµРґР°С‚СЊСЃСЏ Рё РїСЂРёС‡Р°СЃС‚РёС‚СЊСЃСЏ.</p><br><p><strong>Р§С‚Рѕ РІР·СЏС‚СЊ:</strong> Р’РµРЅС‡Р°Р»СЊРЅС‹Рµ РєРѕР»СЊС†Р°, РёРєРѕРЅС‹, СЂСѓС€РЅРёРє, СЃРІРµС‡Рё.</p></div></details>
+                <details>
+                    <summary>РўР°РёРЅСЃС‚РІРѕ Р’РµРЅС‡Р°РЅРёСЏ</summary>
+                    <div class="faq-content">
+                        <p><strong>Р§С‚Рѕ СЌС‚Рѕ:</strong> Р‘Р»Р°РіРѕСЃР»РѕРІРµРЅРёРµ СЃСѓРїСЂСѓР¶РµСЃРєРѕРіРѕ СЃРѕСЋР·Р° РІРѕ РѕР±СЂР°Р· СЃРѕСЋР·Р° РҐСЂРёСЃС‚Р° Рё Р•РіРѕ Р¦РµСЂРєРІРё.</p>
+                        <br>
+                        <p><strong>РџРѕРґРіРѕС‚РѕРІРєР°:</strong> РЎСѓРїСЂСѓРіР°Рј Р¶РµР»Р°С‚РµР»СЊРЅРѕ РЅР°РєР°РЅСѓРЅРµ РёСЃРїРѕРІРµРґР°С‚СЊСЃСЏ Рё РїСЂРёС‡Р°СЃС‚РёС‚СЊСЃСЏ. Р‘СЂР°Рє РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ РѕС„РёС†РёР°Р»СЊРЅРѕ Р·Р°СЂРµРіРёСЃС‚СЂРёСЂРѕРІР°РЅ РІ Р—РђР“РЎРµ. Р’РµРЅС‡Р°РЅРёРµ РЅРµ СЃРѕРІРµСЂС€Р°РµС‚СЃСЏ РІРѕ РІСЂРµРјСЏ РїРѕСЃС‚РѕРІ Рё РЅР°РєР°РЅСѓРЅРµ РїРѕСЃС‚РЅС‹С… РґРЅРµР№.</p>
+                        <br>
+                        <p><strong>Р§С‚Рѕ РІР·СЏС‚СЊ СЃ СЃРѕР±РѕР№:</strong> Р’РµРЅС‡Р°Р»СЊРЅС‹Рµ РєРѕР»СЊС†Р°, РІРµРЅС‡Р°Р»СЊРЅС‹Рµ РёРєРѕРЅС‹ (РЎРїР°СЃРёС‚РµР»СЏ Рё Р‘РѕРіРѕСЂРѕРґРёС†С‹), Р±РµР»РѕРµ РїРѕР»РѕС‚РµРЅС†Рµ (СЂСѓС€РЅРёРє) РїРѕРґ РЅРѕРіРё, РІРµРЅС‡Р°Р»СЊРЅС‹Рµ СЃРІРµС‡Рё.</p>
+                    </div>
+                </details>
             </div>
-            
-            <div class="schedule-phone" style="border-top: none; padding-top: 20px;">
-                Р”Р»СЏ Р·Р°РїРёСЃРё Р·РІРѕРЅРёС‚Рµ: <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-weight: bold;">+7 (924) 458-88-78</a>
+
+            <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
+                Р”Р»СЏ РєРѕРЅСЃСѓР»СЊС‚Р°С†РёРё Рё Р·Р°РїРёСЃРё РЅР° РўР°РёРЅСЃС‚РІР° Р·РІРѕРЅРёС‚Рµ:<br>
+                <a href="tel:+79244588878" style="color: var(--accent); font-weight: bold; text-decoration: none; font-size: 1.1rem;">
+                    +7 (924) 458-88-78
+                </a> (РѕС‚РµС† РќРёРєРѕР»Р°Р№)
             </div>
         </div>
     </div>
 
-    <div class="section" id="notes" style="margin-bottom: 60px;">
-        <div class="card" style="max-width: 800px; margin: 0 auto; background-color: #F7F4F0;">
-            <h3 style="margin-bottom: 20px;">РњРѕР»РёС‚РІРµРЅРЅР°СЏ РїРѕРјРѕС‰СЊ</h3>
-            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ РїРѕРґР°С‚СЊ Р·Р°РїРёСЃРєРё Рѕ Р·РґСЂР°РІРёРё Рё РѕР± СѓРїРѕРєРѕРµРЅРёРё.</p>
-            <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
-                Р’РёРґР¶РµС‚ РїРѕРґР°С‡Рё Р·Р°РїРёСЃРѕРє <a href="https://vonmi.org/">Vonmi.org</a>
-            </div>
+    <!-- Р—Р°РїРёСЃРєРё -->
+    <div class="section">
+        <div class="card" id="notes">
+            <h3>РњРѕР»РёС‚РІРµРЅРЅР°СЏ РїРѕРјРѕС‰СЊ</h3>
+            <p style="text-align: center; margin-bottom: 20px; color: #666;">
+                Р—РґРµСЃСЊ РІС‹ РјРѕР¶РµС‚Рµ РїРѕРґР°С‚СЊ Р·Р°РїРёСЃРєРё Рѕ Р·РґСЂР°РІРёРё Рё РѕР± СѓРїРѕРєРѕРµРЅРёРё.
+            </p>
+            
+            <div id="VonmiWidget" data-church-id="6775c3f78a84c1ddbfce13fc" style="width: 100%; height: auto; margin: 20px 0;"></div>
+            
+            <p style="text-align: center; margin-top: 15px; font-size: 0.85rem; color: #999;">
+                Р’РёРґР¶РµС‚ РїРѕРґР°С‡Рё Р·Р°РїРёСЃРѕРє РІ С…СЂР°Рј 
+                <a href="https://vonmi.org/" target="_blank" style="color: var(--accent); text-decoration: none;">Vonmi.org</a>
+            </p>
         </div>
     </div>
 
-    <div class="section" id="gallery" style="margin-bottom: 60px;">
-        <div class="card">
-            <h3>Р–РёР·РЅСЊ РїСЂРёС…РѕРґР°</h3>
-            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Р Р°РґРѕСЃС‚СЊ СЃРѕРІРјРµСЃС‚РЅРѕР№ РјРѕР»РёС‚РІС‹ Рё С‚СЂСѓРґРѕРІ</p>
+    <!-- Р¤РѕС‚Рѕ РіР°Р»РµСЂРµСЏ -->
+    <div class="section">
+        <div class="card" id="gallery">
+            <h3>Р¤РѕС‚Рѕ</h3>
             <div class="gallery-grid">
-                <!-- РРЎРџР РђР’Р›Р•РќРћ: СѓРЅРёРєР°Р»СЊРЅС‹Рµ alt Рё lazy loading РЅР°С‡РёРЅР°СЏ СЃРѕ РІС‚РѕСЂРѕРіРѕ С„РѕС‚Рѕ -->
-                <img src="photo1.jpg" alt="Р‘РѕРіРѕСЃР»СѓР¶РµРЅРёРµ РІ РќРёРєРѕР»СЊСЃРєРѕРј С…СЂР°РјРµ" class="gallery-img" width="800" height="600">
-                <img src="photo2.jpg" alt="РљСЂРµСЃС‚РЅС‹Р№ С…РѕРґ" class="gallery-img" loading="lazy" width="800" height="600">
-                <img src="photo3.jpg" alt="РџР°СЃС…Р°Р»СЊРЅРѕРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёРµ" class="gallery-img" loading="lazy" width="800" height="600">
-                <img src="photo4.jpg" alt="РўР°РёРЅСЃС‚РІРѕ РљСЂРµС‰РµРЅРёСЏ" class="gallery-img" loading="lazy" width="800" height="600">
-                <img src="photo5.jpg" alt="РџСЂРёС…РѕРґСЃРєР°СЏ Р¶РёР·РЅСЊ" class="gallery-img" loading="lazy" width="800" height="600">
-                <img src="photo6.jpg" alt="Р”РµС‚Рё РїСЂРёС…РѕРґР°" class="gallery-img" loading="lazy" width="800" height="600">
+                <img src="gallery1.jpg" alt="Р’РЅСѓС‚СЂРµРЅРЅРµРµ СѓР±СЂР°РЅСЃС‚РІРѕ С…СЂР°РјР°" class="gallery-img">
+                <img src="gallery2.jpg" alt="Р‘РѕРіРѕСЃР»СѓР¶РµРЅРёРµ" class="gallery-img">
+                <img src="gallery3.jpg" alt="РљСЂРµСЃС‚РЅС‹Р№ С…РѕРґ" class="gallery-img">
+                <img src="gallery4.jpg" alt="РџСЂР°Р·РґРЅРёС‡РЅР°СЏ СЃР»СѓР¶Р±Р°" class="gallery-img">
             </div>
         </div>
     </div>
 
-    <div class="section" id="contacts" style="margin-bottom: 60px;">
-        <div class="grid">
-            <div class="card" style="display: flex; flex-direction: column; justify-content: center;">
-                <h3 style="text-align: left;">РљР°Рє РЅР°СЃ РЅР°Р№С‚Рё</h3>
-                <p style="margin-bottom: 15px;"><strong>РђРґСЂРµСЃ:</strong><br>673562, Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРёР№ РєСЂР°Р№, РЎСЂРµС‚РµРЅСЃРєРёР№ СЂР°Р№РѕРЅ, РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє, СѓР». РџР°СЂС‚РёР·Р°РЅСЃРєР°СЏ, 1</p>
-                <p style="margin-bottom: 15px;"><strong>РќР°СЃС‚РѕСЏС‚РµР»СЊ:</strong><br>РёРµСЂРµР№ РќРёРєРѕР»Р°Р№</p>
+    <!-- РљРѕРЅС‚Р°РєС‚С‹ -->
+    <div class="section">
+        <div class="grid" id="contacts">
+            <div class="card">
+                <h3>РљРѕРЅС‚Р°РєС‚С‹</h3>
+                <p style="margin-bottom: 15px;"><strong>РђРґСЂРµСЃ:</strong><br>673562, Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРёР№ РєСЂР°Р№, РЎСЂРµС‚РµРЅСЃРєРёР№ СЂ-РЅ, РїРіС‚. РЈСЃС‚СЊ-РљР°СЂСЃРє, СѓР». РџР°СЂС‚РёР·Р°РЅСЃРєР°СЏ, 1</p>
+                <p style="margin-bottom: 15px;"><strong>РќР°СЃС‚РѕСЏС‚РµР»СЊ:</strong><br>РїСЂРѕС‚РѕРёРµСЂРµР№ РќРёРєРѕР»Р°Р№ РђРЅРґСЂСЋС‰РµРЅРєРѕ</p>
                 <p style="margin-bottom: 15px;"><strong>РўРµР»РµС„РѕРЅ:</strong><br><a href="tel:+79244588878" style="color: var(--accent); font-weight: bold; text-decoration: none;">+7 (924) 458-88-78</a></p>
                 <p style="margin-bottom: 15px;"><strong>E-mail:</strong><br><a href="mailto:otdel-cerkov@mail.ru" style="color: var(--accent); font-weight: bold; text-decoration: none;">otdel-cerkov@mail.ru</a></p>
                 <a href="https://yandex.ru/maps/?text=Р—Р°Р±Р°Р№РєР°Р»СЊСЃРєРёР№+РєСЂР°Р№,+РЎСЂРµС‚РµРЅСЃРєРёР№+СЂР°Р№РѕРЅ,+РїРіС‚.+РЈСЃС‚СЊ-РљР°СЂСЃРє,+СѓР».+РџР°СЂС‚РёР·Р°РЅСЃРєР°СЏ,+1" target="_blank" class="btn-gold">РџСЂРѕР»РѕР¶РёС‚СЊ РјР°СЂС€СЂСѓС‚ РІ РЇРЅРґРµРєСЃРµ</a>
@@ -257,16 +572,24 @@
         &#9742; РџРѕР·РІРѕРЅРёС‚СЊ
     </a>
 
-    <!-- РРЎРџР РђР’Р›Р•РќРћ: Vonmi РїРµСЂРµРЅРµСЃС‘РЅ РІ РєРѕРЅРµС† СЃС‚СЂР°РЅРёС†С‹, С‡С‚РѕР±С‹ РЅРµ Р±Р»РѕРєРёСЂРѕРІР°С‚СЊ СЂРµРЅРґРµСЂ -->
-    <script async src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
+    <!-- Vonmi РІРёРґР¶РµС‚ -->
+    <script async src="https://cdn.vonmi.org/widget/vonmi-x.js" charset="UTF-8"></script>
 
     <script>
+        // РРЎРџР РђР’Р›Р•РќРћ: Р”РѕР±Р°РІР»РµРЅР° РѕР±СЂР°Р±РѕС‚РєР° РѕС€РёР±РѕРє Рё СѓР»СѓС‡С€РµРЅРЅР°СЏ РєРѕРґРёСЂРѕРІРєР°
         const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pub?output=csv"; 
         
         function renderSchedule(services, phone) {
-            document.getElementById('schedule-title').innerText = 'Р‘Р»РёР¶Р°Р№С€РёРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёСЏ';
-            const list = document.getElementById('schedule-list');
-            list.innerHTML = ''; 
+            const titleElement = document.getElementById('schedule-title');
+            const listElement = document.getElementById('schedule-list');
+            
+            if (!titleElement || !listElement) {
+                console.error('Р­Р»РµРјРµРЅС‚С‹ СЂР°СЃРїРёСЃР°РЅРёСЏ РЅРµ РЅР°Р№РґРµРЅС‹');
+                return;
+            }
+            
+            titleElement.textContent = 'Р‘Р»РёР¶Р°Р№С€РёРµ Р±РѕРіРѕСЃР»СѓР¶РµРЅРёСЏ';
+            listElement.innerHTML = ''; 
 
             const now = new Date();
             now.setHours(0, 0, 0, 0); 
@@ -277,8 +600,8 @@
 
             const parsedServices = services.map(service => {
                 let dateObj = null;
-                let displayDate = service.date;
-                let rawDate = service.date.trim();
+                let displayDate = service.date || '';
+                let rawDate = (service.date || '').trim();
                 let finalTitle = service.title || '';
 
                 const regexFull = /^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[\s,.]+([Р°-СЏРђ-РЇa-zA-Z]+))?/;
@@ -308,7 +631,7 @@
                     if (m !== undefined) {
                         const y = now.getFullYear();
                         dateObj = new Date(y, m, d);
-                        // РРЎРџР РђР’Р›Р•РќРћ: РµСЃР»Рё РґР°С‚Р° РІ РїСЂРѕС€Р»РѕРј вЂ” Р±РµСЂС‘Рј СЃР»РµРґСѓСЋС‰РёР№ РіРѕРґ (РґР»СЏ СЃР»СѓР¶Р± РІ РґРµРєР°Р±СЂРµ РЅР° СЏРЅРІР°СЂСЊ)
+                        // Р•СЃР»Рё РґР°С‚Р° РІ РїСЂРѕС€Р»РѕРј вЂ” Р±РµСЂС‘Рј СЃР»РµРґСѓСЋС‰РёР№ РіРѕРґ
                         if (dateObj < now) dateObj.setFullYear(dateObj.getFullYear() + 1);
                         
                         let dayWord = matchShort[3] ? matchShort[3].toLowerCase() : '';
@@ -334,50 +657,92 @@
             const servicesToShow = upcomingServices.slice(0, 4);
 
             if (servicesToShow.length === 0) {
-                list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Р‘Р»РёР¶Р°Р№С€РёРµ СЃР»СѓР¶Р±С‹ СѓС‚РѕС‡РЅСЏСЋС‚СЃСЏ.</li>';
+                listElement.innerHTML = '<li style="text-align: center; padding: 15px 0;">Р‘Р»РёР¶Р°Р№С€РёРµ СЃР»СѓР¶Р±С‹ СѓС‚РѕС‡РЅСЏСЋС‚СЃСЏ.</li>';
             } else {
                 servicesToShow.forEach(service => {
                     const li = document.createElement('li');
                     
                     let eventsHTML = '';
                     if (service.events && service.events.length > 0) {
-                        eventsHTML = service.events.map(ev => `<div style="margin-bottom: 8px;"><strong>${ev.time}</strong> вЂ” ${ev.name}</div>`).join('');
+                        eventsHTML = service.events.map(ev => 
+                            `<div style="margin-bottom: 8px;"><strong>${ev.time || ''}</strong>${ev.time ? ' вЂ” ' : ''}${ev.name || ''}</div>`
+                        ).join('');
                     } else {
-                        eventsHTML = `<div style="margin-bottom: 8px;"><strong>${service.time || ''}</strong> ${service.desc ? 'вЂ” ' + service.desc : ''}</div>`;
+                        eventsHTML = `<div style="margin-bottom: 8px;"><strong>${service.time || ''}</strong>${service.time && service.desc ? ' вЂ” ' : ''}${service.desc || ''}</div>`;
                     }
 
                     li.innerHTML = `
                         <div class="schedule-header">${service.displayDate}${service.finalTitle ? '. ' + service.finalTitle : ''}</div>
                         <div class="schedule-details">${eventsHTML}</div>
                     `;
-                    list.appendChild(li);
+                    listElement.appendChild(li);
                 });
             }
         }
 
-        Papa.parse(googleSheetCsvUrl, {
-            download: true,
-            header: true,
-            complete: function(results) {
-                const data = results.data;
-                const servicesMap = new Map();
-                
-                data.forEach(row => {
-                    if(!row['Р”Р°С‚Р°'] || !row['Р’СЂРµРјСЏ']) return;
-                    
-                    const dateKey = row['Р”Р°С‚Р°'];
-                    if(!servicesMap.has(dateKey)) {
-                        servicesMap.set(dateKey, { date: dateKey, title: row['РџСЂР°Р·РґРЅРёРє'] || "", events: [] });
+        // РРЎРџР РђР’Р›Р•РќРћ: РЈР»СѓС‡С€РµРЅРЅР°СЏ РѕР±СЂР°Р±РѕС‚РєР° CSV СЃ РїРѕРґРґРµСЂР¶РєРѕР№ РєРѕРґРёСЂРѕРІРєРё
+        if (typeof Papa !== 'undefined') {
+            Papa.parse(googleSheetCsvUrl, {
+                download: true,
+                header: true,
+                encoding: 'UTF-8', // РЇРІРЅРѕ СѓРєР°Р·С‹РІР°РµРј РєРѕРґРёСЂРѕРІРєСѓ
+                complete: function(results) {
+                    try {
+                        const data = results.data;
+                        const servicesMap = new Map();
+                        
+                        data.forEach(row => {
+                            if(!row['Р”Р°С‚Р°'] || !row['Р’СЂРµРјСЏ']) return;
+                            
+                            const dateKey = row['Р”Р°С‚Р°'];
+                            if(!servicesMap.has(dateKey)) {
+                                servicesMap.set(dateKey, { 
+                                    date: dateKey, 
+                                    title: row['РџСЂР°Р·РґРЅРёРє'] || "", 
+                                    events: [] 
+                                });
+                            }
+                            servicesMap.get(dateKey).events.push({ 
+                                time: row['Р’СЂРµРјСЏ'], 
+                                name: row['РЎР»СѓР¶Р±Р°'] 
+                            });
+                        });
+                        
+                        const servicesArray = Array.from(servicesMap.values());
+                        renderSchedule(servicesArray, "+7 (924) 458-88-78");
+                    } catch (error) {
+                        console.error('РћС€РёР±РєР° РѕР±СЂР°Р±РѕС‚РєРё РґР°РЅРЅС‹С… СЂР°СЃРїРёСЃР°РЅРёСЏ:', error);
+                        const listElement = document.getElementById('schedule-list');
+                        if (listElement) {
+                            listElement.innerHTML = '<li class="loading-state">РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё СЂР°СЃРїРёСЃР°РЅРёСЏ. РРЅС„РѕСЂРјР°С†РёСЋ СѓС‚РѕС‡РЅСЏР№С‚Рµ РїРѕ С‚РµР»РµС„РѕРЅСѓ.</li>';
+                        }
                     }
-                    servicesMap.get(dateKey).events.push({ time: row['Р’СЂРµРјСЏ'], name: row['РЎР»СѓР¶Р±Р°'] });
-                });
-                
-                const servicesArray = Array.from(servicesMap.values());
-                renderSchedule(servicesArray, "+7 (924) 458-88-78");
-            },
-            error: function(err) {
-                console.error(err);
-                document.getElementById('schedule-list').innerHTML = '<li>Р Р°СЃРїРёСЃР°РЅРёРµ СѓС‚РѕС‡РЅСЏР№С‚Рµ РїРѕ С‚РµР»РµС„РѕРЅСѓ.</li>';
+                },
+                error: function(err) {
+                    console.error('РћС€РёР±РєР° Р·Р°РіСЂСѓР·РєРё CSV:', err);
+                    const listElement = document.getElementById('schedule-list');
+                    if (listElement) {
+                        listElement.innerHTML = '<li class="loading-state">Р Р°СЃРїРёСЃР°РЅРёРµ СѓС‚РѕС‡РЅСЏР№С‚Рµ РїРѕ С‚РµР»РµС„РѕРЅСѓ +7 (924) 458-88-78</li>';
+                    }
+                }
+            });
+        } else {
+            console.error('Р‘РёР±Р»РёРѕС‚РµРєР° PapaParse РЅРµ Р·Р°РіСЂСѓР¶РµРЅР°');
+            const listElement = document.getElementById('schedule-list');
+            if (listElement) {
+                listElement.innerHTML = '<li class="loading-state">Р Р°СЃРїРёСЃР°РЅРёРµ СѓС‚РѕС‡РЅСЏР№С‚Рµ РїРѕ С‚РµР»РµС„РѕРЅСѓ +7 (924) 458-88-78</li>';
+            }
+        }
+
+        // Р”РѕРїРѕР»РЅРёС‚РµР»СЊРЅР°СЏ РїСЂРѕРІРµСЂРєР° Р·Р°РіСЂСѓР·РєРё
+        window.addEventListener('load', function() {
+            const listElement = document.getElementById('schedule-list');
+            if (listElement && listElement.querySelector('.loading-state')) {
+                setTimeout(function() {
+                    if (listElement.querySelector('.loading-state')) {
+                        listElement.innerHTML = '<li style="text-align: center; padding: 15px 0; color: #666;">Р Р°СЃРїРёСЃР°РЅРёРµ СѓС‚РѕС‡РЅСЏР№С‚Рµ РїРѕ С‚РµР»РµС„РѕРЅСѓ +7 (924) 458-88-78</li>';
+                    }
+                }, 5000);
             }
         });
     </script>
