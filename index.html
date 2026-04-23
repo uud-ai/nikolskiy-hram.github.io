@@ -199,19 +199,75 @@
         .card { background: var(--white); padding: 30px; border-top: 4px solid var(--accent); box-shadow: 0 10px 30px var(--shadow); border-radius: 4px; }
         .card h3 { font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 25px; font-size: 1.6rem; }
 
-        /* ДОБАВЛЕНО: стили для iframe календаря Азбуки веры */
-        .calendar-iframe-wrap {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            border-radius: 4px;
+        /* Стили простой карточки календаря — сегодняшняя дата + ссылка */
+        .calendar-simple {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px 10px 10px;
+            flex-grow: 1;
         }
-        .calendar-iframe-wrap iframe {
-            width: 100%;
-            height: 400px;
-            border: 0;
-            display: block;
+        .calendar-dates {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            margin-bottom: 16px;
         }
+        .calendar-date-block { padding: 0 22px; }
+        .calendar-date-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #999;
+            margin-bottom: 6px;
+        }
+        .calendar-date-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        .calendar-date-divider {
+            width: 1px;
+            height: 48px;
+            background: #e6dfd0;
+        }
+        .calendar-weekday {
+            font-size: 0.95rem;
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: lowercase;
+            margin-bottom: 24px;
+        }
+        .calendar-hint {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.5;
+            max-width: 320px;
+            margin: 0 auto 22px;
+        }
+        .calendar-btn {
+            margin-top: 0;
+            max-width: 280px;
+            width: auto;
+            padding: 13px 28px;
+        }
+        .calendar-source {
+            margin-top: 18px;
+            font-size: 0.72rem;
+            color: #aaa;
+            letter-spacing: 0.3px;
+        }
+        .calendar-source a {
+            color: #999;
+            text-decoration: none;
+            border-bottom: 1px dotted #ccc;
+        }
+        .calendar-source a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
         /* Расписание */
         .schedule-list { list-style: none; }
@@ -406,21 +462,32 @@
 
     <div class="section" id="schedule">
         <div class="grid">
-            <div class="card">
+            <div class="card" style="display: flex; flex-direction: column;">
                 <h3>Церковный календарь</h3>
-                <!-- ИЗМЕНЕНО: заменили виджет pravmir на iframe с Азбуки веры -->
-                <div class="calendar-iframe-wrap">
-                    <iframe 
-                        src="https://azbyka.ru/days/" 
-                        title="Православный церковный календарь от Азбуки веры"
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
-                    </iframe>
+                <!-- Простая карточка вместо iframe: сегодняшняя дата + ссылка на полный календарь Азбуки -->
+                <div class="calendar-simple">
+                    <div class="calendar-dates">
+                        <div class="calendar-date-block">
+                            <div class="calendar-date-label">Новый стиль</div>
+                            <div class="calendar-date-value" id="cal-date-new">—</div>
+                        </div>
+                        <div class="calendar-date-divider"></div>
+                        <div class="calendar-date-block">
+                            <div class="calendar-date-label">Старый стиль</div>
+                            <div class="calendar-date-value" id="cal-date-old">—</div>
+                        </div>
+                    </div>
+                    <div class="calendar-weekday" id="cal-weekday">—</div>
+                    <p class="calendar-hint">
+                        Расписание праздников, память святых и чтения Священного Писания
+                    </p>
+                    <a href="https://azbyka.ru/days/" target="_blank" rel="noopener" class="btn-gold calendar-btn">
+                        Посмотреть в календаре →
+                    </a>
+                    <p class="calendar-source">
+                        данные предоставлены <a href="https://azbyka.ru/days/" target="_blank" rel="noopener">azbyka.ru</a>
+                    </p>
                 </div>
-                <p style="text-align: center; margin-top: 12px; font-size: 0.8rem; color: #999;">
-                    Календарь предоставлен порталом 
-                    <a href="https://azbyka.ru/days/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Азбука веры</a>
-                </p>
             </div>
             
             <div class="card">
@@ -528,6 +595,36 @@
     </a>
 
     <script>
+        /* ============================================================
+           ЦЕРКОВНЫЙ КАЛЕНДАРЬ — сегодняшняя дата
+           Показываем дату по новому и старому стилю + день недели
+           ============================================================ */
+        (function() {
+            const now = new Date();
+            const months = ["января","февраля","марта","апреля","мая","июня",
+                            "июля","августа","сентября","октября","ноября","декабря"];
+            const weekdays = ["воскресенье","понедельник","вторник","среда",
+                              "четверг","пятница","суббота"];
+            
+            // Новый стиль = сегодняшняя дата
+            const dayNew = now.getDate();
+            const monthNew = months[now.getMonth()];
+            
+            // Старый стиль = −13 дней (разница юлианского и григорианского календарей с 1900 по 2099)
+            const oldDate = new Date(now);
+            oldDate.setDate(oldDate.getDate() - 13);
+            const dayOld = oldDate.getDate();
+            const monthOld = months[oldDate.getMonth()];
+            
+            const elNew = document.getElementById('cal-date-new');
+            const elOld = document.getElementById('cal-date-old');
+            const elWd = document.getElementById('cal-weekday');
+            
+            if (elNew) elNew.textContent = `${dayNew} ${monthNew}`;
+            if (elOld) elOld.textContent = `${dayOld} ${monthOld}`;
+            if (elWd) elWd.textContent = weekdays[now.getDay()];
+        })();
+
         /* ============================================================
            РАСПИСАНИЕ БОГОСЛУЖЕНИЙ
            Загружается из Google Sheets, парсит даты и отображает
