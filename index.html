@@ -9,7 +9,7 @@
          снижает ущерб от XSS (в т.ч. из данных Google-таблицы расписания) и от компрометации
          сторонних скриптов. Если раскомментируете блок Яндекс.Метрики ниже — добавьте
          mc.yandex.ru в script-src, img-src и connect-src. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-HNSh65Dos6ceS6KFrI4PwHv3eFU20jIgLEADZ2aaj48='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://docs.google.com; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-HNSh65Dos6ceS6KFrI4PwHv3eFU20jIgLEADZ2aaj48='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://docs.google.com https://*.googleusercontent.com; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
 
     <title>Никольский храм пгт. Усть-Карск | Расписание, контакты</title>
     <meta name="description" content="Официальный сайт Никольского храма пгт. Усть-Карск. Расписание богослужений, информация о таинствах и схема проезда.">
