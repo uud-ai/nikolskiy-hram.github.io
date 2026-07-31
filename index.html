@@ -9,15 +9,15 @@
          снижает ущерб от XSS (в т.ч. из данных Google-таблицы расписания) и от компрометации
          сторонних скриптов. Если раскомментируете блок Яндекс.Метрики ниже — добавьте
          mc.yandex.ru в script-src, img-src и connect-src. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://cdn.vonmi.org https://*.vonmi.org 'sha256-HNSh65Dos6ceS6KFrI4PwHv3eFU20jIgLEADZ2aaj48='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://vonmi.org https://*.vonmi.org; connect-src 'self' https://docs.google.com https://vonmi.org https://*.vonmi.org; frame-src https://yandex.ru https://vonmi.org https://*.vonmi.org; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-HNSh65Dos6ceS6KFrI4PwHv3eFU20jIgLEADZ2aaj48='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self' https://docs.google.com; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
 
-    <title>Никольский храм пгт. Усть-Карск | Расписание, записки, контакты</title>
-    <meta name="description" content="Официальный сайт Никольского храма пгт. Усть-Карск. Расписание богослужений, информация о таинствах, подача записок онлайн и схема проезда.">
-    <meta name="keywords" content="Никольский храм, Усть-Карск, церковь, православие, расписание богослужений, подать записку, храм Усть-Карск, крещение, венчание">
+    <title>Никольский храм пгт. Усть-Карск | Расписание, контакты</title>
+    <meta name="description" content="Официальный сайт Никольского храма пгт. Усть-Карск. Расписание богослужений, информация о таинствах и схема проезда.">
+    <meta name="keywords" content="Никольский храм, Усть-Карск, церковь, православие, расписание богослужений, храм Усть-Карск, крещение, венчание">
     
     <!-- ИСПРАВЛЕНО: абсолютный URL для корректных превью в соцсетях -->
     <meta property="og:title" content="Никольский храм пгт. Усть-Карск">
-    <meta property="og:description" content="Расписание богослужений, таинства и подача записок онлайн.">
+    <meta property="og:description" content="Расписание богослужений и таинства.">
     <meta property="og:image" content="https://nikolskiyhram.site/church.jpg">
     <meta property="og:url" content="https://nikolskiyhram.site/">
     <meta property="og:type" content="website">
@@ -404,14 +404,6 @@
 
         footer { padding: 40px 20px; text-align: center; font-size: 0.8rem; border-top: 1px solid #eee; background-color: var(--white); }
 
-        /* ДОБАВЛЕНО: стили для загрузки виджета Vonmi */
-        .vonmi-loader {
-            text-align: center;
-            padding: 30px;
-            color: #888;
-            font-size: 0.95rem;
-        }
-
         /* Мобильная адаптация */
         @media (max-width: 768px) {
             .navbar { gap: 15px; padding: 15px 10px; font-size: 0.85rem; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; }
@@ -438,7 +430,6 @@
     <nav class="navbar">
         <a href="#schedule">Расписание</a>
         <a href="#sacraments">Таинства</a>
-        <a href="#notes">Записки</a>
         <a href="#gallery">Фото</a>
         <a href="#contacts">Контакты</a>
     </nav>
@@ -529,21 +520,6 @@
             <div class="schedule-phone" style="border-top: none; padding-top: 20px;">
                 Для записи звоните: <a href="tel:+79244588878" style="color: var(--accent); text-decoration: none; font-weight: bold;">+7 (924) 458-88-78</a>
             </div>
-        </div>
-    </div>
-
-    <div class="section" id="notes" style="margin-bottom: 60px;">
-        <div class="card" style="max-width: 800px; margin: 0 auto; background-color: #F7F4F0;">
-            <h3 style="margin-bottom: 20px;">Молитвенная помощь</h3>
-            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Здесь вы можете подать записки о здравии и об упокоении.</p>
-            <div id="vonmi-widget" data-id="3fd20124bce109ca627163d6ecdaacd9">
-                <!-- ИЗМЕНЕНО: теперь показываем красивую загрузку вместо просто ссылки -->
-                <div class="vonmi-loader">
-                    Загрузка формы записок...<br>
-                    <small style="color: #aaa;">Сервис <a href="https://vonmi.org/" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">Vonmi.org</a></small>
-                </div>
-            </div>
-            <script src="https://cdn.vonmi.org/widget/vonmi-x.js"></script>
         </div>
     </div>
 
