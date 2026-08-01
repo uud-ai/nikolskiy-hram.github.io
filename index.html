@@ -10,7 +10,7 @@
          из локального schedule.csv, поэтому доменов Google в connect-src больше нет.
          Если раскомментируете блок Яндекс.Метрики ниже — добавьте mc.yandex.ru
          в script-src, img-src и connect-src. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com 'sha256-lSFEw1oNuiPQyV0iPlp0ZYLcyOdL9S3kq+dYIGwBr8Q='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self'; connect-src 'self'; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://mc.yandex.ru 'sha256-lSFEw1oNuiPQyV0iPlp0ZYLcyOdL9S3kq+dYIGwBr8Q=' 'sha256-6EBMACuHa64+goPirwY6PO2Dy1glmZIQXeNa7UbgFB8='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
 
     <title>Никольский храм — Усть-Карск | Расписание богослужений, контакты</title>
     <meta name="description" content="Официальный сайт Никольского храма в Усть-Карске. Расписание богослужений, информация о таинствах и схема проезда.">
@@ -60,18 +60,16 @@
     }
     </script>
 
-    <!-- ДОБАВЛЕНО: Яндекс.Метрика. После регистрации замените XXXXXXXX на ваш ID счётчика и раскомментируйте блок -->
-    <!--
+    <!-- ДОБАВЛЕНО: Яндекс.Метрика -->
     <script type="text/javascript">
        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
        m[i].l=1*new Date();
        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
        (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-       ym(XXXXXXXX, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+       ym(108694539, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
     </script>
-    <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    -->
+    <noscript><div><img src="https://mc.yandex.ru/watch/108694539" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 
     <style>
         :root {
