@@ -385,29 +385,30 @@
             background-size: cover;
             position: relative;
             cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
             overflow: hidden;
         }
         .map-placeholder::before {
             content: '';
             position: absolute; inset: 0;
-            background: rgba(0,0,0,0.35);
+            background: rgba(0,0,0,0);
             transition: background 0.3s;
         }
-        .map-placeholder:hover::before { background: rgba(0,0,0,0.5); }
+        .map-placeholder:hover::before { background: rgba(0,0,0,0.15); }
+        /* ИЗМЕНЕНО: кнопка теперь панелью под фото, а не плашкой поверх изображения храма */
         .map-placeholder-btn {
-            position: relative;
-            z-index: 1;
+            display: block;
+            width: 100%;
             background: var(--accent);
             color: white;
-            padding: 14px 30px;
-            border-radius: 50px;
+            padding: 16px;
+            border: none;
+            font-family: inherit;
             font-weight: bold;
             font-size: 0.95rem;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            cursor: pointer;
+            transition: background 0.2s;
         }
+        .map-placeholder-btn:hover { background: #b3934d; }
 
         /* Плавающая кнопка звонка */
         .mobile-call-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; z-index: 1000; }
@@ -589,10 +590,9 @@
                 <a href="https://yandex.ru/maps/?text=Забайкальский+край,+Сретенский+район,+пгт.+Усть-Карск,+ул.+Партизанская,+1" target="_blank" rel="noopener" class="btn-gold">Проложить маршрут в Яндексе</a>
             </div>
             <div class="card" style="padding: 0; overflow: hidden; border-top: none;">
-                <!-- ИЗМЕНЕНО: ленивая загрузка карты — показываем заглушку, карта грузится по клику -->
-                <div class="map-placeholder" id="map-placeholder" role="button" tabindex="0" aria-label="Показать карту">
-                    <div class="map-placeholder-btn">📍 Показать карту</div>
-                </div>
+                <!-- ИЗМЕНЕНО: кнопка вынесена под фото отдельной панелью, чтобы не перекрывать изображение храма -->
+                <div class="map-placeholder" id="map-placeholder" role="button" tabindex="0" aria-label="Показать карту"></div>
+                <button type="button" id="map-show-btn" class="map-placeholder-btn">📍 Показать карту</button>
             </div>
         </div>
     </div>

@@ -251,6 +251,7 @@
            ============================================================ */
         (function() {
             const placeholder = document.getElementById('map-placeholder');
+            const showBtn = document.getElementById('map-show-btn');
             if (!placeholder) return;
             
             function loadMap() {
@@ -263,11 +264,14 @@
                 iframe.style.display = "block";
                 iframe.title = "Карта расположения Никольского храма";
                 placeholder.replaceWith(iframe);
+                // ДОБАВЛЕНО: кнопка снизу больше не нужна, раз карта уже показана
+                if (showBtn) showBtn.remove();
             }
             
             placeholder.addEventListener('click', loadMap);
             placeholder.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); loadMap(); }
             });
+            if (showBtn) showBtn.addEventListener('click', loadMap);
         })();
     
