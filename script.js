@@ -126,13 +126,16 @@
                 return true; 
             });
 
-            // ИЗМЕНЕНО: показываем 8 ближайших вместо 4
-            const servicesToShow = upcomingServices.slice(0, 8);
+            // ИЗМЕНЕНО: сначала показываем только 2 ближайшие даты, остальное — по кнопке «Показать ещё»
+            const INITIAL_COUNT = 2;
 
-            if (servicesToShow.length === 0) {
-                list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
-            } else {
-                servicesToShow.forEach(service => {
+            function renderList(items) {
+                list.innerHTML = '';
+                if (items.length === 0) {
+                    list.innerHTML = '<li style="text-align: center; padding: 15px 0;">Ближайшие службы уточняются.</li>';
+                    return;
+                }
+                items.forEach(service => {
                     const li = document.createElement('li');
                     
                     // ДОБАВЛЕНО: подсветка престольных праздников
@@ -154,6 +157,23 @@
                     `;
                     list.appendChild(li);
                 });
+            }
+
+            renderList(upcomingServices.slice(0, INITIAL_COUNT));
+
+            // ДОБАВЛЕНО: кнопка «Показать ещё» — раскрывает остальные ближайшие службы целиком
+            const moreWrap = document.getElementById('schedule-more-wrap');
+            const moreBtn = document.getElementById('schedule-more-btn');
+            if (moreWrap && moreBtn) {
+                if (upcomingServices.length > INITIAL_COUNT) {
+                    moreWrap.style.display = 'block';
+                    moreBtn.addEventListener('click', function() {
+                        renderList(upcomingServices);
+                        moreWrap.style.display = 'none';
+                    }, { once: true });
+                } else {
+                    moreWrap.style.display = 'none';
+                }
             }
         }
 

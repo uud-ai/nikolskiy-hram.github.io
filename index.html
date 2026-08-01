@@ -219,7 +219,9 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-align: center;
+            flex: 1;
             padding: 20px 10px 10px;
         }
         .calendar-dates {
@@ -482,7 +484,7 @@
 
     <div class="section" id="schedule">
         <div class="grid">
-            <div class="card" style="align-self: start;">
+            <div class="card" style="display: flex; flex-direction: column;">
                 <h3>Церковный календарь</h3>
                 <!-- Простая карточка вместо iframe: сегодняшняя дата + ссылка на полный календарь Азбуки -->
                 <div class="calendar-simple">
@@ -515,6 +517,10 @@
                 <ul id="schedule-list" class="schedule-list">
                     <li>Загрузка расписания...</li>
                 </ul>
+                <!-- ДОБАВЛЕНО: кнопка «Показать ещё», стиль как у «Посмотреть в календаре» -->
+                <div id="schedule-more-wrap" style="text-align: center; margin-top: 5px; display: none;">
+                    <button id="schedule-more-btn" type="button" class="btn-gold calendar-btn" style="border: none; cursor: pointer; font-family: inherit; font-size: 1rem;">Показать ещё →</button>
+                </div>
                 <!-- ДОБАВЛЕНО: noscript fallback -->
                 <noscript>
                     <ul class="schedule-list">
