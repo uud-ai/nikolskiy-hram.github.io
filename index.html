@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ДОБАВЛЕНО: Content-Security-Policy — ограничивает источники скриптов/стилей/подключений,
-         снижает ущерб от XSS и от компрометации сторонних скриптов. Расписание теперь грузится
-         из локального schedule.csv, поэтому доменов Google в connect-src больше нет.
-         Если раскомментируете блок Яндекс.Метрики ниже — добавьте mc.yandex.ru
-         в script-src, img-src и connect-src. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com https://mc.yandex.ru 'sha256-lSFEw1oNuiPQyV0iPlp0ZYLcyOdL9S3kq+dYIGwBr8Q=' 'sha256-6EBMACuHa64+goPirwY6PO2Dy1glmZIQXeNa7UbgFB8='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
+         снижает ущерб от XSS и от компрометации сторонних скриптов. Расписание грузится
+         из локального schedule.csv, шрифты (fonts/fonts.css) и библиотека PapaParse
+         (papaparse.min.js) тоже размещены локально — из внешних доменов остаётся
+         только mc.yandex.ru для Яндекс.Метрики и yandex.ru для карты. -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru 'sha256-lSFEw1oNuiPQyV0iPlp0ZYLcyOdL9S3kq+dYIGwBr8Q=' 'sha256-6EBMACuHa64+goPirwY6PO2Dy1glmZIQXeNa7UbgFB8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru; frame-src https://yandex.ru; object-src 'none'; base-uri 'self';">
 
     <title>Никольский храм — Усть-Карск | Расписание богослужений, контакты</title>
     <meta name="description" content="Официальный сайт Никольского храма в Усть-Карске. Расписание богослужений, информация о таинствах и схема проезда.">
@@ -28,9 +28,13 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <link rel="canonical" href="https://nikolskiyhram.site/">
     
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Manrope:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- ДОБАВЛЕНО: integrity (SRI) — браузер откажется выполнять файл, если он подменён на CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha384-D/t0ZMqQW31H3az8ktEiNb39wyKnS82iFY52QPACM+IjKW3jDUhyIgh2PApRqJZs" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- ИЗМЕНЕНО: шрифты теперь размещены локально (fonts/), а не грузятся с fonts.googleapis.com —
+         тот же набор начертаний (Playfair Display 400/700/400-italic, Manrope 300/400/600),
+         те же файлы, что отдавал бы Google Fonts, просто без обращения к серверам Google. -->
+    <link rel="stylesheet" href="fonts/fonts.css">
+    <!-- ИЗМЕНЕНО: papaparse теперь локальный файл той же версии (5.4.1), а не с cdnjs.cloudflare.com.
+         integrity больше не нужен: файл свой, той же природы, что и script.js — риска подмены на чужом CDN нет. -->
+    <script src="papaparse.min.js"></script>
 
     <!-- ДОБАВЛЕНО: Микроразметка Schema.org для поисковиков -->
     <script type="application/ld+json">
@@ -599,6 +603,7 @@
 
     <footer>
         <p>© 2026 Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
+        <p style="margin-top: 10px;"><a href="privacy.html" style="color: var(--accent); text-decoration: none;">Политика обработки персональных данных</a></p>
     </footer>
 
     <a href="tel:+79244588878" class="mobile-call-btn">

@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Content-Security-Policy — согласована с index.html: локальные шрифты/скрипты + Яндекс.Метрика -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://mc.yandex.ru 'sha256-6EBMACuHa64+goPirwY6PO2Dy1glmZIQXeNa7UbgFB8='; style-src 'self' 'unsafe-inline'; font-src 'self'; img-src 'self' https://mc.yandex.ru; connect-src 'self' https://mc.yandex.ru; object-src 'none'; base-uri 'self';">
+
+    <title>Политика обработки персональных данных — Никольский храм, Усть-Карск</title>
+    <meta name="description" content="Политика обработки персональных данных сайта Никольского храма в Усть-Карске: какие данные собираются, как используются и как от этого отказаться.">
+    <meta name="robots" content="index, follow">
+
+    <meta property="og:title" content="Политика обработки персональных данных — Никольский храм, Усть-Карск">
+    <meta property="og:description" content="Какие данные собирает сайт, как они используются и как от этого отказаться.">
+    <meta property="og:image" content="https://nikolskiyhram.site/church.jpg">
+    <meta property="og:url" content="https://nikolskiyhram.site/privacy.html">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="ru_RU">
+    <meta property="og:site_name" content="Никольский храм, Усть-Карск">
+
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="canonical" href="https://nikolskiyhram.site/privacy.html">
+
+    <link rel="stylesheet" href="fonts/fonts.css">
+
+    <!-- Яндекс.Метрика — тот же счётчик, что и на главной странице -->
+    <script type="text/javascript">
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();
+       for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+       k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+       ym(108694539, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/108694539" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    <style>
+        :root {
+            --bg: #FDFBF7;
+            --text: #1A1A1A;
+            --accent: #C4A45A;
+            --white: #ffffff;
+            --shadow: rgba(0,0,0,0.05);
+        }
+        html { scroll-behavior: smooth; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 60px;
+        }
+
+        .navbar {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(253, 251, 247, 0.95);
+            backdrop-filter: blur(5px);
+            z-index: 1000; display: flex; justify-content: center; gap: 30px;
+            padding: 15px 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+        .navbar a { text-decoration: none; color: var(--text); font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
+        .navbar a:hover { color: var(--accent); }
+
+        .policy-header {
+            max-width: 760px;
+            margin: 50px auto 10px;
+            padding: 0 20px;
+            text-align: center;
+        }
+        .policy-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: clamp(1.5rem, 4vw, 2.4rem);
+            line-height: 1.25;
+            margin-bottom: 12px;
+        }
+        .policy-updated {
+            display: inline-block;
+            color: var(--accent);
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .policy-divider {
+            width: 80px;
+            height: 1.5px;
+            background: var(--accent);
+            margin: 18px auto 0;
+            opacity: 0.9;
+        }
+
+        .policy-content {
+            max-width: 760px;
+            margin: 30px auto 80px;
+            padding: 0 20px;
+        }
+        .policy-content h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            font-size: 1.3rem;
+            margin: 42px 0 14px;
+        }
+        .policy-content h2:first-child { margin-top: 0; }
+        .policy-content p { color: #444; line-height: 1.75; margin-bottom: 14px; }
+        .policy-content ul { color: #444; line-height: 1.75; margin: 0 0 16px; padding-left: 22px; }
+        .policy-content li { margin-bottom: 6px; }
+        .policy-content a { color: var(--accent); }
+
+        .policy-contacts {
+            background: var(--white);
+            border-top: 4px solid var(--accent);
+            box-shadow: 0 10px 30px var(--shadow);
+            border-radius: 4px;
+            padding: 28px 30px;
+            margin-top: 10px;
+        }
+        .policy-contacts p { margin-bottom: 8px; }
+        .policy-contacts p:last-child { margin-bottom: 0; }
+
+        footer { padding: 40px 20px; text-align: center; font-size: 0.8rem; border-top: 1px solid #eee; background-color: var(--white); }
+
+        .mobile-call-btn { position: fixed; bottom: 20px; right: 20px; background-color: var(--accent); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.3); display: none; z-index: 1000; }
+
+        @media (max-width: 768px) {
+            .navbar { gap: 15px; padding: 15px 10px; font-size: 0.85rem; }
+            .mobile-call-btn { display: flex; align-items: center; gap: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="index.html">← Главная</a>
+    </nav>
+
+    <header class="policy-header">
+        <h1>Политика обработки<br>персональных данных</h1>
+        <span class="policy-updated">Действует с 2 августа 2026 года</span>
+        <div class="policy-divider"></div>
+    </header>
+
+    <main class="policy-content">
+
+        <h2>1. Общие положения</h2>
+        <p>Настоящая Политика обработки персональных данных (далее — «Политика») определяет порядок обработки персональных данных посетителей сайта nikolskiyhram.site (далее — «Сайт»).</p>
+        <p>Оператором персональных данных является Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат) (далее — «Приход», «Оператор»).</p>
+        <p>Политика разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и распространяется на всю информацию, которую Сайт может получить о посетителе во время его использования.</p>
+
+        <h2>2. Какие данные обрабатываются</h2>
+        <p>Сайт не содержит форм регистрации, обратной связи, онлайн-записи или иного способа, при котором посетитель сам вводит свои данные, — запись на богослужения и таинства принимается только по телефону, указанному в разделе «Контакты».</p>
+        <p>Единственный источник сведений о посетителях — сервис веб-аналитики «Яндекс.Метрика», который автоматически собирает:</p>
+        <ul>
+            <li>IP-адрес;</li>
+            <li>файлы cookie и идентификатор посетителя;</li>
+            <li>сведения о переходах по ссылкам и действиях на странице (карта кликов), продолжительность визита;</li>
+            <li>техническую информацию об устройстве, браузере и разрешении экрана.</li>
+        </ul>
+
+        <h2>3. Цели обработки</h2>
+        <p>Указанные данные используются исключительно для получения обезличенной статистики посещаемости Сайта — чтобы понимать, какие разделы интересны посетителям, и делать Сайт удобнее.</p>
+
+        <h2>4. Правовые основания обработки</h2>
+        <p>Обработка осуществляется на основании законного интереса Оператора в улучшении Сайта. Продолжая использовать Сайт, посетитель выражает согласие с условиями настоящей Политики; при несогласии рекомендуем воспользоваться способами отказа от сбора статистики, описанными в разделе 8.</p>
+
+        <h2>5. Передача данных третьим лицам</h2>
+        <p>Для сбора и обработки статистики Сайт использует сервис «Яндекс.Метрика», предоставляемый ООО «ЯНДЕКС». Обработка данных в рамках этого сервиса регулируется политикой конфиденциальности Яндекса, доступной по адресу <a href="https://yandex.ru/legal/confidential/" target="_blank" rel="noopener">yandex.ru/legal/confidential</a>.</p>
+        <p>Иным третьим лицам персональные данные посетителей Сайта не передаются, за исключением случаев, прямо предусмотренных законодательством Российской Федерации.</p>
+
+        <h2>6. Сроки обработки и хранения</h2>
+        <p>Данные хранятся в течение сроков, определяемых технической конфигурацией сервиса Яндекс.Метрика, в соответствии с политикой конфиденциальности ООО «ЯНДЕКС» (ссылка — в разделе 5 выше).</p>
+
+        <h2>7. Права субъекта персональных данных</h2>
+        <p>Посетитель Сайта вправе получить информацию, касающуюся обработки его персональных данных, а также потребовать их уточнения, блокирования или уничтожения, если данные являются неполными, устаревшими, неточными, незаконно полученными или не являются необходимыми для заявленной цели обработки. Обращение можно направить Оператору по контактам, указанным в разделе 10.</p>
+
+        <h2>8. Как отказаться от сбора статистики</h2>
+        <ul>
+            <li>заблокировать файлы cookie в настройках браузера;</li>
+            <li>установить официальное расширение «<a href="https://yandex.ru/support/metrica/ru/general/opt-out" target="_blank" rel="noopener">Блокировщик Яндекс Метрики</a>» — оно останавливает передачу данных в Яндекс.Метрику на всех сайтах, использующих этот сервис;</li>
+            <li>использовать любое другое расширение браузера, блокирующее счётчики веб-аналитики.</li>
+        </ul>
+
+        <h2>9. Меры по защите персональных данных</h2>
+        <p>Оператор принимает организационные и технические меры для защиты обрабатываемых данных: Сайт работает по защищённому протоколу HTTPS, а перечень источников скриптов и ресурсов, которые может подключать Сайт, ограничен политикой Content-Security-Policy.</p>
+
+        <h2>10. Контакты Оператора</h2>
+        <div class="policy-contacts">
+            <p><strong>Местная религиозная организация православный приход храма святителя Николая Чудотворца</strong><br>пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
+            <p><strong>Адрес:</strong> 673562, Забайкальский край, Сретенский район, пгт. Усть-Карск, ул. Партизанская, 1</p>
+            <p><strong>Телефон:</strong> <a href="tel:+79244588878">+7 (924) 458-88-78</a></p>
+            <p><strong>E-mail:</strong> <a href="mailto:otdel-cerkov@mail.ru">otdel-cerkov@mail.ru</a></p>
+        </div>
+
+        <h2>11. Изменения Политики</h2>
+        <p>Оператор вправе вносить изменения в настоящую Политику. Действующая редакция всегда доступна по адресу nikolskiyhram.site/privacy.html.</p>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Местная религиозная организация православный приход храма святителя Николая Чудотворца пгт. Усть-Карск Сретенского района Забайкальского края Нерчинской епархии Русской Православной Церкви (Московский Патриархат)</p>
+        <p style="margin-top: 10px;"><a href="index.html" style="color: var(--accent); text-decoration: none;">← Вернуться на главную</a></p>
+    </footer>
+
+    <a href="tel:+79244588878" class="mobile-call-btn">
+        📞 Позвонить
+    </a>
+
+</body>
+</html>
