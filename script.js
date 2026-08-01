@@ -33,10 +33,12 @@
            РАСПИСАНИЕ БОГОСЛУЖЕНИЙ
            Загружается из Google Sheets, парсит даты и отображает
            ============================================================ */
-        const googleSheetCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRTVJ5DYsoBIoIU3A_5tmGJedqi4EiBk_WGxkOU2iHch68BROayjkHQyN_nQYw-du-1kkSn066-AxmK/pub?output=csv"; 
+        // ИЗМЕНЕНО: расписание теперь берётся из локального файла в этом же репозитории,
+        // а не из внешней Google-таблицы (таблицу заблокировал сам Google — см. историю)
+        const scheduleCsvUrl = "schedule.csv"; 
 
         // ДОБАВЛЕНО: защита от XSS — экранируем спецсимволы перед вставкой через innerHTML,
-        // т.к. содержимое таблицы может отредактировать любой человек с доступом на редактирование
+        // на случай опечаток/спецсимволов при ручном редактировании schedule.csv
         function escapeHtml(str) {
             if (str === null || str === undefined) return '';
             return String(str)
@@ -145,7 +147,7 @@
                         eventsHTML = `<div style="margin-bottom: 8px;"><strong>${escapeHtml(service.time || '')}</strong> ${service.desc ? '— ' + escapeHtml(service.desc) : ''}</div>`;
                     }
 
-                    // ДОБАВЛЕНО: экранирование через escapeHtml() — защита от XSS (данные приходят из внешней Google-таблицы)
+                    // ДОБАВЛЕНО: экранирование через escapeHtml() — защита от XSS
                     li.innerHTML = `
                         <div class="schedule-header">${escapeHtml(service.displayDate)}${service.finalTitle ? '. ' + escapeHtml(service.finalTitle) : ''}</div>
                         <div class="schedule-details">${eventsHTML}</div>
@@ -155,7 +157,7 @@
             }
         }
 
-        Papa.parse(googleSheetCsvUrl, {
+        Papa.parse(scheduleCsvUrl, {
             download: true,
             header: true,
             encoding: 'UTF-8',
