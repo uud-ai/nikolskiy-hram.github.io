@@ -109,7 +109,9 @@
 
         /* ОБНОВЛЕНО: Обложка — текст сверху с крестом, храм виден целиком */
         .hero {
-            height: calc(100vh - 60px); min-height: 500px;
+            height: calc(100vh - 60px); /* запасной вариант для старых браузеров */
+            height: calc(100svh - 60px); /* ДОБАВЛЕНО: современный юнит — учитывает адресную строку мобильного браузера, чтобы блок не вылезал за экран */
+            min-height: 500px;
             background: url('church.jpg') no-repeat center center;
             background-size: cover;
             display: flex;
@@ -424,6 +426,7 @@
             .navbar { gap: 15px; padding: 15px 10px; font-size: 0.85rem; overflow-x: auto; justify-content: flex-start; scrollbar-width: none; }
             .navbar::-webkit-scrollbar { display: none; }
             .navbar a { white-space: nowrap; }
+            .hero { height: calc(78vh - 60px); height: calc(78svh - 60px); min-height: 420px; }
             .hero-content { padding-top: 30px; }
             .hero h1 { letter-spacing: 0.3px; font-size: 1.5rem; }
             .hero-divider { width: 60px; }
