@@ -2,9 +2,7 @@ backend:
   name: github
   repo: uud-ai/nikolskiy-hram.github.io
   branch: main
-  # ВАЖНО: замените на адрес своего OAuth-прокси после деплоя на Vercel
-  # (см. oauth-proxy/README.md). Например: https://nikolskiy-hram-oauth.vercel.app/api
-  base_url: https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app/api
+  base_url: https://nikolskiy-hram-oauth.vercel.app/api
   auth_endpoint: auth
 
 media_folder: "news/images"
