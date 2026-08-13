@@ -2,8 +2,8 @@ backend:
   name: github
   repo: uud-ai/nikolskiy-hram.github.io
   branch: main
-  base_url: https://nikolskiy-hram-oauth.vercel.app/api
-  auth_endpoint: auth
+  base_url: https://nikolskiy-hram-oauth.vercel.app
+  auth_endpoint: api/auth
 
 media_folder: "news/images"
 public_folder: "/news/images"
