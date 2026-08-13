@@ -1,0 +1,33 @@
+backend:
+  name: github
+  repo: uud-ai/nikolskiy-hram.github.io
+  branch: main
+  # ВАЖНО: замените на адрес своего OAuth-прокси после деплоя на Vercel
+  # (см. oauth-proxy/README.md). Например: https://nikolskiy-hram-oauth.vercel.app/api
+  base_url: https://REPLACE-WITH-YOUR-VERCEL-URL.vercel.app/api
+  auth_endpoint: auth
+
+media_folder: "news/images"
+public_folder: "/news/images"
+
+publish_mode: simple
+
+collections:
+  - name: "news"
+    label: "Новости"
+    description: "Новости и объявления прихода, которые показываются на странице news.html"
+    files:
+      - file: "news.json"
+        label: "Список новостей"
+        name: "news"
+        fields:
+          - label: "Новости"
+            name: "items"
+            widget: "list"
+            label_singular: "Новость"
+            summary: "{{fields.date}} — {{fields.title}}"
+            fields:
+              - {label: "Заголовок", name: "title", widget: "string"}
+              - {label: "Дата", name: "date", widget: "datetime", format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false, picker_utc: true}
+              - {label: "Фотография", name: "image", widget: "image", required: false, hint: "Необязательно. Если не выбрать фото, новость покажется без картинки."}
+              - {label: "Текст новости", name: "text", widget: "text"}
