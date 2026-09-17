@@ -70,7 +70,10 @@
         } else {
             section.style.display = 'block';
         }
-    }).catch(function () {
+    }).catch(function (error) {
+        // ДОБАВЛЕНО: Вывод ошибки в консоль, чтобы понять, почему скрипт падает
+        console.error("Ошибка в readings.js:", error);
+        
         // Файлы недоступны/повреждены — прячем блок, а не показываем пустоту/ошибку
         section.style.display = 'none';
     });
