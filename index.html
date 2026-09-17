@@ -214,16 +214,62 @@
         .quote-author { display: block; margin-top: 20px; font-weight: 600; font-size: 0.95rem; color: #555; }
         .quote-source { display: block; margin-top: 4px; font-size: 0.85rem; color: #888; }
         
-        /* ДОБАВЛЕНО: блок «Чтения дня» (readings.js + cycle.js + bible-text.js) */
+        /* Чтения дня */
         .reading-card { max-width: 700px; margin: 0 auto; background: var(--white); padding: 40px; box-shadow: 0 20px 40px var(--shadow); border-radius: 4px; }
         .reading-card h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 8px; font-size: 1.8rem; text-align: center; }
         .reading-date { text-align: center; color: #888; font-size: 0.9rem; margin-bottom: 8px; }
         .reading-note { text-align: center; color: #555; font-style: italic; font-size: 0.95rem; margin-bottom: 20px; }
-        .reading-block { margin-top: 28px; }
-        .reading-block h3 { font-family: 'Playfair Display', serif; color: var(--accent); font-size: 1.1rem; margin-bottom: 6px; }
-        .reading-ref { font-weight: 600; color: #555; font-size: 0.9rem; margin-bottom: 10px; }
-        .reading-block blockquote { font-style: italic; font-size: 1.05rem; line-height: 1.7; color: var(--text); border: none; padding: 0; margin: 0; }
 
+        /* === ДОБАВЛЕНО: Стили для аккордеонов чтений === */
+        .reading-accordion {
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background-color: var(--white);
+        }
+        .accordion-trigger {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: #f9fafb;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1.05rem;
+            text-align: left;
+            color: var(--text);
+            transition: background-color 0.2s ease;
+        }
+        .accordion-trigger:hover { background: #f3f4f6; }
+        .accordion-title strong {
+            color: var(--accent);
+            font-weight: 600;
+            margin-right: 0.5rem;
+            font-family: 'Playfair Display', serif;
+        }
+        .accordion-ref { color: #6b7280; font-size: 0.95em; font-weight: 600; }
+        .accordion-icon { transition: transform 0.3s ease; flex-shrink: 0; margin-left: 1rem; color: #6b7280; }
+        .reading-accordion.active .accordion-icon { transform: rotate(180deg); }
+        .accordion-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows 0.3s ease-out;
+        }
+        .reading-accordion.active .accordion-content { grid-template-rows: 1fr; }
+        .accordion-inner { overflow: hidden; }
+        .reading-text {
+            padding: 1rem 1.25rem;
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 1.05rem;
+            font-style: italic;
+        }
+        .reading-text p:first-child { margin-top: 0; }
+        .reading-text p:last-child { margin-bottom: 0; }
+        /* ============================================== */
 
         /* ДОБАВЛЕНО: раздел «О храме» — та же карточка, что и у настоятеля, но зеркально (фото справа) */
         .about-card { display: flex; flex-direction: row-reverse; align-items: center; gap: 40px; background: var(--white); padding: 40px; box-shadow: 0 20px 40px var(--shadow); border-radius: 4px; }
@@ -526,16 +572,47 @@
             <h2>Чтения дня</h2>
             <div class="reading-date" id="reading-date"></div>
             <div class="reading-note" id="reading-note"></div>
-            <div class="reading-block" id="reading-apostle-block">
-                <h3>Апостол</h3>
-                <div class="reading-ref" id="reading-apostle-ref"></div>
-                <blockquote id="reading-apostle-text"></blockquote>
+            
+            <!-- ИЗМЕНЕНО: Аккордеон для Апостола -->
+            <div class="reading-accordion" id="reading-apostle-block">
+                <button class="accordion-trigger" aria-expanded="false" type="button">
+                    <span class="accordion-title">
+                        <strong>Апостол</strong>
+                        <!-- Оригинальный ID для вставки ссылки скриптом -->
+                        <span class="accordion-ref" id="reading-apostle-ref"></span>
+                    </span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <!-- Оригинальный ID для вставки текста скриптом -->
+                        <div class="reading-text" id="reading-apostle-text"></div>
+                    </div>
+                </div>
             </div>
-            <div class="reading-block" id="reading-gospel-block">
-                <h3>Евангелие</h3>
-                <div class="reading-ref" id="reading-gospel-ref"></div>
-                <blockquote id="reading-gospel-text"></blockquote>
+
+            <!-- ИЗМЕНЕНО: Аккордеон для Евангелия -->
+            <div class="reading-accordion" id="reading-gospel-block">
+                <button class="accordion-trigger" aria-expanded="false" type="button">
+                    <span class="accordion-title">
+                        <strong>Евангелие</strong>
+                        <!-- Оригинальный ID для вставки ссылки скриптом -->
+                        <span class="accordion-ref" id="reading-gospel-ref"></span>
+                    </span>
+                    <svg class="accordion-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </button>
+                <div class="accordion-content">
+                    <div class="accordion-inner">
+                        <!-- Оригинальный ID для вставки текста скриптом -->
+                        <div class="reading-text" id="reading-gospel-text"></div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 
@@ -662,6 +739,28 @@
         📞 Позвонить
     </a>
 
+    <!-- ДОБАВЛЕНО: Инлайн-скрипт логики аккордеона -->
+    <script>
+        document.addEventListener('click', (event) => {
+            const trigger = event.target.closest('.accordion-trigger');
+            if (!trigger) return;
+
+            const accordion = trigger.closest('.reading-accordion');
+            if (accordion) {
+                const isActive = accordion.classList.toggle('active');
+                trigger.setAttribute('aria-expanded', isActive);
+                
+                // Опционально: Закрыть другой аккордеон при открытии текущего
+                document.querySelectorAll('.reading-accordion.active').forEach(activeAccordion => {
+                    if (activeAccordion !== accordion) {
+                        activeAccordion.classList.remove('active');
+                        activeAccordion.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
+        });
+    </script>
+    
     <script src="script.js"></script>
     <script src="quotes.js"></script>
     <script src="cycle.js"></script>

@@ -1,5 +1,4 @@
-
-        /* ============================================================
+/* ============================================================
            ЦЕРКОВНЫЙ КАЛЕНДАРЬ — сегодняшняя дата
            Показываем дату по новому и старому стилю + день недели
            ============================================================ */
@@ -274,4 +273,34 @@
             });
             if (showBtn) showBtn.addEventListener('click', loadMap);
         })();
-    
+
+        /* ============================================================
+           АККОРДЕОНЫ ДЛЯ ЧТЕНИЙ ДНЯ
+           Раскрытие/сокрытие текстов Апостола и Евангелия
+           ============================================================ */
+        document.addEventListener('click', (event) => {
+            const trigger = event.target.closest('.accordion-trigger');
+            
+            if (!trigger) return;
+
+            const accordion = trigger.closest('.reading-accordion');
+            
+            if (accordion) {
+                // Переключаем класс active
+                const isActive = accordion.classList.toggle('active');
+                
+                // Обновляем ARIA-атрибут
+                trigger.setAttribute('aria-expanded', isActive);
+                
+                // Опционально: сворачиваем другие аккордеоны, если один был открыт
+                document.querySelectorAll('.reading-accordion.active').forEach(activeAccordion => {
+                    if (activeAccordion !== accordion) {
+                        activeAccordion.classList.remove('active');
+                        const activeTrigger = activeAccordion.querySelector('.accordion-trigger');
+                        if (activeTrigger) {
+                            activeTrigger.setAttribute('aria-expanded', 'false');
+                        }
+                    }
+                });
+            }
+        });
