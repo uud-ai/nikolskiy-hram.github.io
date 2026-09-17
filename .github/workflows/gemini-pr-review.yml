@@ -61,9 +61,9 @@ jobs:
           '''
           
           response = client.models.generate_content(
-              model='gemini-2.5-flash',
-              contents=prompt
-          )
+    model='gemini-3.6-flash',
+    contents=prompt
+)
 
           # 3. Публикуем ответ Gemini как комментарий к PR
           comment_url = f'https://api.github.com/repos/{os.environ[\"REPO\"]}/issues/{os.environ[\"PR_NUMBER\"]}/comments'
