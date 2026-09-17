@@ -277,6 +277,12 @@
         .about-text h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 15px; font-size: 1.8rem; }
         .about-text p { line-height: 1.7; margin-bottom: 15px; color: #444; }
         .about-text p:last-child { margin-bottom: 0; }
+        .about-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
+        .about-gallery figure { margin: 0; background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 24px var(--shadow); }
+        .about-gallery img { display: block; width: 100%; height: 260px; object-fit: cover; cursor: zoom-in; transition: transform .25s ease; }
+        .about-gallery figure:hover img { transform: scale(1.02); }
+        .about-gallery figcaption { padding: 10px 12px 12px; color: #666; font-style: italic; font-size: .92rem; line-height: 1.4; }
+        @media (max-width: 700px) { .about-gallery { grid-template-columns: 1fr; gap: 14px; } .about-gallery img { height: 240px; } }
 
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
         .card { background: var(--white); padding: 30px; border-top: 4px solid var(--accent); box-shadow: 0 10px 30px var(--shadow); border-radius: 4px; }
@@ -532,7 +538,7 @@
     <!-- ДОБАВЛЕНО: раздел «О храме» -->
     <div class="section" id="about">
         <div class="about-card">
-            <img src="church-illustration.jpg" alt="Никольский храм пгт. Усть-Карск" class="about-photo">
+            <img src="about-photos/church-winter.jpg" alt="Свято-Никольский храм в Усть-Карске зимой" class="about-photo">
             <div class="about-text">
                 <h2>Храм святителя Николая Чудотворца в посёлке Усть-Карск</h2>
                 <p><em>Духовная святыня и историческая память забайкальской земли</em></p>
@@ -558,6 +564,28 @@
                 <p>На звоннице храма смонтирована автоматизированная система «Электронный звонарь», разработанная Международным центром колокольного искусства (г. Санкт-Петербург). При поддержке градообразующего предприятия силами работников прииска регулярно обновляется прилегающая территория.</p>
                 <p>В 2021 г. установлено новое ажурное металлическое ограждение с церковной символикой, в 2022 г. по периметру здания смонтирована ночная архитектурная подсветка. На церковной территории расположен памятник узникам и жертвам Карийской каторги, за сохранностью и реставрацией которого также проявляется систематическая забота.</p>
                 <p>Православный приход зарегистрирован в качестве юридического лица в структуре Нерчинской епархии Русской Православной Церкви (Московский Патриархат).</p>
+            </div>
+            <div class="about-gallery" aria-label="Фотографии храма">
+                <figure>
+                    <a href="about-photos/historic-ilinskaya-church.jpg" target="_blank" rel="noopener"><img src="about-photos/historic-ilinskaya-church.jpg" alt="Исторический вид Пророко-Ильинской церкви" loading="lazy"></a>
+                    <figcaption>Исторический образ Пророко-Ильинской церкви конца XIX века</figcaption>
+                </figure>
+                <figure>
+                    <a href="about-photos/church-construction.jpg" target="_blank" rel="noopener"><img src="about-photos/church-construction.jpg" alt="Строительство нового храма" loading="lazy"></a>
+                    <figcaption>Строительство Свято-Никольского храма. 2005–2006 гг.</figcaption>
+                </figure>
+                <figure>
+                    <a href="about-photos/church-interior.jpg" target="_blank" rel="noopener"><img src="about-photos/church-interior.jpg" alt="Внутреннее убранство храма" loading="lazy"></a>
+                    <figcaption>Внутреннее убранство храма</figcaption>
+                </figure>
+                <figure>
+                    <a href="about-photos/church-aerial.jpg" target="_blank" rel="noopener"><img src="about-photos/church-aerial.jpg" alt="Храм и церковная территория" loading="lazy"></a>
+                    <figcaption>Храм и церковная территория</figcaption>
+                </figure>
+                <figure>
+                    <a href="about-photos/church-exterior-2021.jpg" target="_blank" rel="noopener"><img src="about-photos/church-exterior-2021.jpg" alt="Храм летом" loading="lazy"></a>
+                    <figcaption>Свято-Никольский храм. Вид с церковной территории</figcaption>
+                </figure>
             </div>
         </div>
     </div>
