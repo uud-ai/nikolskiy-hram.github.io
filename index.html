@@ -270,19 +270,72 @@
         .reading-text p:first-child { margin-top: 0; }
         .reading-text p:last-child { margin-bottom: 0; }
         /* ============================================== */
+        /* Раздел «О храме» */
+        .about-card {
+            display: block;
+            background: var(--white);
+            padding: 48px;
+            box-shadow: 0 20px 40px var(--shadow);
+            border-radius: 4px;
+        }
+        .about-text { max-width: 980px; margin: 0 auto; }
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin-bottom: 10px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        .about-subtitle {
+            text-align: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.35rem;
+            margin: 0 auto 32px;
+            color: var(--text);
+            line-height: 1.35;
+        }
+        .about-motto {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin: 0 auto 34px;
+            font-size: 1.05rem;
+        }
+        .about-text h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent);
+            margin: 30px 0 12px;
+            font-size: 1.35rem;
+        }
+        .about-text p { line-height: 1.75; margin-bottom: 16px; color: #444; }
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            margin-top: 38px;
+            padding-top: 32px;
+            border-top: 1px solid #eee;
+        }
+        .about-gallery figure { margin: 0; }
+        .about-gallery a { display: block; overflow: hidden; border-radius: 6px; background: #f5f5f5; }
+        .about-gallery img {
+            display: block;
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            transition: transform 0.35s ease;
+            cursor: zoom-in;
+        }
+        .about-gallery a:hover img { transform: scale(1.035); }
+        .about-gallery figcaption {
+            padding: 9px 4px 0;
+            text-align: center;
+            color: #666;
+            font-size: 0.88rem;
+            line-height: 1.4;
+        }
 
-        /* ДОБАВЛЕНО: раздел «О храме» — та же карточка, что и у настоятеля, но зеркально (фото справа) */
-        .about-card { display: flex; flex-direction: row-reverse; align-items: center; gap: 40px; background: var(--white); padding: 40px; box-shadow: 0 20px 40px var(--shadow); border-radius: 4px; }
-        .about-photo { width: 280px; height: auto; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
-        .about-text h2 { font-family: 'Playfair Display', serif; color: var(--accent); margin-bottom: 15px; font-size: 1.8rem; }
-        .about-text p { line-height: 1.7; margin-bottom: 15px; color: #444; }
         .about-text p:last-child { margin-bottom: 0; }
-        .about-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; margin-top: 30px; }
-        .about-gallery figure { margin: 0; background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 10px 24px var(--shadow); }
-        .about-gallery img { display: block; width: 100%; height: 260px; object-fit: cover; cursor: zoom-in; transition: transform .25s ease; }
-        .about-gallery figure:hover img { transform: scale(1.02); }
-        .about-gallery figcaption { padding: 10px 12px 12px; color: #666; font-style: italic; font-size: .92rem; line-height: 1.4; }
-        @media (max-width: 700px) { .about-gallery { grid-template-columns: 1fr; gap: 14px; } .about-gallery img { height: 240px; } }
 
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
         .card { background: var(--white); padding: 30px; border-top: 4px solid var(--accent); box-shadow: 0 10px 30px var(--shadow); border-radius: 4px; }
@@ -503,7 +556,9 @@
             .priest-card { flex-direction: column; text-align: center; padding: 30px 20px; }
             .priest-photo { width: 200px; }
             .priest-text blockquote { border-left: none; border-top: 2px solid var(--accent); padding-left: 0; padding-top: 15px; }
-            .about-card { flex-direction: column; text-align: center; padding: 30px 20px; }
+            .about-card { padding: 32px 22px; }
+            .about-gallery { grid-template-columns: 1fr 1fr; gap: 14px; }
+            .about-gallery img { height: 210px; }
             .about-photo { width: 200px; }
             .quote-card { padding: 30px 20px; }
             .grid { grid-template-columns: 1fr; }
@@ -513,6 +568,8 @@
         }
         @media (max-width: 480px) {
             .gallery-grid { grid-template-columns: 1fr; }
+            .about-gallery { grid-template-columns: 1fr; }
+            .about-gallery img { height: 250px; }
         }
     </style>
 </head>
@@ -535,57 +592,38 @@
         <a href="#about" class="scroll-hint" aria-label="Прокрутить вниз">⌄</a>
     </section>
 
-    <!-- ДОБАВЛЕНО: раздел «О храме» -->
+    <!-- Раздел «О храме» -->
     <div class="section" id="about">
         <div class="about-card">
-            <img src="about-photos/church-winter.jpg" alt="Свято-Никольский храм в Усть-Карске зимой" class="about-photo">
             <div class="about-text">
-                <h2>Храм святителя Николая Чудотворца в посёлке Усть-Карск</h2>
-                <p><em>Духовная святыня и историческая память забайкальской земли</em></p>
+                <h2>Храм святителя Николая Чудотворца<br>в поселке Усть-Карск</h2>
+                <p class="about-motto">Духовная святыня и историческая память забайкальской земли</p>
 
                 <h3>Страницы истории: духовное наследие XIX–XX веков</h3>
-                <p>История православной жизни в селении Усть-Карийском (ныне — пгт. Усть-Карск Сретенского района Забайкальского края) тесно переплетена с важными историческими событиями региона. В 1877 г. в селе была построена деревянная церковь в честь Святителя Николая Чудотворца, а в 1893 г. возведена деревянная Пророко-Ильинская церковь.</p>
-                <p>В конце июля — начале августа 1897 г. Забайкалье пережило крупнейшее наводнение: 2 августа вода в Пророко-Ильинском храме поднялась на 3,5 метра. Несмотря на разрушения, прихожане перенесли храм на возвышенное место, и 21 января 1900 г. обновленное здание было освящено. В 1899 г. при приходе открылась церковно-приходская школа.</p>
-                <p>В 1891 г. Усть-Карийскую пристань (на пароходе «Вестник») посетил цесаревич Николай Александрович (будущий император-страстотерпец Николай II), возвращавшийся из восточного путешествия. В 1930-х гг. Ильинский храм был снесен. На его месте в 1977 г. построили клуб «Горняк», сгоревший в 1997 г.</p>
+                <p>История православной жизни в селении Усть-Карийском (ныне – пгт. Усть-Карск Сретенского района Забайкальского края) тесно переплетена с важными историческими событиями региона. В 1877 г. в селе была построена деревянная церковь в честь Святителя Николая Чудотворца, а в 1893 г. возведена деревянная Пророко-Ильинская церковь. В конце июля – начале августа 1897 г. Забайкалье пережило крупнейшее наводнение: 2 августа вода в Пророко-Ильинском храме поднялась на 3,5 метра. Несмотря на разрушения, прихожане перенесли храм на возвышенное место, и 21 января 1900 г. обновленное здание было освящено. В 1899 г. при приходе открылась церковно-приходская школа. В 1891 г. Усть-Карийскую пристань (на пароходе «Вестник») посетил цесаревич Николай Александрович (будущий император-страстотерпец Николай II), возвращавшийся из восточного путешествия. В 1930-х гг. Ильинский храм был снесен. На его месте в 1977 г. построили клуб «Горняк», сгоревший в 1997 г.</p>
 
                 <h3>Возрождение святыни</h3>
-                <p>Несколько лет пепелище оставалось немым напоминанием о трагедии, пока весной 2005 г. жители поселка спонтанно не вышли на субботник. Общими усилиями завалы сгоревшего клуба были разобраны, а территория очищена. Именно тогда, на очищенной святой земле, зародилась общая решимость и было принято судьбоносное решение — возродить здесь храм и восстановить историческую справедливость.</p>
-                <p>Началом этого нового этапа в духовной жизни поселка стала инициатива уроженца этих мест, генерального директора АО «Прииск Усть-Кара» Валерия Павловича Котельникова: началось возведение нового храма на месте прежней Ильинской церкви. Проект опирался на сохранившиеся старинные фотографии конца XIX века. Строительство объединило неравнодушных жителей, а основную финансовую и организационную нагрузку взяло на себя предприятие АО «Прииск Усть-Кара» при участии меценатов и частных пожертвований.</p>
-                <p><strong>19 декабря 2006 г.</strong>, в день памяти святителя Николая Чудотворца, епископ Читинский и Забайкальский Евстафий совершил чин освящения новосооруженного Свято-Никольского храма.</p>
+                <p>Несколько лет пепелище оставалось немым напоминанием о трагедии, пока весной 2005 г. жители поселка спонтанно не вышли на субботник. Общими усилиями завалы сгоревшего клуба были разобраны, а территория очищена. Именно тогда, на очищенной святой земле, зародилась общая решимость и было принято судьбоносное решение – возродить здесь храм и восстановить историческую справедливость. Началом этого нового этапа в духовной жизни поселка стала инициатива уроженца этих мест, генерального директора АО «Прииск Усть-Кара» Валерия Павловича Котельникова: началось возведение нового храма на месте прежней Ильинской церкви. Проект опирался на сохранившиеся старинные фотографии конца XIX века. Строительство объединило неравнодушных жителей, а основную финансовую и организационную нагрузку взяло на себя предприятие АО «Прииск Усть-Кара» при участии меценатов и частных пожертвований. <strong>19 декабря 2006 г.</strong>, в день памяти святителя Николая Чудотворца, епископ Читинский и Забайкальский Евстафий совершил чин освящения новосооруженного Свято-Никольского храма.</p>
 
                 <h3>Архитектура, внутреннее убранство и святыни</h3>
                 <p>Свято-Никольский храм отличается изяществом, лаконичностью и гармонично вписан в окружающий забайкальский пейзаж. Внутреннее пространство украшают витражные окна и резные деревянные элементы.</p>
-                <p>Первоначальный иконостас и Царские врата были выполнены мастером-резчиком Сергеем Горелко. Иконы для иконостаса были написаны Андреем Карповым — ведущим реставратором Иркутской епархии.</p>
+                <p>Первоначальный иконостас и Царские врата были выполнены мастером-резчиком Сергеем Горелко. Иконы для иконостаса были написаны Андреем Карповым – ведущим реставратором Иркутской епархии.</p>
                 <p>В 2026 г. при поддержке АО «Прииск Усть-Кара» в храме был установлен новый величественный иконостас, изготовленный фабрикой «Абрамцевские мастерские» (Московская область). Иконы для него написаны мастерами Свято-Троицкого братства г. Щигры Курской области.</p>
                 <p>В храме находятся чтимые иконы: ростовая икона Божьей Матери «Старица» (греч. Геронтисса) и образ Николая Чудотворца. Иконы были приобретены в церкви святого Николая в городе Мира (Демре), провинция Анталья, Турция и подарены в наш храм В. П. Котельниковым в 2023 г.</p>
 
                 <h3>Храм сегодня: приходская жизнь и благоустройство</h3>
-                <p>В настоящее время храм Святителя Николая Чудотворца является действующим центром духовной жизни поселка. За короткий срок сформировалась полноценная приходская община, появились церковный хор, чтецы и алтарники. Богослужения совершаются по воскресным дням и праздникам.</p>
-                <p>На звоннице храма смонтирована автоматизированная система «Электронный звонарь», разработанная Международным центром колокольного искусства (г. Санкт-Петербург). При поддержке градообразующего предприятия силами работников прииска регулярно обновляется прилегающая территория.</p>
+                <p>В настоящее время храм Святителя Николая Чудотворца является действующим центром духовной жизни поселка. За короткий срок сформировалась полноценная приходская община, появились церковный хор, чтецы и алтарники. Богослужения совершаются по воскресным дням и праздникам. На звоннице храма смонтирована автоматизированная система «Электронный звонарь», разработанная Международным центром колокольного искусства (г. Санкт-Петербург). При поддержке градообразующего предприятия силами работников прииска регулярно обновляется прилегающая территория.</p>
                 <p>В 2021 г. установлено новое ажурное металлическое ограждение с церковной символикой, в 2022 г. по периметру здания смонтирована ночная архитектурная подсветка. На церковной территории расположен памятник узникам и жертвам Карийской каторги, за сохранностью и реставрацией которого также проявляется систематическая забота.</p>
                 <p>Православный приход зарегистрирован в качестве юридического лица в структуре Нерчинской епархии Русской Православной Церкви (Московский Патриархат).</p>
-            </div>
-            <div class="about-gallery" aria-label="Фотографии храма">
-                <figure>
-                    <a href="about-photos/historic-ilinskaya-church.jpg" target="_blank" rel="noopener"><img src="about-photos/historic-ilinskaya-church.jpg" alt="Исторический вид Пророко-Ильинской церкви" loading="lazy"></a>
-                    <figcaption>Исторический образ Пророко-Ильинской церкви конца XIX века</figcaption>
-                </figure>
-                <figure>
-                    <a href="about-photos/church-construction.jpg" target="_blank" rel="noopener"><img src="about-photos/church-construction.jpg" alt="Строительство нового храма" loading="lazy"></a>
-                    <figcaption>Строительство Свято-Никольского храма. 2005–2006 гг.</figcaption>
-                </figure>
-                <figure>
-                    <a href="about-photos/church-interior.jpg" target="_blank" rel="noopener"><img src="about-photos/church-interior.jpg" alt="Внутреннее убранство храма" loading="lazy"></a>
-                    <figcaption>Внутреннее убранство храма</figcaption>
-                </figure>
-                <figure>
-                    <a href="about-photos/church-aerial.jpg" target="_blank" rel="noopener"><img src="about-photos/church-aerial.jpg" alt="Храм и церковная территория" loading="lazy"></a>
-                    <figcaption>Храм и церковная территория</figcaption>
-                </figure>
-                <figure>
-                    <a href="about-photos/church-exterior-2021.jpg" target="_blank" rel="noopener"><img src="about-photos/church-exterior-2021.jpg" alt="Храм летом" loading="lazy"></a>
-                    <figcaption>Свято-Никольский храм. Вид с церковной территории</figcaption>
-                </figure>
+
+                <div class="about-gallery" aria-label="Фотографии храма">
+                    <figure><a href="church-winter.jpg" class="about-photo-link"><img src="church-winter.jpg" alt="Свято-Никольский храм зимой" loading="lazy"></a><figcaption>Свято-Никольский храм зимой</figcaption></figure>
+                    <figure><a href="historic-ilinskaya-church.jpg" class="about-photo-link"><img src="historic-ilinskaya-church.jpg" alt="Исторический вид Пророко-Ильинской церкви" loading="lazy"></a><figcaption>Исторический образ Пророко-Ильинской церкви</figcaption></figure>
+                    <figure><a href="church-construction.jpg" class="about-photo-link"><img src="church-construction.jpg" alt="Строительство нового храма" loading="lazy"></a><figcaption>Строительство Свято-Никольского храма</figcaption></figure>
+                    <figure><a href="church-interior.jpg" class="about-photo-link"><img src="church-interior.jpg" alt="Внутреннее убранство храма" loading="lazy"></a><figcaption>Внутреннее убранство храма</figcaption></figure>
+                    <figure><a href="church-aerial.jpg" class="about-photo-link"><img src="church-aerial.jpg" alt="Храм и церковная территория" loading="lazy"></a><figcaption>Храм и церковная территория</figcaption></figure>
+                    <figure><a href="church-exterior-2021.jpg" class="about-photo-link"><img src="church-exterior-2021.jpg" alt="Свято-Никольский храм летом" loading="lazy"></a><figcaption>Свято-Никольский храм. Вид с территории</figcaption></figure>
+                </div>
             </div>
         </div>
     </div>
@@ -735,24 +773,9 @@
         </div>
     </div>
 
-    <div class="section" id="gallery" style="margin-bottom: 60px;">
-        <div class="card">
-            <h3>Жизнь прихода</h3>
-            <p style="text-align: center; margin-bottom: 25px; font-size: 0.95rem; color: #555;">Радость совместной молитвы и трудов</p>
-            <!-- ИЗМЕНЕНО: конкретные alt-описания для SEO и доступности + клик по фото открывает lightbox -->
-            <div class="gallery-grid" id="gallery-grid">
-                <img src="photo1.jpg" alt="Прихожане Никольского храма после воскресной службы" class="gallery-img" loading="lazy">
-                <img src="photo2.jpg" alt="Праздничное богослужение в Никольском храме" class="gallery-img" loading="lazy">
-                <img src="photo3.jpg" alt="Богослужение в Никольском храме пгт. Усть-Карск" class="gallery-img" loading="lazy">
-                <img src="photo4.jpg" alt="Колокольня Никольского храма" class="gallery-img" loading="lazy">
-                <img src="photo5.jpg" alt="Воспитанники воскресной школы в храме" class="gallery-img" loading="lazy">
-                <img src="photo6.jpg" alt="Вид на Никольский храм пгт. Усть-Карск" class="gallery-img" loading="lazy">
-            </div>
-        </div>
-    </div>
 
-    <!-- ДОБАВЛЕНО: Lightbox для просмотра фото в увеличенном виде -->
-    <div class="lightbox" id="lightbox" role="dialog" aria-label="Просмотр фотографии">
+    <!-- Увеличение фотографий раздела «О храме» -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Просмотр фотографии">
         <button class="lightbox-close" id="lightbox-close" aria-label="Закрыть">×</button>
         <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Предыдущее фото">‹</button>
         <img class="lightbox-img" id="lightbox-img" src="" alt="">
@@ -807,6 +830,58 @@
                 });
             }
         });
+    </script>
+    
+    <script>
+        // Галерея раздела «О храме»: увеличение, стрелки и клавиатурная навигация
+        (() => {
+            const links = Array.from(document.querySelectorAll('.about-photo-link'));
+            const lightbox = document.getElementById('lightbox');
+            const image = document.getElementById('lightbox-img');
+            const counter = document.getElementById('lightbox-counter');
+            const close = document.getElementById('lightbox-close');
+            const prev = document.getElementById('lightbox-prev');
+            const next = document.getElementById('lightbox-next');
+            let current = 0;
+
+            function show(index) {
+                if (!links.length) return;
+                current = (index + links.length) % links.length;
+                const source = links[current];
+                const thumb = source.querySelector('img');
+                image.src = source.getAttribute('href');
+                image.alt = thumb ? thumb.alt : '';
+                counter.textContent = `${current + 1} / ${links.length}`;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                close.focus();
+            }
+
+            function hide() {
+                lightbox.classList.remove('active');
+                image.src = '';
+                document.body.style.overflow = '';
+            }
+
+            links.forEach((link, index) => {
+                link.addEventListener('click', event => {
+                    event.preventDefault();
+                    show(index);
+                });
+            });
+            close.addEventListener('click', hide);
+            prev.addEventListener('click', () => show(current - 1));
+            next.addEventListener('click', () => show(current + 1));
+            lightbox.addEventListener('click', event => {
+                if (event.target === lightbox) hide();
+            });
+            document.addEventListener('keydown', event => {
+                if (!lightbox.classList.contains('active')) return;
+                if (event.key === 'Escape') hide();
+                if (event.key === 'ArrowLeft') show(current - 1);
+                if (event.key === 'ArrowRight') show(current + 1);
+            });
+        })();
     </script>
     
     <script src="script.js"></script>
