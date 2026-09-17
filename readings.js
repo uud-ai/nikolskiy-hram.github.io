@@ -63,7 +63,13 @@
         fillBlock(apRefEl, apTextEl, apBlockEl, entry.apostle, entry.apostle_zachalo);
         fillBlock(goRefEl, goTextEl, goBlockEl, entry.gospel, entry.gospel_zachalo);
 
-        if (!entry.apostle && !entry.gospel) section.style.display = 'none';
+        // ИСПРАВЛЕНО: Теперь мы явно показываем блок, если данные успешно загрузились,
+        // либо оставляем его скрытым, если на сегодня нет ни Апостола, ни Евангелия
+        if (!entry.apostle && !entry.gospel) {
+            section.style.display = 'none';
+        } else {
+            section.style.display = 'block';
+        }
     }).catch(function () {
         // Файлы недоступны/повреждены — прячем блок, а не показываем пустоту/ошибку
         section.style.display = 'none';
