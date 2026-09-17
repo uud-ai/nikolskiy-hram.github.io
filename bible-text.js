@@ -11,7 +11,8 @@ var BibleText = (function () {
         "Иак": "Jas", "1Пет": "1Pet", "2Пет": "2Pet",
         "1Ин": "1John", "2Ин": "2John", "3Ин": "3John", "Иуд": "Jude",
         "1Фес": "1Thess", "2Фес": "2Thess",
-        "1Тим": "1Tim", "2Тим": "2Tim", "Тит": "Titus", "Флм": "Phlm"
+        "1Тим": "1Tim", "2Тим": "2Tim", "Тит": "Titus", "Флм": "Phlm",
+        "1Фес": "1Thess", "2Фес": "2Thess", "1Сол": "1Thess", "2Сол": "2Thess"
     };
 
     var SEG_CROSS_CHAPTER = /^(\d+):(\d+)-(\d+):(\d+)$/;
