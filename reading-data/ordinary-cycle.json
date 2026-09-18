@@ -16,7 +16,8 @@
       "1-28 (полностью)",
       "29-32 (только вс)"
     ],
-    "not_covered": "Триодь постная целиком (Неделя о мытаре и фарисее и далее); будние дни у недель 29-32."
+    "not_covered": "Будние дни у недель 29-32 (эта зона уже не движимый круг, а неподвижный рождественский — в разные годы календарно не совпадает с одними и теми же номерами недель, поэтому статичной таблицей не заполняется). Постная Триодь теперь отдельно в reading-data/triodion-cycle.json (считается от Пасхи назад, не от Пятидесятницы).",
+    "otstupka_caveat": "Недели 5, 10(будни чт), 15-18, 20-21, 23-25 (сб, иногда пт): Евангелие там взято из ОДНОГО опорного года (2024) и зависит от 'отступки' — сдвига чтений от Луки, который в разные годы происходит на разной неделе в зависимости от даты Пасхи. Апостол в этих клетках проверен по 2-3 годам и стабилен; Евангелие может отличаться на ±1 чтение в отдельные годы. Недели 1-4, 6-9, 11-14, 16(вт,ср,пт), 19, 22, 26-28 проверены минимум по 2 независимым годам и надёжны."
   },
   "pascha_period": {
     "pascha": {
@@ -352,10 +353,10 @@
         "gospel_zachalo": 31
       },
       "sat": {
-        "apostle": "Флп.2:5-11",
-        "apostle_zachalo": 240,
-        "gospel": "Лк.10:38-42,11:27-28",
-        "gospel_zachalo": 54
+        "apostle": "Рим.3:19-26",
+        "apostle_zachalo": 84,
+        "gospel": "Мф.7:1-8",
+        "gospel_zachalo": 20
       },
       "sun": {
         "apostle": "Рим.2:10-16",
@@ -397,10 +398,10 @@
         "gospel_zachalo": 67
       },
       "sat": {
-        "apostle": "1Кор.4:9-16",
-        "apostle_zachalo": 131,
-        "gospel": "Мк.3:13-19",
-        "gospel_zachalo": 12
+        "apostle": "Рим.3:28-4:3",
+        "apostle_zachalo": 85,
+        "gospel": "Мф.7:24-8:4",
+        "gospel_zachalo": 24
       },
       "sun": {
         "apostle": "Рим.5:1-10",
@@ -442,10 +443,10 @@
         "gospel_zachalo": 44
       },
       "sat": {
-        "apostle": "Гал.3:23-29",
-        "apostle_zachalo": 208,
-        "gospel": "Мф.25:1-13",
-        "gospel_zachalo": 104
+        "apostle": "Рим.6:11-17",
+        "apostle_zachalo": 92,
+        "gospel": "Мф.8:14-23",
+        "gospel_zachalo": 26
       },
       "sun": {
         "apostle": "Рим.6:18-23",
@@ -487,10 +488,10 @@
         "gospel_zachalo": 50
       },
       "sat": {
-        "apostle": "1Кор.13:11-14:5",
-        "apostle_zachalo": 154,
-        "gospel": "Лк.10:19-21",
-        "gospel_zachalo": 51
+        "apostle": "Рим.8:14-21",
+        "apostle_zachalo": 97,
+        "gospel": "Мф.9:9-13",
+        "gospel_zachalo": 30
       },
       "sun": {
         "apostle": "Рим.10:1-10",
@@ -520,10 +521,10 @@
         "gospel_zachalo": 53
       },
       "thu": {
-        "apostle": "Гал.5:22-6:2",
-        "apostle_zachalo": 213,
-        "gospel": "Лк.6:17-23",
-        "gospel_zachalo": 24
+        "apostle": "1Кор.3:18-23",
+        "apostle_zachalo": 129,
+        "gospel": "Мф.13:36-43",
+        "gospel_zachalo": 54
       },
       "fri": {
         "apostle": "Иак.5:10-20",
@@ -577,10 +578,10 @@
         "gospel_zachalo": 52
       },
       "sat": {
-        "apostle": "Флп.2:5-11",
-        "apostle_zachalo": 240,
-        "gospel": "Лк.10:38-42,11:27-28",
-        "gospel_zachalo": 54
+        "apostle": "Рим.12:1-3",
+        "apostle_zachalo": 108,
+        "gospel": "Мф.10:37-11:1",
+        "gospel_zachalo": 39
       },
       "sun": {
         "apostle": "Рим.15:1-7",
@@ -700,10 +701,10 @@
         "gospel_zachalo": 54
       },
       "thu": {
-        "apostle": "Кол.1:12-18",
-        "apostle_zachalo": 250,
-        "gospel": "Лк.9:51-56,10:22-24",
-        "gospel_zachalo": 48
+        "apostle": "2Кор.1:1-7",
+        "apostle_zachalo": 167,
+        "gospel": "Мф.21:43-46",
+        "gospel_zachalo": 88
       },
       "fri": {
         "apostle": "2Кор.1:12-20",
@@ -712,10 +713,10 @@
         "gospel_zachalo": 91
       },
       "sat": {
-        "apostle": "Еф.6:10-17",
-        "apostle_zachalo": 233,
-        "gospel": "Лк.12:2-12",
-        "gospel_zachalo": 63
+        "apostle": "Рим.15:30-33",
+        "apostle_zachalo": 119,
+        "gospel": "Мф.17:24-18:4",
+        "gospel_zachalo": 73
       },
       "sun": {
         "apostle": "1Кор.4:9-16",
@@ -757,10 +758,10 @@
         "gospel_zachalo": 100
       },
       "sat": {
-        "apostle": "Тит.1:1-4,2:15-3:3,12-13,15",
-        "apostle_zachalo": 300,
-        "gospel": "Мф.5:14-19",
-        "gospel_zachalo": 11
+        "apostle": "1Кор.1:3-9",
+        "apostle_zachalo": 123,
+        "gospel": "Мф.19:3-12",
+        "gospel_zachalo": 78
       },
       "sun": {
         "apostle": "1Кор.9:2-12",
@@ -853,10 +854,10 @@
         "gospel_zachalo": 54
       },
       "sun": {
-        "apostle": "Гал.6:11-18",
-        "apostle_zachalo": 215,
-        "gospel": "Ин.3:13-17",
-        "gospel_zachalo": 9,
+        "apostle": "1Кор.16:13-24",
+        "apostle_zachalo": 166,
+        "gospel": "Мф.21:33-42",
+        "gospel_zachalo": 87,
         "note": "Неделя 13-я по Пятидесятнице, о злых виноградарях"
       }
     },
@@ -892,16 +893,16 @@
         "gospel_zachalo": 60
       },
       "sat": {
-        "apostle": "1Кор.1:26-29",
-        "apostle_zachalo": 125,
-        "gospel": "Ин.8:21-30",
-        "gospel_zachalo": 30
+        "apostle": "1Кор.4:1-5",
+        "apostle_zachalo": 130,
+        "gospel": "Мф.23:1-12",
+        "gospel_zachalo": 93
       },
       "sun": {
-        "apostle": "Гал.2:16-20",
-        "apostle_zachalo": 203,
-        "gospel": "Мк.8:34-9:1",
-        "gospel_zachalo": 37,
+        "apostle": "2Кор.1:21-2:4",
+        "apostle_zachalo": 170,
+        "gospel": "Мф.22:1-14",
+        "gospel_zachalo": 89,
         "note": "Неделя 14-я по Пятидесятнице, о браке царского сына"
       }
     },
@@ -937,10 +938,10 @@
         "gospel_zachalo": 14
       },
       "sat": {
-        "apostle": "Евр.4:14-5:6",
-        "apostle_zachalo": 311,
-        "gospel": "Ин.10:9-16",
-        "gospel_zachalo": 36
+        "apostle": "1Кор.4:17-5:5",
+        "apostle_zachalo": 132,
+        "gospel": "Лк.4:31-36",
+        "gospel_zachalo": 15
       },
       "sun": {
         "apostle": "2Кор.4:6-15",
@@ -959,16 +960,16 @@
         "gospel_zachalo": 16
       },
       "tue": {
-        "apostle": "Гал.5:22-6:2",
-        "apostle_zachalo": 213,
-        "gospel": "Лк.6:17-23",
-        "gospel_zachalo": 24
+        "apostle": "Гал.5:11-21",
+        "apostle_zachalo": 212,
+        "gospel": "Мк.7:5-16",
+        "gospel_zachalo": 28
       },
       "wed": {
-        "apostle": "1Ин.4:12-19",
-        "apostle_zachalo": 73,
-        "gospel": "Ин.4:12-19",
-        "gospel_zachalo": 73
+        "apostle": "Гал.6:2-10",
+        "apostle_zachalo": 214,
+        "gospel": "Мк.7:14-24",
+        "gospel_zachalo": 29
       },
       "thu": {
         "apostle": "Гал.6:2-10",
@@ -979,14 +980,14 @@
       "fri": {
         "apostle": "Еф.1:7-17",
         "apostle_zachalo": 217,
-        "gospel": "Лк.6:17-23",
-        "gospel_zachalo": 24
+        "gospel": "Мк.8:1-10",
+        "gospel_zachalo": 32
       },
       "sat": {
-        "apostle": "Гал.5:22-6:2",
-        "apostle_zachalo": 213,
-        "gospel": "Лк.6:17-23",
-        "gospel_zachalo": 24
+        "apostle": "1Кор.10:23-28",
+        "apostle_zachalo": 146,
+        "gospel": "Мф.24:34-44",
+        "gospel_zachalo": 101
       },
       "sun": {
         "apostle": "2Кор.6:1-10",
@@ -1028,10 +1029,10 @@
         "gospel_zachalo": 32
       },
       "sat": {
-        "apostle": "1Кор.4:9-16",
-        "apostle_zachalo": 131,
-        "gospel": "Ин.20:19-31",
-        "gospel_zachalo": 65
+        "apostle": "1Кор.14:20-25",
+        "apostle_zachalo": 156,
+        "gospel": "Лк.5:27-32",
+        "gospel_zachalo": 20
       },
       "sun": {
         "apostle": "2Кор.6:16-7:1",
@@ -1073,10 +1074,10 @@
         "gospel_zachalo": 42
       },
       "sat": {
-        "apostle": "Флп.2:5-11",
-        "apostle_zachalo": 240,
-        "gospel": "Лк.10:38-42,11:27-28",
-        "gospel_zachalo": 54
+        "apostle": "1Кор.15:39-45",
+        "apostle_zachalo": 162,
+        "gospel": "Лк.6:1-10",
+        "gospel_zachalo": 22
       },
       "sun": {
         "apostle": "2Кор.9:6-11",
@@ -1157,16 +1158,16 @@
         "gospel_zachalo": 57
       },
       "fri": {
-        "apostle": "Евр.12:6-13,25-27",
-        "apostle_zachalo": 331,
-        "gospel": "Мф.8:23-27",
-        "gospel_zachalo": 27
+        "apostle": "Флп.3:8-19",
+        "apostle_zachalo": 245,
+        "gospel": "Лк.11:23-26",
+        "gospel_zachalo": 58
       },
       "sat": {
-        "apostle": "Еф.6:10-17",
-        "apostle_zachalo": 233,
-        "gospel": "Лк.21:12-19",
-        "gospel_zachalo": 106
+        "apostle": "2Кор.1:8-11",
+        "apostle_zachalo": 168,
+        "gospel": "Лк.8:16-21",
+        "gospel_zachalo": 36
       },
       "sun": {
         "apostle": "Гал.1:11-19",
@@ -1208,10 +1209,10 @@
         "gospel_zachalo": 63
       },
       "sat": {
-        "apostle": "Еф.6:10-17",
-        "apostle_zachalo": 233,
-        "gospel": "Лк.21:12-19",
-        "gospel_zachalo": 106
+        "apostle": "2Кор.3:12-18",
+        "apostle_zachalo": 174,
+        "gospel": "Лк.9:1-6",
+        "gospel_zachalo": 40
       },
       "sun": {
         "apostle": "Гал.2:16-20",
@@ -1298,10 +1299,10 @@
         "gospel_zachalo": 82
       },
       "sat": {
-        "apostle": "Гал.5:22-6:2",
-        "apostle_zachalo": 213,
-        "gospel": "Мф.4:25-5:12",
-        "gospel_zachalo": 10
+        "apostle": "2Кор.8:1-5",
+        "apostle_zachalo": 185,
+        "gospel": "Лк.9:57-62",
+        "gospel_zachalo": 49
       },
       "sun": {
         "apostle": "Еф.2:4-10",
@@ -1343,10 +1344,10 @@
         "gospel_zachalo": 95
       },
       "sat": {
-        "apostle": "Еф.6:10-17",
-        "apostle_zachalo": 233,
-        "gospel": "Лк.21:12-19",
-        "gospel_zachalo": 106
+        "apostle": "2Кор.11:1-6",
+        "apostle_zachalo": 191,
+        "gospel": "Лк.10:19-21",
+        "gospel_zachalo": 51
       },
       "sun": {
         "apostle": "Еф.2:14-22",
@@ -1388,10 +1389,10 @@
         "gospel_zachalo": 101
       },
       "sat": {
-        "apostle": "Кол.3:12-16",
-        "apostle_zachalo": 258,
-        "gospel": "Лк.6:31-36",
-        "gospel_zachalo": 26
+        "apostle": "Гал.1:3-10",
+        "apostle_zachalo": 199,
+        "gospel": "Лк.12:32-40",
+        "gospel_zachalo": 67
       },
       "sun": {
         "apostle": "Еф.4:1-6",
