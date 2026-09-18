@@ -1,0 +1,305 @@
+{
+  "_comment": "Постная Триодь: рядовые чтения от Недели о мытаре и фарисее до конца Страстной седмицы. Ключ в triodion_period — 'моя' неделя, отсчитанная НАЗАД от Пасхи (w=1 — неделя, кончающаяся Вербным воскресеньем; w=10 — неделя, кончающаяся Неделей о мытаре и фарисее). Каждая неделя — будни (mon..sat) перед воскресеньем, которым она заканчивается (sun). holy_week — Страстная седмица (Пн..Сб), особые для каждого дня чтения, вне общей недельной сетки. Будни Великого поста в большинстве своём не имеют Апостола/Евангелия на Литургии (положены только чтения Ветхого Завета на часах/вечерне для Литургии Преждеосвященных Даров) — это не пробел в данных, а особенность устава, поэтому такие дни null.",
+  "_coverage": {
+    "source": "azbyka.ru, скрейп на 2024 год (см. orthodox-parser/orthodox-readings-2024.json), Пасха 2024 = 2024-05-05",
+    "known_limitations": [
+      "Великая Пятница (holy_week.fri): Литургии не бывает, чтения часов составные — не показываются, только note.",
+      "Великий Четверг (holy_week.thu): Евангелие на Литургии составное (Мф+Ин+Лк) — не показывается, только Апостол.",
+      "zachalo не всегда извлечён (нестандартный формат подписи в источнике) — это не влияет на текст, только на пометку 'зач. N'."
+    ]
+  },
+  "triodion_period": {
+    "1": {
+      "sun": {
+        "apostle": "Флп.4:4-9",
+        "apostle_zachalo": 247,
+        "gospel": "Ин.12:1-18",
+        "gospel_zachalo": 41,
+        "note": "Неделя ваий (Вход Господень в Иерусалим, Вербное воскресенье)"
+      },
+      "sat": {
+        "apostle": "Евр.12:28-13:8",
+        "apostle_zachalo": 333,
+        "gospel": "Ин.11:1-45",
+        "gospel_zachalo": 39
+      },
+      "fri": null,
+      "thu": null,
+      "wed": null,
+      "tue": null,
+      "mon": null
+    },
+    "2": {
+      "sun": {
+        "apostle": "Евр.9:11-14",
+        "apostle_zachalo": 321,
+        "gospel": "Мк.10:32-45",
+        "gospel_zachalo": 47,
+        "note": "Неделя 5-я Великого поста, прп. Марии Египетской"
+      },
+      "sat": {
+        "apostle": "Евр.9:24-28",
+        "apostle_zachalo": 322,
+        "gospel": "Мк.8:27-31",
+        "gospel_zachalo": 35
+      },
+      "fri": null,
+      "thu": null,
+      "wed": null,
+      "tue": null,
+      "mon": null
+    },
+    "3": {
+      "sun": {
+        "apostle": "Евр.6:13-20",
+        "apostle_zachalo": 314,
+        "gospel": "Мк.9:17-31",
+        "gospel_zachalo": 40,
+        "note": "Неделя 4-я Великого поста, прп. Иоанна Лествичника"
+      },
+      "sat": {
+        "apostle": "Евр.6:9-12",
+        "apostle_zachalo": 313,
+        "gospel": "Мк.7:31-37",
+        "gospel_zachalo": 31
+      },
+      "fri": null,
+      "thu": null,
+      "wed": null,
+      "tue": null,
+      "mon": null
+    },
+    "4": {
+      "sun": {
+        "apostle": "Евр.4:14-5:6",
+        "apostle_zachalo": 311,
+        "gospel": "Мк.8:34-9:1",
+        "gospel_zachalo": 37,
+        "note": "Неделя 3-я, Крестопоклонная"
+      },
+      "sat": {
+        "apostle": "Евр.10:32-38",
+        "apostle_zachalo": 325,
+        "gospel": "Мк.2:14-17",
+        "gospel_zachalo": 8
+      },
+      "fri": null,
+      "thu": null,
+      "wed": null,
+      "tue": null,
+      "mon": null
+    },
+    "5": {
+      "sun": {
+        "apostle": "Евр.1:10-2:3",
+        "apostle_zachalo": 304,
+        "gospel": "Мк.2:1-12",
+        "gospel_zachalo": 7,
+        "note": "Неделя 2-я Великого поста, свт. Григория Паламы"
+      },
+      "sat": {
+        "apostle": "Евр.3:12-16",
+        "apostle_zachalo": 309,
+        "gospel": "Мк.1:35-44",
+        "gospel_zachalo": 6
+      },
+      "fri": null,
+      "thu": null,
+      "wed": null,
+      "tue": null,
+      "mon": null
+    },
+    "6": {
+      "sun": {
+        "apostle": "Евр.11:24-26,32-12:2",
+        "apostle_zachalo": 329,
+        "gospel": "Ин.1:43-51",
+        "gospel_zachalo": 5,
+        "note": "Неделя 1-я Великого поста, Торжество Православия"
+      },
+      "sat": {
+        "apostle": "Евр.1:1-12",
+        "apostle_zachalo": 303,
+        "gospel": "Мк.2:23-3:5",
+        "gospel_zachalo": 10
+      },
+      "fri": null,
+      "thu": null,
+      "wed": null,
+      "tue": null,
+      "mon": null
+    },
+    "7": {
+      "sun": {
+        "apostle": "Рим.13:11-14:4",
+        "apostle_zachalo": 112,
+        "gospel": "Мф.6:14-21",
+        "gospel_zachalo": 17,
+        "note": "Неделя сыропустная (Прощёное воскресенье), Воспоминание Адамова изгнания"
+      },
+      "sat": {
+        "apostle": "Рим.14:19-26",
+        "apostle_zachalo": 115,
+        "gospel": "Мф.6:1-13",
+        "gospel_zachalo": 16
+      },
+      "fri": null,
+      "thu": {
+        "apostle": "Иуд.1:11-25",
+        "apostle_zachalo": 78,
+        "gospel": "Лк.23:1-34,44-56",
+        "gospel_zachalo": 110
+      },
+      "wed": null,
+      "tue": {
+        "apostle": "Иуд.1:1-10",
+        "apostle_zachalo": 77,
+        "gospel": "Лк.22:39-42,45-23:1",
+        "gospel_zachalo": 109
+      },
+      "mon": {
+        "apostle": "3Ин.1:1-15",
+        "apostle_zachalo": 76,
+        "gospel": "Лк.19:29-40,22:7-39",
+        "gospel_zachalo": 96
+      }
+    },
+    "8": {
+      "sun": {
+        "apostle": "1Кор.8:8-9:2",
+        "apostle_zachalo": 140,
+        "gospel": "Мф.25:31-46",
+        "gospel_zachalo": 106,
+        "note": "Неделя мясопустная, о Страшном Суде"
+      },
+      "sat": {
+        "apostle": "1Кор.10:23-28",
+        "apostle_zachalo": 146,
+        "gospel": "Лк.21:8-9,25-27,33-36",
+        "gospel_zachalo": 105
+      },
+      "fri": {
+        "apostle": "2Ин.1:1-13",
+        "apostle_zachalo": 75,
+        "gospel": "Мк.15:22,25,33-41",
+        "gospel_zachalo": 68
+      },
+      "thu": {
+        "apostle": "1Ин.4:20-5:21",
+        "apostle_zachalo": 74,
+        "gospel": "Мк.15:1-15",
+        "gospel_zachalo": 66
+      },
+      "wed": {
+        "apostle": "1Ин.3:21-4:6",
+        "apostle_zachalo": 73,
+        "gospel": "Мк.14:43-15:1",
+        "gospel_zachalo": 65
+      },
+      "tue": {
+        "apostle": "1Ин.3:10-20",
+        "apostle_zachalo": 72,
+        "gospel": "Мк.14:10-42",
+        "gospel_zachalo": 64
+      },
+      "mon": {
+        "apostle": "1Ин.2:18-3:10",
+        "apostle_zachalo": 71,
+        "gospel": "Мк.11:1-11",
+        "gospel_zachalo": 49
+      }
+    },
+    "9": {
+      "sun": {
+        "apostle": "1Кор.6:12-20",
+        "apostle_zachalo": 135,
+        "gospel": "Лк.15:11-32",
+        "gospel_zachalo": 79,
+        "note": "Неделя о блудном сыне"
+      },
+      "sat": {
+        "apostle": "2Тим.3:1-9",
+        "apostle_zachalo": 295,
+        "gospel": "Лк.20:45-21:4",
+        "gospel_zachalo": 103
+      },
+      "fri": {
+        "apostle": "1Ин.2:7-17",
+        "apostle_zachalo": 70,
+        "gospel": "Мк.14:3-9",
+        "gospel_zachalo": 63
+      },
+      "thu": {
+        "apostle": "1Ин.1:8-2:6",
+        "apostle_zachalo": 69,
+        "gospel": "Мк.13:31-14:2",
+        "gospel_zachalo": 62
+      },
+      "wed": {
+        "apostle": "2Пет.3:1-18",
+        "apostle_zachalo": 68,
+        "gospel": "Мк.13:24-31",
+        "gospel_zachalo": 61
+      },
+      "tue": {
+        "apostle": "2Пет.2:9-22",
+        "apostle_zachalo": 67,
+        "gospel": "Мк.13:14-23",
+        "gospel_zachalo": 60
+      },
+      "mon": {
+        "apostle": "2Пет.1:20-2:9",
+        "apostle_zachalo": 66,
+        "gospel": "Мк.13:9-13",
+        "gospel_zachalo": 59
+      }
+    },
+    "10": {
+      "sun": {
+        "apostle": "2Тим.3:10-15",
+        "apostle_zachalo": 296,
+        "gospel": "Лк.18:10-14",
+        "gospel_zachalo": 89,
+        "note": "Неделя о мытаре и фарисее"
+      },
+      "mon": null,
+      "tue": null,
+      "wed": null,
+      "thu": null,
+      "fri": null,
+      "sat": null
+    }
+  },
+  "holy_week": {
+    "sat": {
+      "apostle": "Рим.6:3-11",
+      "apostle_zachalo": 91,
+      "gospel": "Мф.28:1-20",
+      "gospel_zachalo": 115,
+      "note": "Великая Суббота"
+    },
+    "fri": {
+      "note": "Великая Пятница — Литургия не совершается; чтения Царских часов и вечерни составные (не отображаются)"
+    },
+    "thu": {
+      "apostle": "1Кор.11:23-32",
+      "apostle_zachalo": 149,
+      "note": "Великий Четверг (Тайная Вечеря)"
+    },
+    "wed": {
+      "gospel": "Мф.26:6-16",
+      "gospel_zachalo": 108,
+      "note": "Великая Среда"
+    },
+    "tue": {
+      "gospel": "Мф.24:36-26:2",
+      "gospel_zachalo": 102,
+      "note": "Великий Вторник"
+    },
+    "mon": {
+      "gospel": "Мф.24:3-35",
+      "gospel_zachalo": 98,
+      "note": "Великий Понедельник"
+    }
+  }
+}

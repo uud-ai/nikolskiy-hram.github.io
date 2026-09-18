@@ -25,34 +25,45 @@
     Promise.all([
         fetch('reading-data/pascha-dates.json').then(function (r) { return r.json(); }),
         fetch('reading-data/ordinary-cycle.json').then(function (r) { return r.json(); }),
+        fetch('reading-data/triodion-cycle.json').then(function (r) { return r.json(); }),
         fetch('reading-data/nt-text.json').then(function (r) { return r.json(); })
     ]).then(function (results) {
-        console.log("4. Все 3 файла JSON успешно загружены!");
-        
+        console.log("4. Все файлы JSON успешно загружены!");
+
         var paschaDates = results[0];
         var cycle = results[1];
-        var bibleData = results[2];
+        var triodion = results[2];
+        var bibleData = results[3];
 
         var today = new Date();
         today.setHours(0, 0, 0, 0);
         console.log("5. Сегодняшняя дата:", today);
 
         var pascha = LiturgicalCycle.pickPascha(today, paschaDates);
-        console.log("6. Дата Пасхи для текущего года:", pascha);
-        if (!pascha) { 
-            console.log("-> Скрываем блок: Дата Пасхи не найдена."); 
-            section.style.display = 'none'; return; 
+        var nextPascha = LiturgicalCycle.pickNextPascha(today, paschaDates);
+        console.log("6. Пасха (прошедшая/текущая):", pascha, "; ближайшая будущая:", nextPascha);
+        if (!pascha && !nextPascha) {
+            console.log("-> Скрываем блок: Дата Пасхи не найдена.");
+            section.style.display = 'none'; return;
         }
 
-        var pos = LiturgicalCycle.resolveCyclePosition(today, pascha);
+        var pos = LiturgicalCycle.resolveCyclePosition(today, pascha, nextPascha);
         console.log("7. Позиция в церковном цикле:", pos);
-        if (pos.period === 'unresolved') { 
-            console.log("-> Скрываем блок: Период определен как unresolved."); 
-            section.style.display = 'none'; return; 
+        if (pos.period === 'unresolved') {
+            console.log("-> Скрываем блок: Период определен как unresolved.");
+            section.style.display = 'none'; return;
         }
 
-        var weekTable = (cycle[pos.period] || {})[pos.week];
-        var entry = weekTable ? weekTable[pos.weekday] : null;
+        var entry;
+        if (pos.period === 'holy_week') {
+            entry = triodion.holy_week ? triodion.holy_week[pos.weekday] : null;
+        } else if (pos.period === 'triodion_period') {
+            var triodionWeek = (triodion.triodion_period || {})[pos.week];
+            entry = triodionWeek ? triodionWeek[pos.weekday] : null;
+        } else {
+            var weekTable = (cycle[pos.period] || {})[pos.week];
+            entry = weekTable ? weekTable[pos.weekday] : null;
+        }
         console.log("8. Данные о чтениях на сегодня:", entry);
         
         if (!entry) { 
