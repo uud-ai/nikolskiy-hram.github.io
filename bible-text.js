@@ -10,7 +10,6 @@ var BibleText = (function () {
         "Гал": "Gal", "Еф": "Eph", "Флп": "Phil", "Кол": "Col", "Евр": "Heb",
         "Иак": "Jas", "1Пет": "1Pet", "2Пет": "2Pet",
         "1Ин": "1John", "2Ин": "2John", "3Ин": "3John", "Иуд": "Jude",
-        "1Фес": "1Thess", "2Фес": "2Thess",
         "1Тим": "1Tim", "2Тим": "2Tim", "Тит": "Titus", "Флм": "Phlm",
         "1Фес": "1Thess", "2Фес": "2Thess", "1Сол": "1Thess", "2Сол": "2Thess"
     };
@@ -57,11 +56,17 @@ var BibleText = (function () {
 
     function parseAndFetch(bookData, ref) {
         var dotIdx = ref.indexOf('.');
-        if (dotIdx === -1) return null;
+        if (dotIdx === -1) {
+            console.warn('bible-text: не удалось разобрать ссылку (нет точки после книги): ' + ref);
+            return null;
+        }
         var bookShort = ref.slice(0, dotIdx);
         var rest = ref.slice(dotIdx + 1);
         var bookId = BOOK_MAP[bookShort];
-        if (!bookId || !bookData[bookId]) return null;
+        if (!bookId || !bookData[bookId]) {
+            console.warn('bible-text: неизвестная книга или нет данных по ней: ' + bookShort + ' (ссылка ' + ref + ')');
+            return null;
+        }
 
         var currentChapter = null;
         var result = [];
@@ -105,6 +110,7 @@ var BibleText = (function () {
                 if (t2) result.push(t2);
                 continue;
             }
+            console.warn('bible-text: не удалось разобрать сегмент "' + seg + '" в ссылке ' + ref);
             return null; // не удалось разобрать сегмент
         }
         return result.length ? result : null;

@@ -2,7 +2,6 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ДОБАВЛЕНО: Content-Security-Policy — ограничивает источники скриптов/стилей/подключений,
@@ -434,11 +433,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Галерея */
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; }
-        .gallery-img { width: 100%; height: 250px; object-fit: cover; border-radius: 4px; transition: transform 0.3s; cursor: pointer; }
-        .gallery-img:hover { transform: scale(1.02); }
-
         /* ДОБАВЛЕНО: Lightbox — увеличение фото при клике */
         .lightbox {
             display: none;
@@ -563,11 +557,9 @@
             .quote-card { padding: 30px 20px; }
             .grid { grid-template-columns: 1fr; }
             .mobile-call-btn { display: flex; align-items: center; gap: 8px; }
-            .gallery-grid { grid-template-columns: 1fr 1fr; }
             .lightbox-nav { font-size: 2rem; padding: 10px; }
         }
         @media (max-width: 480px) {
-            .gallery-grid { grid-template-columns: 1fr; }
             .about-gallery { grid-template-columns: 1fr; }
             .about-gallery img { height: 250px; }
         }
@@ -810,80 +802,6 @@
         📞 Позвонить
     </a>
 
-    <!-- ДОБАВЛЕНО: Инлайн-скрипт логики аккордеона -->
-    <script>
-        document.addEventListener('click', (event) => {
-            const trigger = event.target.closest('.accordion-trigger');
-            if (!trigger) return;
-
-            const accordion = trigger.closest('.reading-accordion');
-            if (accordion) {
-                const isActive = accordion.classList.toggle('active');
-                trigger.setAttribute('aria-expanded', isActive);
-                
-                // Опционально: Закрыть другой аккордеон при открытии текущего
-                document.querySelectorAll('.reading-accordion.active').forEach(activeAccordion => {
-                    if (activeAccordion !== accordion) {
-                        activeAccordion.classList.remove('active');
-                        activeAccordion.querySelector('.accordion-trigger').setAttribute('aria-expanded', 'false');
-                    }
-                });
-            }
-        });
-    </script>
-    
-    <script>
-        // Галерея раздела «О храме»: увеличение, стрелки и клавиатурная навигация
-        (() => {
-            const links = Array.from(document.querySelectorAll('.about-photo-link'));
-            const lightbox = document.getElementById('lightbox');
-            const image = document.getElementById('lightbox-img');
-            const counter = document.getElementById('lightbox-counter');
-            const close = document.getElementById('lightbox-close');
-            const prev = document.getElementById('lightbox-prev');
-            const next = document.getElementById('lightbox-next');
-            let current = 0;
-
-            function show(index) {
-                if (!links.length) return;
-                current = (index + links.length) % links.length;
-                const source = links[current];
-                const thumb = source.querySelector('img');
-                image.src = source.getAttribute('href');
-                image.alt = thumb ? thumb.alt : '';
-                counter.textContent = `${current + 1} / ${links.length}`;
-                lightbox.classList.add('active');
-                document.body.style.overflow = 'hidden';
-                close.focus();
-            }
-
-            function hide() {
-                lightbox.classList.remove('active');
-                image.src = '';
-                document.body.style.overflow = '';
-            }
-
-            links.forEach((link, index) => {
-                link.addEventListener('click', event => {
-                    event.preventDefault();
-                    show(index);
-                });
-            });
-            close.addEventListener('click', hide);
-            prev.addEventListener('click', () => show(current - 1));
-            next.addEventListener('click', () => show(current + 1));
-            lightbox.addEventListener('click', event => {
-                if (event.target === lightbox) hide();
-            });
-            document.addEventListener('keydown', event => {
-                if (!lightbox.classList.contains('active')) return;
-                if (event.key === 'Escape') hide();
-                if (event.key === 'ArrowLeft') show(current - 1);
-                if (event.key === 'ArrowRight') show(current + 1);
-            });
-        })();
-    </script>
-    
     <script src="script.js"></script>
     <script src="quotes.js"></script>
     <script src="cycle.js"></script>

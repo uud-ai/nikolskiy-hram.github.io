@@ -32,9 +32,10 @@
            РАСПИСАНИЕ БОГОСЛУЖЕНИЙ
            Загружается из Google Sheets, парсит даты и отображает
            ============================================================ */
+        (function() {
         // ИЗМЕНЕНО: расписание теперь берётся из локального файла в этом же репозитории,
         // а не из внешней Google-таблицы (таблицу заблокировал сам Google — см. историю)
-        const scheduleCsvUrl = "schedule.csv"; 
+        const scheduleCsvUrl = "schedule.csv";
 
         // ДОБАВЛЕНО: защита от XSS — экранируем спецсимволы перед вставкой через innerHTML,
         // на случай опечаток/спецсимволов при ручном редактировании schedule.csv
@@ -174,6 +175,12 @@
                     moreWrap.style.display = 'none';
                 }
             }
+
+            // ДОБАВЛЕНО: подпись с телефоном под расписанием — уточнить актуальность
+            const footer = document.getElementById('schedule-footer');
+            if (footer && phone) {
+                footer.innerHTML = `Расписание уточняйте по тел. <a href="tel:${escapeHtml(phone.replace(/[^\d+]/g, ''))}" style="color: var(--accent); font-weight: bold;">${escapeHtml(phone)}</a>`;
+            }
         }
 
         Papa.parse(scheduleCsvUrl, {
@@ -202,12 +209,13 @@
                 document.getElementById('schedule-list').innerHTML = '<li style="text-align:center;">Расписание уточняйте по телефону <a href="tel:+79244588878" style="color: var(--accent); font-weight: bold;">+7 (924) 458-88-78</a></li>';
             }
         });
+        })();
 
         /* ============================================================
            LIGHTBOX — просмотр фото в увеличенном виде
            ============================================================ */
         (function() {
-            const galleryImages = document.querySelectorAll('#gallery-grid .gallery-img');
+            const links = Array.from(document.querySelectorAll('.about-photo-link'));
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightbox-img');
             const lightboxCounter = document.getElementById('lightbox-counter');
@@ -217,21 +225,25 @@
             let currentIndex = 0;
 
             function show(index) {
-                currentIndex = (index + galleryImages.length) % galleryImages.length;
-                const img = galleryImages[currentIndex];
-                lightboxImg.src = img.src;
-                lightboxImg.alt = img.alt;
-                lightboxCounter.textContent = `${currentIndex + 1} / ${galleryImages.length}`;
+                if (!links.length) return;
+                currentIndex = (index + links.length) % links.length;
+                const source = links[currentIndex];
+                const thumb = source.querySelector('img');
+                lightboxImg.src = source.getAttribute('href');
+                lightboxImg.alt = thumb ? thumb.alt : '';
+                lightboxCounter.textContent = `${currentIndex + 1} / ${links.length}`;
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
+                btnClose.focus();
             }
             function close() {
                 lightbox.classList.remove('active');
+                lightboxImg.src = '';
                 document.body.style.overflow = '';
             }
 
-            galleryImages.forEach((img, i) => {
-                img.addEventListener('click', () => show(i));
+            links.forEach((link, i) => {
+                link.addEventListener('click', (e) => { e.preventDefault(); show(i); });
             });
             btnClose.addEventListener('click', close);
             btnPrev.addEventListener('click', (e) => { e.stopPropagation(); show(currentIndex - 1); });
@@ -278,29 +290,31 @@
            АККОРДЕОНЫ ДЛЯ ЧТЕНИЙ ДНЯ
            Раскрытие/сокрытие текстов Апостола и Евангелия
            ============================================================ */
-        document.addEventListener('click', (event) => {
-            const trigger = event.target.closest('.accordion-trigger');
-            
-            if (!trigger) return;
+        (function() {
+            document.addEventListener('click', (event) => {
+                const trigger = event.target.closest('.accordion-trigger');
 
-            const accordion = trigger.closest('.reading-accordion');
-            
-            if (accordion) {
-                // Переключаем класс active
-                const isActive = accordion.classList.toggle('active');
-                
-                // Обновляем ARIA-атрибут
-                trigger.setAttribute('aria-expanded', isActive);
-                
-                // Опционально: сворачиваем другие аккордеоны, если один был открыт
-                document.querySelectorAll('.reading-accordion.active').forEach(activeAccordion => {
-                    if (activeAccordion !== accordion) {
-                        activeAccordion.classList.remove('active');
-                        const activeTrigger = activeAccordion.querySelector('.accordion-trigger');
-                        if (activeTrigger) {
-                            activeTrigger.setAttribute('aria-expanded', 'false');
+                if (!trigger) return;
+
+                const accordion = trigger.closest('.reading-accordion');
+
+                if (accordion) {
+                    // Переключаем класс active
+                    const isActive = accordion.classList.toggle('active');
+
+                    // Обновляем ARIA-атрибут
+                    trigger.setAttribute('aria-expanded', isActive);
+
+                    // Опционально: сворачиваем другие аккордеоны, если один был открыт
+                    document.querySelectorAll('.reading-accordion.active').forEach(activeAccordion => {
+                        if (activeAccordion !== accordion) {
+                            activeAccordion.classList.remove('active');
+                            const activeTrigger = activeAccordion.querySelector('.accordion-trigger');
+                            if (activeTrigger) {
+                                activeTrigger.setAttribute('aria-expanded', 'false');
+                            }
                         }
-                    }
-                });
-            }
-        });
+                    });
+                }
+            });
+        })();
