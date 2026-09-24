@@ -26,6 +26,34 @@
             if (elNew) elNew.textContent = `${dayNew} ${monthNew}`;
             if (elOld) elOld.textContent = `${dayOld} ${monthOld}`;
             if (elWd) elWd.textContent = weekdays[now.getDay()];
+
+            // Названия праздников и святых дня — из собственного файла,
+            // собранного парсером church-calendar/build_calendar_names.py с patriarchia.ru
+            const elFeasts = document.getElementById('cal-feasts');
+            if (elFeasts) {
+                const pad = (n) => String(n).padStart(2, '0');
+                const todayKey = `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}`;
+                const escapeHtmlLocal = (str) => String(str)
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;')
+                    .replace(/"/g, '&quot;')
+                    .replace(/'/g, '&#39;');
+
+                fetch('calendar-names.json')
+                    .then((res) => { if (!res.ok) throw new Error('http ' + res.status); return res.json(); })
+                    .then((data) => {
+                        const names = data[todayKey];
+                        if (Array.isArray(names) && names.length) {
+                            elFeasts.innerHTML = names.map((n) => `<p>${escapeHtmlLocal(n)}</p>`).join('');
+                        } else {
+                            elFeasts.innerHTML = '<p class="calendar-hint">Праздники и память святых дня — в полном календаре по ссылке ниже</p>';
+                        }
+                    })
+                    .catch(() => {
+                        elFeasts.innerHTML = '<p class="calendar-hint">Не удалось загрузить календарь. Полный календарь — по ссылке ниже</p>';
+                    });
+            }
         })();
 
         /* ============================================================
