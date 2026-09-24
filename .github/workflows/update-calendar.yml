@@ -1,0 +1,43 @@
+name: Обновление церковного календаря
+
+on:
+  schedule:
+    # 03:00 UTC ежедневно (~12:00 по времени Забайкальского края)
+    - cron: '0 3 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-calendar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install -r church-calendar/requirements.txt
+
+      - name: Build calendar-names.json
+        run: |
+          FROM=$(date -u -d '-5 days' +%Y-%m-%d)
+          TO=$(date -u -d '+70 days' +%Y-%m-%d)
+          python church-calendar/build_calendar_names.py --from "$FROM" --to "$TO" --out calendar-names.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- calendar-names.json; then
+            echo "Нет изменений в calendar-names.json"
+          else
+            git add calendar-names.json
+            git commit -m "Автообновление церковного календаря"
+            git push
+          fi
